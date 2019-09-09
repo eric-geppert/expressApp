@@ -13,9 +13,10 @@ const Landing = ({ isAuthenticated }) => {
       <div className='dark-overlay'>
         <div className='landing-inner'>
           <h1 className='x-large'>Developer Connector</h1>
+          <p className='lead'>Everyone needs a plan in gym.</p>
           <p className='lead'>
-            Create a developer profile/portfolio, share posts and get help from
-            other developers
+            Reach your fitness goals with our workout plan database that has
+            plans for all people of all fitness levels
           </p>
           <div className='buttons'>
             <Link to='/register' className='btn btn-primary'>
