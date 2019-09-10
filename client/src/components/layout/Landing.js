@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import BlackLogo from '../../img/blackLogo.png';
 
 const Landing = ({ isAuthenticated }) => {
   if (isAuthenticated) {
@@ -12,7 +13,8 @@ const Landing = ({ isAuthenticated }) => {
     <section className='landing'>
       <div className='dark-overlay'>
         <div className='landing-inner'>
-          <h1 className='x-large'>Developer Connector</h1>
+          <h1 className='x-large'>Findmyworkoutplan.com</h1>
+          {/* <img className='logo-img' src={BlackLogo} alt='' /> */}
           <p className='lead'>Everyone needs a plan in gym.</p>
           <p className='lead'>
             Reach your fitness goals with our workout plan database that has

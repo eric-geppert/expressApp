@@ -8,6 +8,16 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
       <li>
+        <Link to='/WOD'>WOD</Link>
+      </li>
+      <li>
+        <Link to='/ContactUs'>ContactUs</Link>
+      </li>
+      <li>
+        <Link to='/PersonalizedProgramming'>PersonalizedProgramming</Link>
+      </li>
+      {/* above is added */}
+      <li>
         <Link to='/profiles'>Developers</Link>
       </li>
       <li>
@@ -31,6 +41,16 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <ul>
       <li>
+        <Link to='/WOD'>WOD</Link>
+      </li>
+      <li>
+        <Link to='/ContactUs'>ContactUs</Link>
+      </li>
+      <li>
+        <Link to='/PersonalizedProgramming'>PersonalizedProgramming</Link>
+      </li>
+      {/* above is added */}
+      <li>
         <Link to='/profiles'>Developers</Link>
       </li>
       <li>
@@ -46,7 +66,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <nav className='navbar bg-dark'>
       <h1>
         <Link to='/'>
-          <i className='fas fa-code' /> DevConnector
+          {/* <i className='fas fa-code' />  */}
+          HomePage
+          {/* //DevConnectorz */}
         </Link>
       </h1>
       {!loading && (

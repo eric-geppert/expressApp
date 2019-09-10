@@ -1,0 +1,3 @@
+LICENSE:
+
+the structure of this code such as: Navbar, css styling, basic structure including redux was acquired under the MIT License from https://github.com/bradtraversy/devconnector_2.0
