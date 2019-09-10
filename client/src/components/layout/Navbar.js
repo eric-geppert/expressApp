@@ -16,6 +16,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <li>
         <Link to='/PersonalizedProgramming'>PersonalizedProgramming</Link>
       </li>
+      <li>
+        <Link to='/Movement'>Movement Library</Link>
+      </li>
+      <li>
+        <Link to='/Testimonials'>Testimonials</Link>
+      </li>
       {/* above is added */}
       <li>
         <Link to='/profiles'>Developers</Link>
@@ -48,6 +54,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li>
       <li>
         <Link to='/PersonalizedProgramming'>PersonalizedProgramming</Link>
+      </li>
+      <li>
+        <Link to='/Movement'>Movement Library</Link>
+      </li>
+      <li>
+        <Link to='/Testimonials'>Testimonials</Link>
       </li>
       {/* above is added */}
       <li>

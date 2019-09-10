@@ -18,6 +18,8 @@ import PrivateRoute from '../routing/PrivateRoute';
 import WOD from '../../tabs/WOD';
 import ContactUs from '../../tabs/ContactUs';
 import PersonalizedProgramming from '../../tabs/PersonalizedProgramming';
+import Movement from '../../tabs/Movement';
+import Testimonials from '../../tabs/Testimonials';
 
 const Routes = () => {
   return (
@@ -43,6 +45,8 @@ const Routes = () => {
           path='/PersonalizedProgramming'
           component={PersonalizedProgramming}
         />
+        <Route exact path='/Movement' component={Movement} />
+        <Route exact path='/Testimonials' component={Testimonials} />
         <Route component={NotFound} />
       </Switch>
     </section>
