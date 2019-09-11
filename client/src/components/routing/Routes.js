@@ -19,7 +19,10 @@ import WOD from '../../tabs/WOD';
 import ContactUs from '../../tabs/ContactUs';
 import PersonalizedProgramming from '../../tabs/PersonalizedProgramming';
 import Movement from '../../tabs/Movement';
-import Testimonials from '../../tabs/Testimonials';
+import Testimonials from '../../tabs/Testimonials2';
+//have Testimonials original which is the grid version, which is more
+//"professional" way of doing it but it has to stretch the imgaes to take up the full container
+//or I would have to just add padding/negative margins anyway
 
 const Routes = () => {
   return (
