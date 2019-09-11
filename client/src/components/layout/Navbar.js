@@ -22,6 +22,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <li>
         <Link to='/Testimonials'>Testimonials</Link>
       </li>
+      <li>
+        <Link to='/FindMyProgram'>FindMyProgram</Link>
+      </li>
       {/* above is added */}
       <li>
         <Link to='/profiles'>Developers</Link>
@@ -60,6 +63,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li>
       <li>
         <Link to='/Testimonials'>Testimonials</Link>
+      </li>
+      <li>
+        <Link to='/FindMyProgram'>FindMyProgram</Link>
       </li>
       {/* above is added */}
       <li>
