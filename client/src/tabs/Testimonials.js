@@ -6,8 +6,10 @@ const Testimonials = () => {
   return (
     <Fragment>
       <h1 className='large text-primary'>Testimonials</h1>
-      <div className='container-of-testimonial-images'>
-        <div id='colten'>
+      {/* <section className='testimonial-section'> */}
+      {/* <div className='container-of-testimonial-images'> */}
+      <div className='testimonial-section'>
+        <div id='colten quote'>
           <p style={{ paddingTop: '50px' }}>
             “Mitch is an excellent coach and will put in time for any questions
             you might have. He knows what he is talking about and will help you
@@ -16,13 +18,16 @@ const Testimonials = () => {
           <p style={{ textAlign: 'right' }}>-Colton Taylor</p>
         </div>
         <img src={require('../img/testimonials/Colton2.jpg')} />
-        <img
-          style={{ marginTop: '-7rem' }}
-          // className='container-of-testimonial-images'
-          src={require('../img/testimonials/Aaidan.jpeg')}
-          // paddingleft='100px'
-        />
-        <div id='Aaidan quote'>
+        <div className='Aaidan-pic'>
+          <img
+            // style={{ marginTop: '-7rem' }}
+            // className='container-of-testimonial-images'
+            src={require('../img/testimonials/Aaidan.jpeg')}
+            // paddingleft='100px'
+          />
+        </div>
+
+        <div className='Aaidan-quote'>
           <p>
             “I wanted a more personalized experience to better hit my goals.
             Since starting... I have lost 30lbs and about 10% body fat, which
@@ -33,7 +38,7 @@ const Testimonials = () => {
           </p>
           <p style={{ textAlign: 'right' }}>-Aaidan Hebert</p>
         </div>
-        <div id='Chase'>
+        <div className='Chase-quote'>
           <p style={{ paddingTop: '50px' }}>
             “I was able to dramatically improve my cardio while getting
             stronger. It’s a great experience...if you do everything you are
@@ -41,13 +46,16 @@ const Testimonials = () => {
           </p>
           <p style={{ textAlign: 'right' }}>-Chase Dolfi</p>
         </div>
-        <div id='chase pic' style={{ marginTop: '-7rem' }}>
+        {/* <div id='chase pic' style={{ marginTop: '-7rem' }}> */}
+        <div className='Chase-pic'>
           <img src={require('../img/testimonials/Chase.JPG')} />
         </div>
-        <div id='k' style={{ marginTop: '-7rem' }}>
+        <div className='Katya-pic'>
+          {/* style={{ marginTop: '-7rem' }}> */}
           <img src={require('../img/testimonials/Katya.jpg')} />
         </div>
-        <div style={{ marginTop: '-7rem' }}>
+        <div className='Katya-quote'>
+          {/* style={{ marginTop: '-7rem' }}> */}
           <p style={{ paddingTop: '50px' }}>
             “I've learned many exercises that engage muscle groups I previously
             did not know how to work; and with Mitch's help I continue to learn
@@ -58,6 +66,7 @@ const Testimonials = () => {
           <p style={{ textAlign: 'right' }}>-Katya Cope</p>
         </div>
       </div>
+      {/* </section> */}
     </Fragment>
   );
 };
