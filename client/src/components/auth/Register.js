@@ -5,6 +5,8 @@ import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
+//instead of bringing in (props) here we destructured it using ({}) then we can simply
+// call setAlert(arg1,agr2); instead of props.setAlert
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: '',

@@ -1,0 +1,9 @@
+.btn-group.special {
+  margin-left: -140%;
+  display: flex;
+}
+
+.special .btn {
+  border-radius: 10px;
+  flex: 1;
+}
