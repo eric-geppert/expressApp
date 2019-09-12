@@ -26,7 +26,7 @@ const renderPages = ({ auth, pages }) => {
     console.log('false: setting pageCount to: ', pageCount);
   }
 
-  console.log('pages', pageCount);
+  console.log('pages inside of Render Pages: ', pageCount);
   for (var i = 1; i < pageCount; i++)
     pageElements.push(
       <Page key={i} pageNumber={i} onLoadError={console.error} />

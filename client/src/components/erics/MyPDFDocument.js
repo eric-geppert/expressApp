@@ -86,15 +86,18 @@ const MyPDFDocument = ({ auth, pages, file }) => {
 
   // render() {
   return (
-    console.log(hardcodedFilePath),
+    console.log(file),
     (
       // <Document file={this.rednerWorkout(this.props.file)}>
-      <Document file={rednerWorkout(hardcodedFilePath)}>
+      <Document file={rednerWorkout(file)}>
         {/* file={this.rednerWorkout(hardcodedFilePath)}> */}
         {/* {this.renderPage()} */}
-        {console.log('inside doc object')}
+        {console.log('inside doc object pages: ' + pages)}
+        {console.log('inside doc object this: ' + this)}
+        {/* {console.log('inside doc object props: ' + props)} */}
+
         {/* {testPage} */}
-        <RenderPages />
+        <RenderPages pages={pages} />
         {/* <Page key={1} pageNumber={1} onLoadError={console.error} />; */}
         {/* {renderPage} */}
       </Document>
