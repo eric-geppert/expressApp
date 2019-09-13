@@ -1,28 +1,10 @@
-import React, { Component, Fragment } from 'react';
-import { Document, Page } from 'react-pdf';
+import React from 'react';
+import { Document } from 'react-pdf';
 import { connect } from 'react-redux';
-import propTypes from 'prop-types';
+// import propTypes from 'prop-types';
 import RenderPages from './RenderPages';
 
-// class MyPDFDocument extends Component {
-// ({
-//   getProfileById,
-//   profile: { profile, loading },
-//   auth,
-//   match
-// })
-// props
-// var count = 0;
-const hardcodedFilePath = '../../img/workouts/AtHomeTotalBody5V1.pdf';
 const MyPDFDocument = ({ auth, pages, file }) => {
-  // constructor(props) {
-  //   super(props);
-
-  // this.state = {
-  //   isAuthenticated: false
-  // };
-  // }
-
   var rednerWorkout = param => {
     switch (param) {
       case '../../img/workouts/ConditioningWeightLoss5V1.pdf':
@@ -54,56 +36,15 @@ const MyPDFDocument = ({ auth, pages, file }) => {
     }
   };
 
-  // const renderPage = () => {
-  //   console.log('inside renderPage');
-  //   count++;
-  //   console.error('iteration: ', count);
-  //   var pageCount = 0;
-  //   console.log(
-  //     'this.props.isAutheenticated in PDF renderPage: ',
-  //     this.props.isAuthenticated
-  //   );
-  //   var pageElements = [];
-  //   var auth = this.props.isAuthenticated;
-  //   console.log('auth: ', auth);
-  //   console.log('this.props.pages: ', this.props.pages);
-  //   if (auth.isAuthenticated == true) {
-  //     pageCount = this.props.pages;
-  //     console.log('true: setting pageCount to: ', pageCount);
-  //   }
-  //   {
-  //     pageCount = 2;
-  //     console.log('false: setting pageCount to: ', pageCount);
-  //   }
-
-  //   console.log('pages', pageCount);
-  //   for (var i = 1; i < pageCount; i++)
-  //     pageElements.push(
-  //       <Page key={i} pageNumber={i} onLoadError={console.error} />
-  //     );
-  //   return pageElements;
-  // };
-
-  // render() {
   return (
-    console.log(file),
+    console.log('file: ' + file),
     (
-      // <Document file={this.rednerWorkout(this.props.file)}>
       <Document file={rednerWorkout(file)}>
-        {/* file={this.rednerWorkout(hardcodedFilePath)}> */}
-        {/* {this.renderPage()} */}
         {console.log('inside doc object pages: ' + pages)}
-        {console.log('inside doc object this: ' + this)}
-        {/* {console.log('inside doc object props: ' + props)} */}
-
-        {/* {testPage} */}
         <RenderPages pages={pages} />
-        {/* <Page key={1} pageNumber={1} onLoadError={console.error} />; */}
-        {/* {renderPage} */}
       </Document>
     )
   );
-  // }
 };
 
 // MyPDFDocument.propTypes = {
@@ -112,7 +53,6 @@ const MyPDFDocument = ({ auth, pages, file }) => {
 //todo fix above^
 
 const mapStateToProps = state => ({
-  // isAuthenticated: state.isAuthenticatedReducer
   auth: state.auth
 });
 

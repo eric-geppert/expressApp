@@ -14,6 +14,7 @@ import {
 // Get posts
 export const getPosts = () => async dispatch => {
   try {
+    console.log('getPosts called');
     const res = await axios.get('/api/posts');
 
     dispatch({
@@ -21,6 +22,11 @@ export const getPosts = () => async dispatch => {
       payload: res.data
     });
   } catch (err) {
+    console.log(
+      'error with getPosts dispatching error, payload:' +
+        { msg: err.response.statusText, status: err.response.status }
+    );
+
     dispatch({
       type: POST_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
@@ -116,6 +122,11 @@ export const getPost = id => async dispatch => {
       payload: res.data
     });
   } catch (err) {
+    console.log(
+      'error with getPost dispatching error, payload:' +
+        { msg: err.response.statusText, status: err.response.status }
+    );
+
     dispatch({
       type: POST_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
