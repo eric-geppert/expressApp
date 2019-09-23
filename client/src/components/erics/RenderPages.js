@@ -7,26 +7,11 @@ var count = 0;
 
 //destructure the auth that we get from props
 const renderPages = ({ auth, pages }) => {
-  console.log('inside renderPages');
-  count++;
-  console.log('iteration: ', count);
   var pageCount = 0;
-  console.log(
-    'auth.isAutheenticated in PDF renderPage: ',
-    auth.isAuthenticated
-  );
   var pageElements = [];
-  console.log('auth: ', auth.isAuthenticated);
-  console.log('pages: ', pages);
-  if (auth.isAuthenticated) {
-    pageCount = pages;
-    console.log('true: setting pageCount to: ', pageCount);
-  } else {
-    pageCount = 2;
-    console.log('false: setting pageCount to: ', pageCount);
-  }
+  if (auth.isAuthenticated) pageCount = pages;
+  else pageCount = 2;
 
-  console.log('pages inside of Render Pages: ', pageCount);
   for (var i = 1; i < pageCount; i++)
     pageElements.push(
       <Page key={i} pageNumber={i} onLoadError={console.error} />
