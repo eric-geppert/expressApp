@@ -58,7 +58,8 @@ router.post(
         email,
         avatar,
         password
-      });
+      }); //remove later add credit card cred?
+      //rl: cant because dont know exactly what its sending
 
       //encrypt pass
       const salt = await bcrypt.genSalt(10); //10 rounds more you have
@@ -84,6 +85,8 @@ router.post(
           res.json({ token });
         }
       );
+
+      //---put payment here
 
       //   res.send('User route');
     } catch (err) {

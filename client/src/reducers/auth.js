@@ -6,14 +6,17 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  ACCOUNT_DELETED
+  ACCOUNT_DELETED,
+  BUY_SUCCESS,
+  BUY_FAIL
 } from '../actions/types';
 
 const initialState = {
   token: localStorage.getItem('token'),
   isAuthenticated: null,
   loading: true,
-  user: null
+  user: null,
+  paid: null
 };
 
 export default function(state = initialState, action) {
@@ -48,6 +51,16 @@ export default function(state = initialState, action) {
         isAuthenticated: false,
         loading: false
       };
+    case BUY_SUCCESS:
+      return {
+        ...state,
+        paid: true
+      };
+    case BUY_FAIL:
+      return {
+        state
+      };
+    //todo: add error failures for this
     default:
       return state;
   }

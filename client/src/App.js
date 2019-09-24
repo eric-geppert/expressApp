@@ -10,9 +10,9 @@ import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
-// payments
-import { Elements, StripeProvider } from 'react-stripe-elements';
-import CheckoutForm from './components/auth/CheckoutForm';
+// // payments
+// import { Elements, StripeProvider } from 'react-stripe-elements';
+// import CheckoutForm from './components/auth/CheckoutForm';
 
 import './App.css';
 
@@ -29,14 +29,14 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
-          {/* <Navbar /> */}
+          <Navbar />
           {/*  */}
-          <StripeProvider apiKey='pk_test_nq8dRX7XeBaTNauxj2CLOHLd00zAKf36m9'>
+          {/* <StripeProvider apiKey='pk_test_nq8dRX7XeBaTNauxj2CLOHLd00zAKf36m9'>
             <Elements>
               <CheckoutForm />
             </Elements>
-          </StripeProvider>
-
+          </StripeProvider> */}
+          {/* todo: clean up */}
           {/*  */}
           <Switch>
             <Route exact path='/' component={Landing} />

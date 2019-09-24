@@ -24,6 +24,7 @@ import Testimonials from '../../tabs/Testimonials2';
 //"professional" way of doing it but it has to stretch the imgaes to take up the full container
 //or I would have to just add padding/negative margins anyway
 import RadioButtonParent from '../../components/erics/RadioButtonParent';
+import CheckoutPage from '../../components/auth/CheckoutPage';
 
 const Routes = () => {
   return (
@@ -52,7 +53,7 @@ const Routes = () => {
         <Route exact path='/Movement' component={Movement} />
         <Route exact path='/Testimonials' component={Testimonials} />
         <Route exact path='/FindMyProgram' component={RadioButtonParent} />
-
+        <Route exact path='/CheckoutPage' component={CheckoutPage} />
         <Route component={NotFound} />
       </Switch>
     </section>

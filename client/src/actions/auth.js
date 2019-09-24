@@ -8,7 +8,9 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_PROFILE
+  CLEAR_PROFILE,
+  BUY_SUCCESS,
+  BUY_FAIL
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -137,4 +139,47 @@ export const login = (email, password) => async dispatch => {
 export const logout = () => dispatch => {
   dispatch({ type: CLEAR_PROFILE });
   dispatch({ type: LOGOUT });
+};
+
+///------------------ stripe
+//-----------------------takes in what?
+export const payStripe = cardProps => async dispatch => {
+  console.log('inside paystripe method');
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  // let { token } = await this.props.stripe.createToken({ name: 'Name' });
+  let { token } = await cardProps.stripe.createToken({ name: 'Name' });
+
+  const body = token.id;
+  // let response = await fetch('/chargetest', {
+  // let response = await fetch('api/auth/charge', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'text/plain' },
+  //   body: token.id
+  // });
+
+  try {
+    const res = await axios.post('/api/auth/charge', body, config);
+
+    dispatch({
+      type: BUY_SUCCESS,
+      payload: res.data
+    });
+
+    dispatch(loadUser());
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: BUY_FAIL
+    });
+  }
 };

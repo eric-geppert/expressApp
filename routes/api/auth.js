@@ -30,10 +30,11 @@ router.get('/', auth, async (req, res) => {
   }
 });
 //----
+
 // @route
 //req type POST
 //endpoint api/auth
-//@desc Authenticate user and get token
+//@desc Authenticate user and get token, and charge
 //@access Public
 router.post(
   '/',
@@ -118,7 +119,25 @@ router.post('/charge', async (req, res) => {
     res.json({ status });
   } catch (err) {
     res.status(500).end();
+    // throw (err)
   }
 });
 
 module.exports = router;
+
+//remove later
+//can use nested try catches
+// routes.post('/login', async (req, res) => {
+//   try {
+//     ...
+//     let user = null
+//     try {
+//       user = await findUser(req.body.login)
+//     } catch (error) {
+//       doAnythingWithError(error)
+//       throw error //<-- THIS IS ESSENTIAL FOR BREAKING THE CHAIN
+//     }
+//     ...
+//   } catch (error) {
+//     errorResult(res, error)
+//   }

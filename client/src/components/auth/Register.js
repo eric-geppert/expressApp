@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
+import CheckoutPage from './CheckoutPage';
 
 //instead of bringing in (props) here we destructured it using ({}) then we can simply
 // call setAlert(arg1,agr2); instead of props.setAlert
@@ -30,7 +31,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to='/dashboard' />;
+    return <Redirect to='/CheckoutPage' />;
+    // return <Redirect to='/dashboard' />;
   }
 
   return (
@@ -92,11 +94,14 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
+  paid: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  //adding
+  paid: state.auth.paid
 });
 
 export default connect(
