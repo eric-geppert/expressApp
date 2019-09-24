@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import BlackLogo from '../../img/blackLogo.png';
 
+//need??
+import { Elements, StripeProvider } from 'react-stripe-elements';
+import CheckoutForm from '../auth/CheckoutForm';
+
 const Landing = ({ isAuthenticated }) => {
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
@@ -27,6 +31,9 @@ const Landing = ({ isAuthenticated }) => {
             <Link to='/login' className='btn btn-light'>
               Login
             </Link>
+            {/* <Elements>
+              <CheckoutForm />
+            </Elements> */}
           </div>
         </div>
       </div>
