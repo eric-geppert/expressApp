@@ -1,6 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
-import { payStripe } from '../../actions/auth';
+import { Redirect } from 'react-router-dom';
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+// import { BUY_SUCCESS, BUY_FAIL } from '../../actions/types';
+// import { payStripe } from '../../actions/auth';
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -12,16 +17,8 @@ class CheckoutForm extends Component {
 
   async submit(ev) {
     ev.preventDefault();
-    // console.log('calling paystripe');
-    // payStripe(this.props);
-    //problems:
-    //1.didnt' know what to pass,
-    //2. wouldn't print conosle.log in action function payStripe
-
-    //todo: remove dispatches
 
     let { token } = await this.props.stripe.createToken({ name: 'Name' });
-    // let response = await fetch('/chargetest', {
     let response = await fetch('api/auth/charge', {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain' },
@@ -31,11 +28,20 @@ class CheckoutForm extends Component {
     if (response.ok) {
       console.log('Purchase Complete!');
       this.setState({ complete: true });
+      this.props.setAlert('Purchase complete!', 'success');
+      // setAlert('Purchase complete!', 'success');
+      // setAlert('Purchase complete (danger)!', 'danger');
+      alert('payment success!');
     }
   }
 
   render() {
-    if (this.state.complete) return <h1>Purchase Complete</h1>;
+    if (this.state.complete)
+      return (
+        <Fragment>
+          <Redirect to='/FindMyProgram' />
+        </Fragment>
+      );
 
     return (
       <div className='checkout'>
@@ -46,8 +52,73 @@ class CheckoutForm extends Component {
     );
   }
 }
+// export default injectStripe(CheckoutForm);
+//need injectStripe
 
-export default injectStripe(CheckoutForm);
+// CheckoutForm.propTypes = {
+//   setAlert: PropTypes.func.isRequired,
+//   isAuthenticated: PropTypes.bool,
+//   paid: PropTypes.bool
+// };
+
+// const mapStateToProps = state => ({
+//   isAuthenticated: state.auth.isAuthenticated,
+//   //adding
+//   paid: state.auth.paid
+// });
+
+// export default connect(
+//   mapStateToProps,
+//   { setAlert }
+// )(injectStripe(CheckoutForm));
+
+export default connect(
+  null,
+  { setAlert }
+)(injectStripe(CheckoutForm));
+
+//--------
+// export default connect(
+//   mapStateToProps,
+//   { setAlert }
+// )(CheckoutForm);
+// )(injectStripe(CheckoutForm)); //works for stripe but not alerts
 
 //connect state to props paid instead of complete
 //todo include response function when connecting to props???
+
+//------
+// console.log('calling paystripe');
+// payStripe(this.props);
+//problems:
+//1.didnt' know what to pass,
+//2. wouldn't print conosle.log in action function payStripe
+
+//todo: remove dispatches
+
+//----
+
+// payStripe();
+//   async dispatch => ({
+//     type: BUY_SUCCESS,
+//     payload: response.data
+//   });
+// } else {
+//   dispatch({
+//     type: BUY_FAIL,
+//     payload: response.data
+//   });
+// }
+// else if(response.status===500){
+//   dispatch({
+//     type: BUY_FAIL,
+//     payload: res.data
+//     //todo: add payload of status??
+//   });
+// }
+// else if(response.status===400){
+//   dispatch({
+//     type: BUY_FAIL,
+//     payload: res.data
+//   });
+// }
