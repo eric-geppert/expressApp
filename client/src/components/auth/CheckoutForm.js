@@ -29,7 +29,33 @@ class CheckoutForm extends Component {
         console.log('Purchase Complete!');
         this.setState({ complete: true });
         this.props.setAlert('Purchase complete!', 'success');
-        alert('payment success!');
+        // alert('payment success!');
+
+        /**setting paid to true in db */
+        // const config = {
+        //   headers: {
+        //     'Content-Type': 'application/json'
+        //   }
+        // };
+        // const body = 'a26@me.com';
+        // const res = await axios.put('/api/users/paid');
+
+        // const body = 'a27@me.com';
+        // const body = JSON.stringify({ email });
+        const body = JSON.stringify({ email: 'a25@me.com' });
+        const res2 = await fetch('api/users/paid', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body //: { email: 'a25@me.com' }
+        });
+        // console.log('body: ' + body);
+        //, body, config);
+        //hardcoded email for now
+        if (res2.status === 200) {
+          console.log('paid set');
+        } else {
+          console.log('there was a problem with calling paid endpoint');
+        }
       }
     } catch (err) {
       console.log('error caught by parent error : ' + err);

@@ -18,7 +18,11 @@ const { check, validationResult } = require('express-validator');
 //@access Public
 //todo: safety priority 1 change to private by adding auth below as an arg
 router.put('/paid', async (req, res) => {
-  //_email
+  //contition, update
+  console.log('inside /paid endpoint email is: ' + req.body.email);
+  console.log('inside /paid req.body: ' + req.body);
+  console.log('inside /paid req: ' + req);
+
   User.findOneAndUpdate({ email: req.body.email }, { paid: true })
     .then(() => res.json({ success: true }))
     .catch(err => res.status(404).json({ success: false }));
@@ -46,16 +50,11 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    //   console.log(req.body);
-
     //destructuring req/body
     const { name, email, password } = req.body;
 
     try {
-      console.log('register looking for email: ' + email);
       let user = await User.findOne({ email });
-      console.log('register found email: ' + user);
-
       if (user) {
         //check if user exists
         return res
