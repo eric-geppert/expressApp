@@ -16,6 +16,7 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: null,
+  email: null,
   paid: null
 };
 
@@ -31,6 +32,11 @@ export default function(state = initialState, action) {
         user: payload
       };
     case REGISTER_SUCCESS:
+      return {
+        ...state,
+        email: payload
+      };
+    //adding above so can get email to adjust paid variable later
     case LOGIN_SUCCESS:
       localStorage.setItem('token', payload.token);
       return {

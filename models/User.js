@@ -21,7 +21,16 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  // adding
+  paid: {
+    type: Boolean,
+    default: false
   }
+  // datePaid: {
+  //   type: Date,
+  //   default: null
+  // }
 });
 
 module.exports = User = mongoose.model('user', UserSchema);

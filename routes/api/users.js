@@ -13,6 +13,23 @@ const { check, validationResult } = require('express-validator');
 
 // @route
 //req type POST
+//endpoint api/users/paid
+//@desc set users paid variable to true
+//@access Public
+router.put('/paid', async (req, res) => {
+  try {
+    // let originalUser = await User.findOne(req.body.email);
+    console.log('request.body: ' + req.body);
+    let originalUser = await User.findOne(req.body);
+    await originalUser.update({ paid: true });
+    // let userPaid = await User.update({ paid: true });
+  } catch (err0) {
+    console.log('problem with updating paid in api');
+  }
+});
+
+// @route
+//req type POST
 //endpoint api/users
 //@desc Register user
 //@access Public
@@ -53,11 +70,14 @@ router.post(
         d: 'mm'
       });
 
+      const paid = false;
+
       user = new User({
         name,
         email,
         avatar,
-        password
+        password,
+        paid
       }); //remove later add credit card cred?
       //rl: cant because dont know exactly what its sending
 
@@ -85,8 +105,6 @@ router.post(
           res.json({ token });
         }
       );
-
-      //---put payment here
 
       //   res.send('User route');
     } catch (err) {

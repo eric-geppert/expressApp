@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import { Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
+import { HasPaidSuccessfully } from '../../actions/auth';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import { BUY_SUCCESS, BUY_FAIL } from '../../actions/types';
@@ -26,10 +27,25 @@ class CheckoutForm extends Component {
       });
 
       if (response.ok) {
+        // HasPaidSuccessfully(this.props.email);
         console.log('Purchase Complete!');
         this.setState({ complete: true });
         this.props.setAlert('Purchase complete!', 'success');
         alert('payment success!');
+
+        try {
+          console.log('sending paid reqest');
+          let response2 = await fetch('api/users/paid', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'text/plain' },
+            body: 'a13@me.com' //hardcoded for now get from redux later
+            //the email
+            //token.id
+          });
+          if (response2.ok) {
+            console.log('paid update Complete!');
+          }
+        } catch (err2) {}
       }
     } catch (err) {
       console.log('error caught by parent error : ' + err);
@@ -54,7 +70,9 @@ class CheckoutForm extends Component {
     );
   }
 }
+
+//need map state to props for haspaidSuccessfull?
 export default connect(
   null,
-  { setAlert }
+  { setAlert, HasPaidSuccessfully }
 )(injectStripe(CheckoutForm));
