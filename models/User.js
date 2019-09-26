@@ -15,9 +15,14 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  avatar: {
-    type: String
+  paid: {
+    type: Boolean,
+    required: true,
+    default: false
   },
+  // avatar: {
+  //   type: String
+  // },
   date: {
     type: Date,
     default: Date.now

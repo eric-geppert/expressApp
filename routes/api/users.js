@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const gravatar = require('gravatar');
+// const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
@@ -10,6 +10,19 @@ const { check, validationResult } = require('express-validator');
 /**use await anytime were returning a promise otherwise we
  * would have to use .then etc etc
  */
+
+// @route
+//req type PUT
+//endpoint api/users/paid
+//@desc set users paid variable to true
+//@access Public
+//todo: safety priority 1 change to private by adding auth below as an arg
+router.put('/paid', async (req, res) => {
+  //_email
+  User.findOneAndUpdate({ email: req.body.email }, { paid: true })
+    .then(() => res.json({ success: true }))
+    .catch(err => res.status(404).json({ success: false }));
+});
 
 // @route
 //req type POST
@@ -39,7 +52,10 @@ router.post(
     const { name, email, password } = req.body;
 
     try {
+      console.log('register looking for email: ' + email);
       let user = await User.findOne({ email });
+      console.log('register found email: ' + user);
+
       if (user) {
         //check if user exists
         return res
@@ -47,20 +63,24 @@ router.post(
           .json({ errors: [{ msg: 'User already exists' }] });
       }
 
-      const avatar = gravatar.url(email, {
-        s: '200',
-        r: 'pg',
-        d: 'mm'
-      });
+      // const avatar = gravatar.url(email, {
+      //   s: '200',
+      //   r: 'pg',
+      //   d: 'mm'
+      // });
+      const paid = false;
+
+      console.log('paid variable in reg: ' + paid);
 
       user = new User({
         name,
         email,
-        avatar,
+        paid,
         password
       }); //remove later add credit card cred?
       //rl: cant because dont know exactly what its sending
 
+      console.log('new user in register: ' + user);
       //encrypt pass
       const salt = await bcrypt.genSalt(10); //10 rounds more you have
       //the safer but the slower you are
