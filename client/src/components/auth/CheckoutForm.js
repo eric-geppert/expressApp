@@ -16,7 +16,11 @@ class CheckoutForm extends Component {
 
   async submit(ev) {
     ev.preventDefault();
-
+    // console.log('this.props.email: ' + this.props.email);
+    // console.log('this.props: ' + this.props.user);
+    // console.log('this.props.user.email: ' + this.props.user.email);
+    console.log('this.props.user: before buy '); // + this.props.user);
+    console.log(this.props.user);
     try {
       let { token } = await this.props.stripe.createToken({ name: 'Name' });
       let response = await fetch('api/auth/charge', {
@@ -32,29 +36,34 @@ class CheckoutForm extends Component {
         // alert('payment success!');
 
         /**setting paid to true in db */
-        // const config = {
-        //   headers: {
-        //     'Content-Type': 'application/json'
-        //   }
-        // };
-        // const body = 'a26@me.com';
-        // const res = await axios.put('/api/users/paid');
+        console.log(
+          'this.props.isAuthenticated: ' + this.props.isAuthenticated
+        );
+        // console.log('this.props.user.email: ' + this.props.user.email);
+        console.log('this.props.user after buy success before /paid: '); // + this.props.user);
+        console.log(this.props.user);
+        // console.log('this.props.body: ' + this.props.body);
 
-        // const body = 'a27@me.com';
-        // const body = JSON.stringify({ email });
-        const body = JSON.stringify({ email: 'a25@me.com' });
-        const res2 = await fetch('api/users/paid', {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body //: { email: 'a25@me.com' }
-        });
-        // console.log('body: ' + body);
-        //, body, config);
-        //hardcoded email for now
-        if (res2.status === 200) {
-          console.log('paid set');
+        if (this.props.user != null) {
+          const emailToBePassed = this.props.user.email;
+          const body = JSON.stringify({ email: emailToBePassed });
+          const res2 = await fetch('api/users/paid', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body
+          });
+          //hardcoded email for now
+          if (res2.status === 200) {
+            console.log('paid set for: ....?');
+          } else {
+            console.log('there was a problem with calling paid endpoint');
+          }
         } else {
-          console.log('there was a problem with calling paid endpoint');
+          console.log('user is currently null');
+          console.log(
+            'inside null user: this.props.isAuthenticated: ' +
+              this.props.isAuthenticated
+          );
         }
       }
     } catch (err) {
@@ -80,7 +89,15 @@ class CheckoutForm extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  // email: state.auth.user.email, //under users????
+  user: state.auth.user
+  // paid: state.auth.paid
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { setAlert }
 )(injectStripe(CheckoutForm));
