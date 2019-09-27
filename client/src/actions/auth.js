@@ -23,6 +23,12 @@ export const loadUser = () => async dispatch => {
   try {
     const res = await axios.get('/api/auth');
 
+    // dispatch({
+    //   type: USER_LOADED,
+    //   payload: res.data
+    // });
+    //guarenteed to come behind api/auth which is a problem because
+    // it has to be auth
     dispatch({
       type: USER_LOADED,
       payload: res.data
@@ -87,7 +93,8 @@ export const register = ({ name, email, password }) => async dispatch => {
     console.log('dispatching email: ' + email + ':from auth reducer');
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: email
+      payload: res.data //user token
+      // payload: email
     });
 
     dispatch(loadUser());
@@ -142,6 +149,11 @@ export const logout = () => dispatch => {
   dispatch({ type: LOGOUT });
 };
 
+export const setPaidToTrue = () => async dispatch => {
+  dispatch({
+    type: BUY_SUCCESS
+  });
+};
 ///------------------ stripe
 //-----------------------takes in what?
 // export const payStripeSucess = () => async dispatch => {

@@ -24,6 +24,7 @@ const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
+  //when put [] as second arguement, it only runs once, making it the same as componentwill or did mount
 
   return (
     <Provider store={store}>

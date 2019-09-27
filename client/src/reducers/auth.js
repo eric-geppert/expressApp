@@ -32,9 +32,18 @@ export default function(state = initialState, action) {
         user: payload
       };
     case REGISTER_SUCCESS:
+      localStorage.setItem('token', payload.token); //question: just added why was it not there?
+      console.log('payload.token' + payload.token);
       return {
         ...state,
-        email: payload
+        ...payload,
+        // isAuthenticated: true,
+        //^since our profiles aren't personalized we can do this to fix our lag issue
+        //with paid
+        // user: payload,
+        auth: payload
+
+        // token: payload.token
       };
     //adding above so can get email to adjust paid variable later
     case LOGIN_SUCCESS:
@@ -61,7 +70,7 @@ export default function(state = initialState, action) {
     case BUY_SUCCESS:
       return {
         ...state,
-        paid: true
+        paid: true //question: need to set paid inside of user to true?? how?
       };
     case BUY_FAIL:
       return {

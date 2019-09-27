@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import { Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
+import { setPaidToTrue } from '../../actions/auth';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import { BUY_SUCCESS, BUY_FAIL } from '../../actions/types';
@@ -54,7 +55,8 @@ class CheckoutForm extends Component {
           });
           //hardcoded email for now
           if (res2.status === 200) {
-            console.log('paid set for: ....?');
+            console.log('paid set for: ' + emailToBePassed);
+            this.props.setPaidToTrue();
           } else {
             console.log('there was a problem with calling paid endpoint');
           }
@@ -99,5 +101,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setAlert }
+  { setAlert, setPaidToTrue }
 )(injectStripe(CheckoutForm));

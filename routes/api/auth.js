@@ -16,9 +16,10 @@ router.use(require('body-parser').text());
 //endpoint api/auth
 //@desc test route
 //@access Public
-router.get('/', auth, async (req, res) => {
-  // adding auth as second parameter makes route protected
+// adding auth as second parameter makes route protected
 
+router.get('/', auth, async (req, res) => {
+  // router.get('/', async (req, res) => {
   try {
     console.log('/api/auth/ inside get route');
     const user = await User.findById(req.user.id).select('-password');

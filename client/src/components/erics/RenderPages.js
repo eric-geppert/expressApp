@@ -9,7 +9,8 @@ var count = 0;
 const renderPages = ({ auth, pages }) => {
   var pageCount = 0;
   var pageElements = [];
-  if (auth.isAuthenticated) pageCount = pages;
+  console.log('in render pages: auth.paid: ' + auth.paid);
+  if (auth.paid) pageCount = pages;
   else pageCount = 2;
 
   for (var i = 1; i < pageCount; i++)
