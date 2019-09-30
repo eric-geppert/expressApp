@@ -12,6 +12,31 @@ const stripe = require('stripe')('sk_test_0nG9Ty2vlJMtbg8rfGEmo8Ue00nraHrJ0Q');
 router.use(require('body-parser').text());
 
 // @route
+//req type POST
+//endpoint api/auth/hasPaid
+//@desc see if user has paid
+//@access Public
+router.post('/hasPaid', async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    let user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+    }
+    res.json(user.paid);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route
 //req type GET
 //endpoint api/auth
 //@desc test route

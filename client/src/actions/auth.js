@@ -23,12 +23,6 @@ export const loadUser = () => async dispatch => {
   try {
     const res = await axios.get('/api/auth');
 
-    // dispatch({
-    //   type: USER_LOADED,
-    //   payload: res.data
-    // });
-    //guarenteed to come behind api/auth which is a problem because
-    // it has to be auth
     dispatch({
       type: USER_LOADED,
       payload: res.data
@@ -39,43 +33,6 @@ export const loadUser = () => async dispatch => {
     });
   }
 };
-
-//buy subscription
-// export const buySub = ({
-//   cardNumber,
-//   expirationDate,
-//   cvv
-// }) => async dispatch => {
-//   const config = {
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   };
-
-//   const body = JSON.stringify({ cardNumber, expirationDate, cvv });
-
-//   try {
-//     const res = await axios.post('/api/users', body, config);
-
-//     dispatch({
-//       type: BUY_SUCCESS,
-//       payload: res.data
-//     });
-
-//     dispatch(loadUser());
-//   } catch (err) {
-//     const errors = err.response.data.errors;
-
-//     if (errors) {
-//       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-//     }
-
-//     dispatch({
-//       type: BUY_FAIL
-//     });
-//   }
-// };
-//----^
 
 // Register User
 export const register = ({ name, email, password }) => async dispatch => {
@@ -130,6 +87,13 @@ export const login = (email, password) => async dispatch => {
     });
 
     dispatch(loadUser());
+
+    const res2 = await axios.post('/api/auth/hasPaid', body, config);
+
+    console.log('called /hasPaid value: ' + res2);
+    dispatch({
+      type: BUY_SUCCESS
+    });
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -143,47 +107,25 @@ export const login = (email, password) => async dispatch => {
   }
 };
 
-// Logout / Clear Profile
-export const logout = () => dispatch => {
-  dispatch({ type: CLEAR_PROFILE });
-  dispatch({ type: LOGOUT });
-};
+// export const checkPaid = (email, password) => async dispatch => {
+//   console.log('inside checkPaid in auth actions');
+//   const config = {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   };
 
-export const setPaidToTrue = () => async dispatch => {
-  dispatch({
-    type: BUY_SUCCESS
-  });
-};
-///------------------ stripe
-//-----------------------takes in what?
-// export const payStripeSucess = () => async dispatch => {
-// console.log('inside paystripe method');
-// const config = {
-//   headers: {
-//     'Content-Type': 'application/json'
-//   }
-// };
-
-// // let { token } = await this.props.stripe.createToken({ name: 'Name' });
-// let { token } = await cardProps.stripe.createToken({ name: 'Name' });
-
-// const body = token.id;
-// let response = await fetch('/chargetest', {
-// let response = await fetch('api/auth/charge', {
-//   method: 'POST',
-//   headers: { 'Content-Type': 'text/plain' },
-//   body: token.id
-// });
+//   const body = JSON.stringify({ email, password });
 
 //   try {
-//     // const res = await axios.post('/api/auth/charge', body, config);
+//     const res = await axios.post('/api/auth/hasPaid', body, config);
 
 //     dispatch({
-//       type: BUY_SUCCESS,
-//       payload: res.data
+//       type: BUY_SUCCESS
+//       // payload: res.data
 //     });
 
-//     // dispatch(loadUser());
+//     dispatch(loadUser());
 //   } catch (err) {
 //     const errors = err.response.data.errors;
 
@@ -196,3 +138,15 @@ export const setPaidToTrue = () => async dispatch => {
 //     });
 //   }
 // };
+
+// Logout / Clear Profile
+export const logout = () => dispatch => {
+  dispatch({ type: CLEAR_PROFILE });
+  dispatch({ type: LOGOUT });
+};
+
+export const setPaidToTrue = () => async dispatch => {
+  dispatch({
+    type: BUY_SUCCESS
+  });
+};
