@@ -3,8 +3,6 @@ import { Page } from 'react-pdf';
 // import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-var count = 0;
-
 //destructure the auth that we get from props
 const renderPages = ({ auth, pages }) => {
   var pageCount = 0;

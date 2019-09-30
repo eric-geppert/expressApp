@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({ login, isAuthenticated, hasPaid }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -17,10 +17,15 @@ const Login = ({ login, isAuthenticated }) => {
 
   const onSubmit = async e => {
     e.preventDefault();
+    // checkPaid(email, password);
     login(email, password);
   };
 
-  if (isAuthenticated) {
+  console.log('in Login page hasPaid: ' + hasPaid);
+  //need to fetch from db create get endpoint
+
+  if (hasPaid) {
+    // if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
 
@@ -63,11 +68,14 @@ const Login = ({ login, isAuthenticated }) => {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
+  // checkPaid: PropTypes.func.isRe/quired,
+  hasPaid: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  hasPaid: state.auth.paid
 });
 
 export default connect(
