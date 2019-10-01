@@ -33,7 +33,6 @@ export default function(state = initialState, action) {
       };
     case REGISTER_SUCCESS:
       localStorage.setItem('token', payload.token); //question: just added why was it not there?
-      console.log('payload.token' + payload.token);
       return {
         ...state,
         ...payload,
@@ -59,10 +58,15 @@ export default function(state = initialState, action) {
     case AUTH_ERROR:
     case LOGIN_FAIL:
     case LOGOUT:
-    // return {
-    //   ...state,
-    //   user: null
-    // };
+      localStorage.removeItem('token');
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: false,
+        user: null,
+        paid: false
+      };
     case ACCOUNT_DELETED:
       localStorage.removeItem('token');
       return {
