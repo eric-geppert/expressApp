@@ -59,6 +59,10 @@ export default function(state = initialState, action) {
     case AUTH_ERROR:
     case LOGIN_FAIL:
     case LOGOUT:
+    // return {
+    //   ...state,
+    //   user: null
+    // };
     case ACCOUNT_DELETED:
       localStorage.removeItem('token');
       return {
@@ -70,7 +74,7 @@ export default function(state = initialState, action) {
     case BUY_SUCCESS:
       return {
         ...state,
-        paid: true //question: need to set paid inside of user to true?? how?
+        paid: payload //question: need to set paid inside of user to true?? how?
       };
     case BUY_FAIL:
       return {
