@@ -93,9 +93,10 @@ export const login = (email, password) => async dispatch => {
     console.log('repsonse 2: ');
     console.log(res2);
     console.log('called /hasPaid res2.data: ' + res2.data);
-    // dispatch({
-    //   type: BUY_SUCCESS
-    // });
+    dispatch({
+      type: BUY_SUCCESS,
+      payload: res2.data
+    });
   } catch (err) {
     const errors = err.response.data.errors;
 
