@@ -90,9 +90,12 @@ export const login = (email, password) => async dispatch => {
 
     const res2 = await axios.post('/api/auth/hasPaid', body, config);
 
-    console.log('called /hasPaid value: ' + res2);
+    console.log('repsonse 2: ');
+    console.log(res2);
+    console.log('called /hasPaid res2.data: ' + res2.data);
     dispatch({
-      type: BUY_SUCCESS
+      type: BUY_SUCCESS,
+      payload: res2.data
     });
   } catch (err) {
     const errors = err.response.data.errors;
@@ -147,6 +150,7 @@ export const logout = () => dispatch => {
 
 export const setPaidToTrue = () => async dispatch => {
   dispatch({
-    type: BUY_SUCCESS
+    type: BUY_SUCCESS,
+    payload: true
   });
 };

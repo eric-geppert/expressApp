@@ -25,7 +25,10 @@ const Login = ({ login, isAuthenticated, hasPaid }) => {
   //need to fetch from db create get endpoint
 
   if (hasPaid) {
-    // if (isAuthenticated) {
+    return <Redirect to='/findMyProgram'></Redirect>;
+  }
+
+  if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
 
