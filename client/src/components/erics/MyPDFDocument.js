@@ -54,56 +54,11 @@ const MyPDFDocument = ({ auth, pages, file }) => {
     }
   };
 
-  // const renderPage = () => {
-  //   console.log('inside renderPage');
-  //   count++;
-  //   console.error('iteration: ', count);
-  //   var pageCount = 0;
-  //   console.log(
-  //     'this.props.isAutheenticated in PDF renderPage: ',
-  //     this.props.isAuthenticated
-  //   );
-  //   var pageElements = [];
-  //   var auth = this.props.isAuthenticated;
-  //   console.log('auth: ', auth);
-  //   console.log('this.props.pages: ', this.props.pages);
-  //   if (auth.isAuthenticated == true) {
-  //     pageCount = this.props.pages;
-  //     console.log('true: setting pageCount to: ', pageCount);
-  //   }
-  //   {
-  //     pageCount = 2;
-  //     console.log('false: setting pageCount to: ', pageCount);
-  //   }
-
-  //   console.log('pages', pageCount);
-  //   for (var i = 1; i < pageCount; i++)
-  //     pageElements.push(
-  //       <Page key={i} pageNumber={i} onLoadError={console.error} />
-  //     );
-  //   return pageElements;
-  // };
-
-  // render() {
   return (
-    console.log(file),
-    (
-      // <Document file={this.rednerWorkout(this.props.file)}>
-      <Document file={rednerWorkout(file)}>
-        {/* file={this.rednerWorkout(hardcodedFilePath)}> */}
-        {/* {this.renderPage()} */}
-        {console.log('inside doc object pages: ' + pages)}
-        {console.log('inside doc object this: ' + this)}
-        {/* {console.log('inside doc object props: ' + props)} */}
-
-        {/* {testPage} */}
-        <RenderPages pages={pages} />
-        {/* <Page key={1} pageNumber={1} onLoadError={console.error} />; */}
-        {/* {renderPage} */}
-      </Document>
-    )
+    <Document file={rednerWorkout(file)}>
+      <RenderPages pages={pages} />
+    </Document>
   );
-  // }
 };
 
 // MyPDFDocument.propTypes = {

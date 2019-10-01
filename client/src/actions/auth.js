@@ -8,7 +8,9 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_PROFILE
+  CLEAR_PROFILE,
+  BUY_SUCCESS,
+  BUY_FAIL
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -32,43 +34,6 @@ export const loadUser = () => async dispatch => {
   }
 };
 
-//buy subscription
-// export const buySub = ({
-//   cardNumber,
-//   expirationDate,
-//   cvv
-// }) => async dispatch => {
-//   const config = {
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   };
-
-//   const body = JSON.stringify({ cardNumber, expirationDate, cvv });
-
-//   try {
-//     const res = await axios.post('/api/users', body, config);
-
-//     dispatch({
-//       type: BUY_SUCCESS,
-//       payload: res.data
-//     });
-
-//     dispatch(loadUser());
-//   } catch (err) {
-//     const errors = err.response.data.errors;
-
-//     if (errors) {
-//       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-//     }
-
-//     dispatch({
-//       type: BUY_FAIL
-//     });
-//   }
-// };
-//----^
-
 // Register User
 export const register = ({ name, email, password }) => async dispatch => {
   const config = {
@@ -82,9 +47,11 @@ export const register = ({ name, email, password }) => async dispatch => {
   try {
     const res = await axios.post('/api/users', body, config);
 
+    console.log('dispatching email: ' + email + ':from auth reducer');
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: res.data
+      payload: res.data //user token
+      // payload: email
     });
 
     dispatch(loadUser());
@@ -120,6 +87,16 @@ export const login = (email, password) => async dispatch => {
     });
 
     dispatch(loadUser());
+
+    const res2 = await axios.post('/api/auth/hasPaid', body, config);
+
+    console.log('repsonse 2: ');
+    console.log(res2);
+    console.log('called /hasPaid res2.data: ' + res2.data);
+    dispatch({
+      type: BUY_SUCCESS,
+      payload: res2.data
+    });
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -133,8 +110,47 @@ export const login = (email, password) => async dispatch => {
   }
 };
 
+// export const checkPaid = (email, password) => async dispatch => {
+//   console.log('inside checkPaid in auth actions');
+//   const config = {
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   };
+
+//   const body = JSON.stringify({ email, password });
+
+//   try {
+//     const res = await axios.post('/api/auth/hasPaid', body, config);
+
+//     dispatch({
+//       type: BUY_SUCCESS
+//       // payload: res.data
+//     });
+
+//     dispatch(loadUser());
+//   } catch (err) {
+//     const errors = err.response.data.errors;
+
+//     if (errors) {
+//       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+//     }
+
+//     dispatch({
+//       type: BUY_FAIL
+//     });
+//   }
+// };
+
 // Logout / Clear Profile
 export const logout = () => dispatch => {
   dispatch({ type: CLEAR_PROFILE });
   dispatch({ type: LOGOUT });
+};
+
+export const setPaidToTrue = () => async dispatch => {
+  dispatch({
+    type: BUY_SUCCESS,
+    payload: true
+  });
 };

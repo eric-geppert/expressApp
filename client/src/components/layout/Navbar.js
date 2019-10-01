@@ -26,12 +26,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Link to='/FindMyProgram'>FindMyProgram</Link>
       </li>
       {/* above is added */}
-      <li>
+      {/* <li>
         <Link to='/profiles'>Developers</Link>
       </li>
       <li>
         <Link to='/posts'>Posts</Link>
-      </li>
+      </li> */}
       <li>
         <Link to='/dashboard'>
           <i className='fas fa-user' />{' '}
@@ -68,9 +68,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Link to='/FindMyProgram'>FindMyProgram</Link>
       </li>
       {/* above is added */}
-      <li>
+      {/* <li>
         <Link to='/profiles'>Developers</Link>
-      </li>
+      </li> */}
       <li>
         <Link to='/register'>Register</Link>
       </li>

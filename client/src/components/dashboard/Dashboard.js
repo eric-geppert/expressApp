@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
-import DashboardActions from './DashboardActions';
-import Experience from './Experience';
-import Education from './Education';
+// import DashboardActions from './DashboardActions';
+// import Experience from './Experience';
+// import Education from './Education';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 
 const Dashboard = ({
@@ -26,7 +26,20 @@ const Dashboard = ({
       <p className='lead'>
         <i className='fas fa-user' /> Welcome {user && user.name}
       </p>
-      {profile !== null ? (
+      <Fragment>
+        <p>
+          You have successfully logged in would you like to purchase the full
+          version of all our workout plans?
+        </p>
+        <p>In the mean time view our sample programs here.</p>
+        <Link to='/findMyProgram' className='btn btn-primary my-1'>
+          Sameple Programs
+        </Link>
+        <Link to='/CheckoutPage' className='btn btn-primary my-1'>
+          Buy Full Programs
+        </Link>
+      </Fragment>
+      {/* {profile !== null ? (
         <Fragment>
           <DashboardActions />
           <Experience experience={profile.experience} />
@@ -45,7 +58,7 @@ const Dashboard = ({
             Create Profile
           </Link>
         </Fragment>
-      )}
+      )} */}
     </Fragment>
   );
 };

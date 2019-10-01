@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const gravatar = require('gravatar');
+// const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
@@ -10,6 +10,23 @@ const { check, validationResult } = require('express-validator');
 /**use await anytime were returning a promise otherwise we
  * would have to use .then etc etc
  */
+
+// @route
+//req type PUT
+//endpoint api/users/paid
+//@desc set users paid variable to true
+//@access Public
+//todo: safety priority 1 change to private by adding auth below as an arg
+router.put('/paid', async (req, res) => {
+  //contition, update
+  console.log('inside /paid endpoint email is: ' + req.body.email);
+  console.log('inside /paid req.body: ' + req.body);
+  console.log('inside /paid req: ' + req);
+
+  User.findOneAndUpdate({ email: req.body.email }, { paid: true })
+    .then(() => res.json({ success: true }))
+    .catch(err => res.status(404).json({ success: false }));
+});
 
 // @route
 //req type POST
@@ -26,15 +43,14 @@ router.post(
     check(
       'password',
       'Please enter a password with 6 or more characters'
-    ).isLength({ min: 6 })
+    ).isLength({ min: 1 })
+    //todo: change back to 6
   ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    //   console.log(req.body);
-
     //destructuring req/body
     const { name, email, password } = req.body;
 
@@ -47,19 +63,24 @@ router.post(
           .json({ errors: [{ msg: 'User already exists' }] });
       }
 
-      const avatar = gravatar.url(email, {
-        s: '200',
-        r: 'pg',
-        d: 'mm'
-      });
+      // const avatar = gravatar.url(email, {
+      //   s: '200',
+      //   r: 'pg',
+      //   d: 'mm'
+      // });
+      const paid = false;
+
+      console.log('paid variable in reg: ' + paid);
 
       user = new User({
         name,
         email,
-        avatar,
+        paid,
         password
-      });
+      }); //remove later add credit card cred?
+      //rl: cant because dont know exactly what its sending
 
+      console.log('new user in register: ' + user);
       //encrypt pass
       const salt = await bcrypt.genSalt(10); //10 rounds more you have
       //the safer but the slower you are
@@ -84,6 +105,8 @@ router.post(
           res.json({ token });
         }
       );
+
+      //---put payment here
 
       //   res.send('User route');
     } catch (err) {
