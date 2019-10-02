@@ -129,11 +129,6 @@ router.post('/charge', async (req, res) => {
   console.log(
     'inside /charge route----------------------------------------------------------------------------------'
   );
-  console.log('req.body.amount: ');
-  // console.log(req.body.amount);
-  // console.log(req.body.Router);
-  // console.log(req.body.name);
-
   try {
     let { status } = await stripe.charges.create({
       amount: 70,
@@ -149,21 +144,102 @@ router.post('/charge', async (req, res) => {
   }
 });
 
-module.exports = router;
+// @route
+//req type PUT
+//endpoint api/users/paid
+//@desc set users paid variable to true
+//@access Public
+router.post('/createProduct', async (req, res) => {
+  try {
+    let product = await stripe.products.create({
+      name: 'monthy sub product',
+      type: 'service'
+    });
 
-//remove later
-//can use nested try catches
-// routes.post('/login', async (req, res) => {
-//   try {
-//     ...
-//     let user = null
-//     try {
-//       user = await findUser(req.body.login)
-//     } catch (error) {
-//       doAnythingWithError(error)
-//       throw error //<-- THIS IS ESSENTIAL FOR BREAKING THE CHAIN
-//     }
-//     ...
-//   } catch (error) {
-//     errorResult(res, error)
-//   }
+    res.json({ product });
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+router.post('/createPlan', async (req, res) => {
+  try {
+    let status = await stripe.plans.create({
+      amount: 2000,
+      interval: 'month',
+      product: 'prod_Fv1N6dgygh4RRo',
+      // {
+      //   // name:
+      //   // name: 'monthly subcription PRODUCT'
+      // },
+      currency: 'usd'
+    });
+    res.json({
+      status
+    }); /**be careful not to wrap both the original variable in {}
+    as well as the response in {} you will get an empty response */
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+//--------
+router.post('/createSource', async (req, res) => {
+  try {
+    const source = await stripe.sources.create({
+      // type: 'ach_credit_transfer',
+      type: 'card',
+      card: {
+        number: 4242424242424242,
+        exp_month: 8,
+        exp_year: 2020,
+        cvc: 333
+      },
+      currency: 'usd',
+      owner: {
+        email: 'jenny.rosen@example.com'
+      }
+    });
+    res.json({ source });
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+router.post('/createCustomer', async (req, res) => {
+  try {
+    const customer = await stripe.customers.create({
+      email: 'jenny.rosen1@example.com',
+      source: 'src_1FPAmPJTpKSfmpF2HMLziYGq' //configure to credit card #??
+    });
+
+    res.json({ customer });
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+router.post('/createSubscription', async (req, res) => {
+  try {
+    console.log('creating sub');
+    let { status } = await stripe.subscriptions.create({
+      customer: 'cus_Fv0pF1OJKL3umy',
+      // 'jenny.rosen1@example.com', //'test9999@fakeme.com', //'cus_FugkTmiN6rJ6ty', //fix to hardcoded email then redux?
+      items: [
+        {
+          plan: 'plan_Fv1PvlqBSb9m1l'
+          //'monthly subcription PRODUCT'
+          // plan: 'gold'
+        }
+      ]
+    });
+    console.log('status.customer');
+    console.log(status.customer);
+    res.json({ status });
+  } catch (err) {
+    console.log('caught error');
+    res.json({ err });
+  }
+});
+
+module.exports = router;
