@@ -30,10 +30,14 @@ const renderPages = ({ auth, pages, canView }) => {
   // console.log('outputtttttttttttt: ', output);
   // if (canView(auth.user.email) === true) pageCount = pages;
   // if (output === true) pageCount = pages;
-
-  canView(auth.user.email);
-  if (auth.paid === true) pageCount = pages;
-  else pageCount = 2;
+  if (auth.user !== undefined && auth.user !== null) {
+    //or null?
+    console.log('auth.user', auth.user);
+    if (auth.paid !== true) canView(auth.user.email); //will only work for non subscribed users
+    if (auth.paid === true) pageCount = pages;
+    else pageCount = 2;
+  } else pageCount = 2;
+  console.log('user is null auth is: ', auth);
   // }
   // else {
   //   pageCount = 2;
