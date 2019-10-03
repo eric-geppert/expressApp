@@ -46,7 +46,7 @@ router.post('/hasPaid', async (req, res) => {
 router.get('/', auth, async (req, res) => {
   // router.get('/', async (req, res) => {
   try {
-    console.log('/api/auth/ inside get route');
+    // console.log('/api/auth/ inside get route');
     const user = await User.findById(req.user.id).select('-password');
     //returns everything except for the password^
     res.json(user);
@@ -55,7 +55,6 @@ router.get('/', auth, async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
-//----
 
 // @route
 //req type POST
@@ -129,6 +128,7 @@ router.post('/charge', async (req, res) => {
   console.log(
     'inside /charge route----------------------------------------------------------------------------------'
   );
+  console.log('source: req.body: ' + req.body);
   try {
     let { status } = await stripe.charges.create({
       amount: 70,
@@ -149,6 +149,8 @@ router.post('/charge', async (req, res) => {
 //endpoint api/users/paid
 //@desc set users paid variable to true
 //@access Public
+
+//monthly sub: prod_Fv1N6dgygh4RRo
 router.post('/createProduct', async (req, res) => {
   try {
     let product = await stripe.products.create({
@@ -162,16 +164,28 @@ router.post('/createProduct', async (req, res) => {
   }
 });
 
+//prod_Fv4DqB50FbNbz0
+router.post('/createDailyProduct', async (req, res) => {
+  try {
+    let product = await stripe.products.create({
+      name: 'daily sub product',
+      type: 'service'
+    });
+
+    res.json({ product });
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+//daily plan: plan_Fv4F81jmdHtesu
 router.post('/createPlan', async (req, res) => {
   try {
     let status = await stripe.plans.create({
       amount: 2000,
       interval: 'month',
+      // product: 'prod_Fv4DqB50FbNbz0',
       product: 'prod_Fv1N6dgygh4RRo',
-      // {
-      //   // name:
-      //   // name: 'monthly subcription PRODUCT'
-      // },
       currency: 'usd'
     });
     res.json({
@@ -193,7 +207,7 @@ router.post('/createSource', async (req, res) => {
         number: 4242424242424242,
         exp_month: 8,
         exp_year: 2020,
-        cvc: 333
+        cvc: 330
       },
       currency: 'usd',
       owner: {
@@ -209,10 +223,15 @@ router.post('/createSource', async (req, res) => {
 router.post('/createCustomer', async (req, res) => {
   try {
     const customer = await stripe.customers.create({
-      email: 'jenny.rosen1@example.com',
-      source: 'src_1FPAmPJTpKSfmpF2HMLziYGq' //configure to credit card #??
+      email: req.body.email, //'jenny.rosen1@example.com',
+      source: req.body.source //'src_1FPAmPJTpKSfmpF2HMLziYGq'
     });
-
+    // console.log('customer id after creation: ' + customer.id);
+    // console.log('customer: ');
+    // console.log(customer);
+    // res.json(customer.id); //could send whole customer object then extract later
+    // res.send(customer.id);
+    // res.send('testing123');
     res.json({ customer });
   } catch (err) {
     res.json({ err });
@@ -220,26 +239,39 @@ router.post('/createCustomer', async (req, res) => {
 });
 
 router.post('/createSubscription', async (req, res) => {
+  console.log('req.body: ' + req.body);
   try {
     console.log('creating sub');
     let { status } = await stripe.subscriptions.create({
-      customer: 'cus_Fv0pF1OJKL3umy',
+      customer: req.body, //customerToBePassed, // //'cus_Fv6GMW8OfqErc6',
+      // customer: 'cus_Fv0pF1OJKL3umy',
       // 'jenny.rosen1@example.com', //'test9999@fakeme.com', //'cus_FugkTmiN6rJ6ty', //fix to hardcoded email then redux?
       items: [
         {
-          plan: 'plan_Fv1PvlqBSb9m1l'
-          //'monthly subcription PRODUCT'
-          // plan: 'gold'
+          plan: 'plan_Fv1PvlqBSb9m1l' //monthly sub plan
+          //'plan_Fv4F81jmdHtesu' //daily sub product for testing
+          // plan: 'plan_Fv1PvlqBSb9m1l'//'monthly subcription PRODUCT'
         }
       ]
     });
-    console.log('status.customer');
-    console.log(status.customer);
+    console.log('status');
+    console.log(status);
+
     res.json({ status });
   } catch (err) {
     console.log('caught error');
+    console.log(err);
     res.json({ err });
   }
 });
 
 module.exports = router;
+
+/**steps:
+ * 1. create product (name: any, type: service/good)
+ * 2. create plan with product code ()
+ * ---
+ * 3. create source:
+ * 4. create customer:
+ * 5. create subscription: customer "customer_id", item: {plan: "plan_id"}
+ */
