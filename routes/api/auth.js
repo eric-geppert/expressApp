@@ -223,6 +223,7 @@ router.post('/createSource', async (req, res) => {
 router.post('/createCustomer', async (req, res) => {
   try {
     const customer = await stripe.customers.create({
+      id: req.body.email,
       email: req.body.email, //'jenny.rosen1@example.com',
       source: req.body.source //'src_1FPAmPJTpKSfmpF2HMLziYGq'
     });
@@ -259,8 +260,49 @@ router.post('/createSubscription', async (req, res) => {
 
     res.json({ status });
   } catch (err) {
-    console.log('caught error');
-    console.log(err);
+    res.json({ err });
+  }
+});
+
+router.get('/getCustomer', async (req, res) => {
+  try {
+    let myCustomer = await stripe.customers.retrieve('cus_FvNH01nTLOtLuu');
+    console.log('myCustomer.subscriptions');
+    console.log(myCustomer.subscriptions);
+    console.log(myCustomer.subscriptions.data);
+    console.log(myCustomer.subscriptions.total_count);
+
+    res.json({ myCustomer });
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+// router.get('/getIsCustomerDelinquent', async (req, res) => {
+//   try {
+//     let myCustomer = await stripe.customers.retrieve('cus_FvNKEiG1w8yUno');
+//     console.log('myCustomer.delinquent');
+//     console.log(myCustomer.delinquent);
+//     // const delinquentcy= myCustomer.delinquent
+//     res.json(myCustomer.delinquent);
+
+//     // res.json({ myCustomer });
+//   } catch (err) {
+//     res.json({ err });
+//   }
+// });
+
+router.get('/getAllCustomers', async (req, res) => {
+  try {
+    console.log('inside getAllCust');
+    // let myCustomer = await stripe.customers.retrieve(cus_FvNKEiG1w8yUno);
+    let allCustomers = await stripe.customers.list({
+      email: 'a19@me.com' //change to dynamic email
+      // limit: 3
+    });
+    console.log('responding with allCustomers: ', allCustomers);
+    res.json({ allCustomers });
+  } catch (err) {
     res.json({ err });
   }
 });

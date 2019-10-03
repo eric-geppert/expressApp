@@ -14,6 +14,60 @@ import {
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
+//----
+export const canView = email => async dispatch => {
+  try {
+    console.log('email', email);
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const can = await axios.get('api/auth/getAllCustomers', email, config);
+
+    // let can = await fetch('api/auth/getAllCustomers', {
+    //   method: 'GET',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: email
+    //   // body: auth.users.email
+    // // }).then(can => can.json());
+    console.log('can: ', can);
+    console.log(
+      'response can.data.allCustomers.data ',
+      can.data.allCustomers.data
+    );
+    console.log(
+      'response can.data.allCustomers.data[0].delinquent ',
+      can.data.allCustomers.data[0].delinquent
+    );
+    console.log(
+      'response can.data.allCustomers.data[0].delinquent ',
+      can.data.allCustomers.data[0].subscriptions.total_count
+    );
+    // console.log('response canView.data[0].del: ', can.data[0].deliquent);
+    // // console.log('response canView.data[0]: ', can.data[0]);
+    // console.log('response canView.data.data: ', can.data[0]);
+    // console.log('response canView.data.data[0]: ', can.data.data[0]);
+
+    const customer1 = can.data.allCustomers.data[0];
+    if (
+      (can.data =
+        !null &&
+        customer1.delinquent === false &&
+        customer1.subscriptions.total_count > 0)
+    ) {
+      console.log('yes you can view the full workout');
+      return true;
+    }
+    //and has subscription
+    return false;
+  } catch (err) {
+    return err;
+  }
+};
+
+//----
+
 // Load User
 export const loadUser = () => async dispatch => {
   if (localStorage.token) {

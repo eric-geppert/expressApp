@@ -25,6 +25,9 @@ class CheckoutForm extends Component {
         source: idToBePassed
       });
 
+      console.log('this.props.user.email: ');
+      console.log(this.props.user.email);
+
       let response = await fetch('api/auth/createCustomer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
