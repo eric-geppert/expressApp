@@ -15,15 +15,16 @@ import {
 import setAuthToken from '../utils/setAuthToken';
 
 //----
-export const canView = email => async dispatch => {
+export const canView = emailInput => async dispatch => {
   try {
-    console.log('email', email);
+    // console.log('email', email);
     const config = {
       headers: {
         'Content-Type': 'application/json'
       }
     };
-    const can = await axios.get('api/auth/getAllCustomers', email, config);
+    const body = JSON.stringify({ email: emailInput });
+    const can = await axios.post('api/auth/getAllCustomers', body, config);
 
     // let can = await fetch('api/auth/getAllCustomers', {
     //   method: 'GET',
@@ -41,7 +42,7 @@ export const canView = email => async dispatch => {
       can.data.allCustomers.data[0].delinquent
     );
     console.log(
-      'response can.data.allCustomers.data[0].delinquent ',
+      'response can.data.allCustomers.data[0].subscriptions.total_count ',
       can.data.allCustomers.data[0].subscriptions.total_count
     );
     // console.log('response canView.data[0].del: ', can.data[0].deliquent);
@@ -57,9 +58,17 @@ export const canView = email => async dispatch => {
         customer1.subscriptions.total_count > 0)
     ) {
       console.log('yes you can view the full workout');
-      return true;
+
+      dispatch({
+        type: BUY_SUCCESS,
+        payload: true
+      });
+      return true; //need?
     }
     //and has subscription
+    dispatch({
+      type: BUY_FAIL
+    });
     return false;
   } catch (err) {
     return err;

@@ -292,15 +292,20 @@ router.get('/getCustomer', async (req, res) => {
 //   }
 // });
 
-router.get('/getAllCustomers', async (req, res) => {
+router.post('/getAllCustomers', async (req, res) => {
   try {
-    console.log('inside getAllCust');
+    console.log('inside getAllCustomers req: ', req);
+    console.log('inside getAllCustomers req.body: ', req.body);
+    console.log('inside getAllCustomers req.body.email: ', req.body.email);
+    console.log('inside getAllCustomers req.email: ', req.email);
+
     // let myCustomer = await stripe.customers.retrieve(cus_FvNKEiG1w8yUno);
     let allCustomers = await stripe.customers.list({
-      email: 'a19@me.com' //change to dynamic email
+      email: req.body.email
+      // email: 'a18@me.com' //change to dynamic email
       // limit: 3
     });
-    console.log('responding with allCustomers: ', allCustomers);
+    // console.log('responding with allCustomers: ', allCustomers);
     res.json({ allCustomers });
   } catch (err) {
     res.json({ err });
