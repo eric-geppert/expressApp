@@ -34,7 +34,8 @@ class CheckoutForm extends Component {
         body
       }).then(response => response.json()); //try .json next
 
-      console.log('response.customer.id:' + response.customer.id);
+      console.log('response: ', response);
+      // console.log('response.customer.id:' + response.customer.id);
       // if (response != null) {
       //   console.log(
       //     'Customer creation Complete!, creating subscription now res2:'
@@ -51,6 +52,9 @@ class CheckoutForm extends Component {
       if (res2.status === 200) {
         console.log('successfully created subscription res2: ');
         console.log(res2);
+
+        this.setState({ complete: true });
+        this.props.setAlert('Purchase complete!', 'success');
       } else
         console.log(
           'there was a problem with creating subscription with that customer'

@@ -223,12 +223,12 @@ router.post('/createSource', async (req, res) => {
 router.post('/createCustomer', async (req, res) => {
   try {
     const customer = await stripe.customers.create({
-      id: req.body.email,
+      // id: req.body.email,
       email: req.body.email, //'jenny.rosen1@example.com',
       source: req.body.source //'src_1FPAmPJTpKSfmpF2HMLziYGq'
     });
     // console.log('customer id after creation: ' + customer.id);
-    // console.log('customer: ');
+    // console.log('customer: ', customer);
     // console.log(customer);
     // res.json(customer.id); //could send whole customer object then extract later
     // res.send(customer.id);
