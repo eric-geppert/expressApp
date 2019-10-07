@@ -80,7 +80,7 @@ router.post(
       }); //remove later add credit card cred?
       //rl: cant because dont know exactly what its sending
 
-      console.log('new user in register: ' + user);
+      // console.log('new user in register: ' + user);
       //encrypt pass
       const salt = await bcrypt.genSalt(10); //10 rounds more you have
       //the safer but the slower you are

@@ -46,7 +46,7 @@ router.post('/hasPaid', async (req, res) => {
 router.get('/', auth, async (req, res) => {
   // router.get('/', async (req, res) => {
   try {
-    console.log('/api/auth/ inside get route');
+    // console.log('/api/auth/ inside get route');
     const user = await User.findById(req.user.id).select('-password');
     //returns everything except for the password^
     res.json(user);
@@ -55,7 +55,6 @@ router.get('/', auth, async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
-//----
 
 // @route
 //req type POST
@@ -129,11 +128,7 @@ router.post('/charge', async (req, res) => {
   console.log(
     'inside /charge route----------------------------------------------------------------------------------'
   );
-  console.log('req.body.amount: ');
-  // console.log(req.body.amount);
-  // console.log(req.body.Router);
-  // console.log(req.body.name);
-
+  console.log('source: req.body: ' + req.body);
   try {
     let { status } = await stripe.charges.create({
       amount: 70,
@@ -149,21 +144,181 @@ router.post('/charge', async (req, res) => {
   }
 });
 
+// @route
+//req type PUT
+//endpoint api/users/paid
+//@desc set users paid variable to true
+//@access Public
+
+//monthly sub: prod_Fv1N6dgygh4RRo
+router.post('/createProduct', async (req, res) => {
+  try {
+    let product = await stripe.products.create({
+      name: 'monthy sub product',
+      type: 'service'
+    });
+
+    res.json({ product });
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+//prod_Fv4DqB50FbNbz0
+router.post('/createDailyProduct', async (req, res) => {
+  try {
+    let product = await stripe.products.create({
+      name: 'daily sub product',
+      type: 'service'
+    });
+
+    res.json({ product });
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+//daily plan: plan_Fv4F81jmdHtesu
+router.post('/createPlan', async (req, res) => {
+  try {
+    let status = await stripe.plans.create({
+      amount: 2000,
+      interval: 'month',
+      // product: 'prod_Fv4DqB50FbNbz0',
+      product: 'prod_Fv1N6dgygh4RRo',
+      currency: 'usd'
+    });
+    res.json({
+      status
+    }); /**be careful not to wrap both the original variable in {}
+    as well as the response in {} you will get an empty response */
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+//--------
+router.post('/createSource', async (req, res) => {
+  try {
+    const source = await stripe.sources.create({
+      // type: 'ach_credit_transfer',
+      type: 'card',
+      card: {
+        number: 4242424242424242,
+        exp_month: 8,
+        exp_year: 2020,
+        cvc: 330
+      },
+      currency: 'usd',
+      owner: {
+        email: 'jenny.rosen@example.com'
+      }
+    });
+    res.json({ source });
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+router.post('/createCustomer', async (req, res) => {
+  try {
+    const customer = await stripe.customers.create({
+      // id: req.body.email,
+      email: req.body.email, //'jenny.rosen1@example.com',
+      source: req.body.source //'src_1FPAmPJTpKSfmpF2HMLziYGq'
+    });
+    // console.log('customer id after creation: ' + customer.id);
+    // console.log('customer: ', customer);
+    // console.log(customer);
+    // res.json(customer.id); //could send whole customer object then extract later
+    // res.send(customer.id);
+    // res.send('testing123');
+    res.json({ customer });
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+router.post('/createSubscription', async (req, res) => {
+  console.log('req.body: ' + req.body);
+  try {
+    console.log('creating sub');
+    let { status } = await stripe.subscriptions.create({
+      customer: req.body, //customerToBePassed, // //'cus_Fv6GMW8OfqErc6',
+      // customer: 'cus_Fv0pF1OJKL3umy',
+      // 'jenny.rosen1@example.com', //'test9999@fakeme.com', //'cus_FugkTmiN6rJ6ty', //fix to hardcoded email then redux?
+      items: [
+        {
+          plan: 'plan_Fv1PvlqBSb9m1l' //monthly sub plan
+          //'plan_Fv4F81jmdHtesu' //daily sub product for testing
+          // plan: 'plan_Fv1PvlqBSb9m1l'//'monthly subcription PRODUCT'
+        }
+      ]
+    });
+    console.log('status');
+    console.log(status);
+
+    res.json({ status });
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+router.get('/getCustomer', async (req, res) => {
+  try {
+    let myCustomer = await stripe.customers.retrieve('cus_FvNH01nTLOtLuu');
+    console.log('myCustomer.subscriptions');
+    console.log(myCustomer.subscriptions);
+    console.log(myCustomer.subscriptions.data);
+    console.log(myCustomer.subscriptions.total_count);
+
+    res.json({ myCustomer });
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+// router.get('/getIsCustomerDelinquent', async (req, res) => {
+//   try {
+//     let myCustomer = await stripe.customers.retrieve('cus_FvNKEiG1w8yUno');
+//     console.log('myCustomer.delinquent');
+//     console.log(myCustomer.delinquent);
+//     // const delinquentcy= myCustomer.delinquent
+//     res.json(myCustomer.delinquent);
+
+//     // res.json({ myCustomer });
+//   } catch (err) {
+//     res.json({ err });
+//   }
+// });
+
+router.post('/getAllCustomers', async (req, res) => {
+  try {
+    console.log('inside getAllCustomers req: ', req);
+    console.log('inside getAllCustomers req.body: ', req.body);
+    console.log('inside getAllCustomers req.body.email: ', req.body.email);
+    console.log('inside getAllCustomers req.email: ', req.email);
+
+    // let myCustomer = await stripe.customers.retrieve(cus_FvNKEiG1w8yUno);
+    let allCustomers = await stripe.customers.list({
+      email: req.body.email
+      // email: 'a18@me.com' //change to dynamic email
+      // limit: 3
+    });
+    // console.log('responding with allCustomers: ', allCustomers);
+    res.json({ allCustomers });
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
 module.exports = router;
 
-//remove later
-//can use nested try catches
-// routes.post('/login', async (req, res) => {
-//   try {
-//     ...
-//     let user = null
-//     try {
-//       user = await findUser(req.body.login)
-//     } catch (error) {
-//       doAnythingWithError(error)
-//       throw error //<-- THIS IS ESSENTIAL FOR BREAKING THE CHAIN
-//     }
-//     ...
-//   } catch (error) {
-//     errorResult(res, error)
-//   }
+/**steps:
+ * 1. create product (name: any, type: service/good)
+ * 2. create plan with product code ()
+ * ---
+ * 3. create source:
+ * 4. create customer:
+ * 5. create subscription: customer "customer_id", item: {plan: "plan_id"}
+ */
