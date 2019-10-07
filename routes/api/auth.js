@@ -264,19 +264,19 @@ router.post('/createSubscription', async (req, res) => {
   }
 });
 
-router.get('/getCustomer', async (req, res) => {
-  try {
-    let myCustomer = await stripe.customers.retrieve('cus_FvNH01nTLOtLuu');
-    console.log('myCustomer.subscriptions');
-    console.log(myCustomer.subscriptions);
-    console.log(myCustomer.subscriptions.data);
-    console.log(myCustomer.subscriptions.total_count);
+// router.get('/getCustomer', async (req, res) => {
+//   try {
+//     let myCustomer = await stripe.customers.retrieve('cus_FvNH01nTLOtLuu');
+//     console.log('myCustomer.subscriptions');
+//     console.log(myCustomer.subscriptions);
+//     console.log(myCustomer.subscriptions.data);
+//     console.log(myCustomer.subscriptions.total_count);
 
-    res.json({ myCustomer });
-  } catch (err) {
-    res.json({ err });
-  }
-});
+//     res.json({ myCustomer });
+//   } catch (err) {
+//     res.json({ err });
+//   }
+// });
 
 // router.get('/getIsCustomerDelinquent', async (req, res) => {
 //   try {
@@ -294,19 +294,32 @@ router.get('/getCustomer', async (req, res) => {
 
 router.post('/getAllCustomers', async (req, res) => {
   try {
-    console.log('inside getAllCustomers req: ', req);
-    console.log('inside getAllCustomers req.body: ', req.body);
-    console.log('inside getAllCustomers req.body.email: ', req.body.email);
-    console.log('inside getAllCustomers req.email: ', req.email);
+    // console.log('inside getAllCustomers req.body: ', req.body);
+    // console.log('inside getAllCustomers req.body.email: ', req.body.email);
 
-    // let myCustomer = await stripe.customers.retrieve(cus_FvNKEiG1w8yUno);
     let allCustomers = await stripe.customers.list({
       email: req.body.email
-      // email: 'a18@me.com' //change to dynamic email
-      // limit: 3
+      // email: 'a18@me.com'
     });
-    // console.log('responding with allCustomers: ', allCustomers);
+
+    // console.log(
+    //   'allCustomers.data[0].subscriptions.data[0].id',
+    //   allCustomers.data[0].subscriptions.data[0].id
+    // );
     res.json({ allCustomers });
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+router.put('/unsubscribe', async (req, res) => {
+  try {
+    console.log('in unsub endpoint req.body: ', req.body);
+    let unsub = await stripe.subscriptions.update(req.body, {
+      cancel_at_period_end: true
+    });
+
+    res.json({ unsub });
   } catch (err) {
     res.json({ err });
   }

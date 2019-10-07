@@ -75,6 +75,44 @@ export const canView = emailInput => async dispatch => {
   }
 };
 
+export const unsubscribeMe = emailInput => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const config2 = {
+      headers: {
+        'Content-Type': 'text/plain'
+      }
+    };
+    const body = JSON.stringify({ email: emailInput });
+    console.log('emailInput: ', body);
+    const res = await axios.post('/api/auth/getAllCustomers', body, config);
+    // console.log('res: ', res);
+    // console.log('res.data: ', res.data);
+    console.log(
+      'res.data.allCustomers.data[0].subscriptions.data[0].id: ',
+      res.data.allCustomers.data[0].subscriptions.data[0].id
+    );
+    const body2 = res.data.allCustomers.data[0].subscriptions.data[0].id;
+    const res2 = await axios.put('/api/auth/unsubscribe', body2, config2);
+
+    //dispatch success alert
+    console.log('res2', res2);
+
+    // console.log(
+    //   'res.data[0].subscriptions.data[0].id',
+    //   res.data[0].subscriptions.data[0].id
+    // );
+
+    // return res; //take out
+  } catch (err) {
+    return err;
+  }
+};
+
 //----
 
 // Load User
