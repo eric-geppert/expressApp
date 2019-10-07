@@ -7,6 +7,7 @@ import Spinner from '../layout/Spinner';
 // import Experience from './Experience';
 // import Education from './Education';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
+import { unsubscribeMe } from '../../actions/auth';
 
 const Dashboard = ({
   getCurrentProfile,
@@ -18,10 +19,27 @@ const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
+  // unsubscribeMe(user.email);
+
+  // async onSubmit(ev) {
+  //   ev.preventDefault();
+  //   try{
+  //     console.log('auth.user', user.email);
+  //     unsubscribeMe(user.email);
+  //   }
+  //   catch(err){
+  //     return err;
+  //   }
+  // };
+
   return loading && profile === null ? (
     <Spinner />
   ) : (
     <Fragment>
+      {user !== 'undefined' && user !== null
+        ? console.log('user: ', user.email)
+        : // unsubscribeMe(user.email)
+          console.log('user is undefined or null')}
       <h1 className='large text-primary'>Dashboard</h1>
       <p className='lead'>
         <i className='fas fa-user' /> Welcome {user && user.name}
@@ -38,6 +56,17 @@ const Dashboard = ({
         <Link to='/CheckoutPage' className='btn btn-primary my-1'>
           Buy Full Programs
         </Link>
+        <button
+          className='btn btn-primary my-1'
+          onClick={
+            user !== 'undefined' && user !== null
+              ? unsubscribeMe(user.email)
+              : console.log('user is undefined or null')
+          }
+        >
+          unsubscribeMe
+        </button>
+        {/* <button onClick={unsubscribeMe(user.email)}>unsubscribeMe</button> */}
       </Fragment>
       {/* {profile !== null ? (
         <Fragment>
@@ -77,5 +106,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getCurrentProfile, deleteAccount }
+  { getCurrentProfile, deleteAccount, unsubscribeMe }
 )(Dashboard);

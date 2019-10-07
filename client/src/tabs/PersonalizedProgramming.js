@@ -9,7 +9,7 @@ const PersonalizedProgramming = () => {
       </h1>
       <p className='lead'>
         The best way to get results is a personalized plan. Mitch offers
-        personalized nutrition and exercise tracks for thos who want the best
+        personalized nutrition and exercise tracks for those who want the best
         results possible.
       </p>
       <p className='lead'>
