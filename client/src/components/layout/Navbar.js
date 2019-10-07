@@ -53,10 +53,10 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Link to='/WOD'>WOD</Link>
       </li>
       <li>
-        <Link to='/ContactUs'>ContactUs</Link>
+        <Link to='/ContactUs'>Contact Us</Link>
       </li>
       <li>
-        <Link to='/PersonalizedProgramming'>PersonalizedProgramming</Link>
+        <Link to='/PersonalizedProgramming'>Personalized Programming</Link>
       </li>
       <li>
         <Link to='/Movement'>Movement Library</Link>
