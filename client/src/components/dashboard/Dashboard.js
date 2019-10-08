@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -19,6 +19,9 @@ const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
+  const [count, setCount] = useState(0);
+
+  console.error('profile in dashboard: ', profile);
   // unsubscribeMe(user.email);
 
   // async onSubmit(ev) {
@@ -32,19 +35,32 @@ const Dashboard = ({
   //   }
   // };
 
-  return loading && profile === null ? (
+  return (loading && profile === null) || profile === 'undefined' ? (
     <Spinner />
   ) : (
     <Fragment>
-      {user !== 'undefined' && user !== null
+      {/* {user !== 'undefined' && user !== null
         ? console.log('user: ', user.email)
         : // unsubscribeMe(user.email)
-          console.log('user is undefined or null')}
+          console.log('user is undefined or null')} */}
       <h1 className='large text-primary'>Dashboard</h1>
       <p className='lead'>
+        {/* <i className='fas fa-user' /> Welcome {user && user.name} */}
         <i className='fas fa-user' /> Welcome {user && user.name}
+        {/* why does this work but not just user or just user.name */}
       </p>
       <Fragment>
+        {console.log('inside dashboard compoenent profile: ', profile.customer)}
+        {console.log(
+          'inside dashboard compoenent profile: ',
+          profile.customer.has_more
+        )}
+        {profile.customer.has_more === null ? (
+          <p>subscribed to: loading yo</p>
+        ) : (
+          <p>subscribed toooo: {profile.customer.has_more}</p>
+        )}
+        {/* <p>subscribed to: {profile.customer.has_more}</p> */}
         <p>
           You have successfully logged in would you like to purchase the full
           version of all our workout plans?
