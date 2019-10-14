@@ -199,10 +199,12 @@ export const login = (email, password) => async dispatch => {
       payload: res2.data
     });
   } catch (err) {
-    const errors = err.response.data.errors;
-
-    if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    console.log('err', err);
+    if (err.response != undefined) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      }
     }
 
     dispatch({

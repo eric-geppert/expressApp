@@ -17,45 +17,47 @@ export const getCurrentProfile = () => async dispatch => {
   try {
     const res = await axios.get('/api/profile/me');
 
-    console.log('res.data.customer.data[0]: ', res.data.customer.data[0]);
-    console.log(
-      'res.data.customer.data[0].delinquent: ',
-      res.data.customer.data[0].delinquent
-    );
-    console.log(
-      'res.data.customer.data[0].subscriptions.data[0].plan: ',
-      res.data.customer.data[0].subscriptions.data[0].plan.nickname
-    );
-    console.log(
-      'res.data.customer.data[0].subscriptions.data[0]cancel_at: ',
-      res.data.customer.data[0].subscriptions.data[0].cancel_at
-    );
-    console.log(
-      'res.data.customer.data[0].subscriptions.data[0]cancel_at_period_end: ',
-      res.data.customer.data[0].subscriptions.data[0].cancel_at_period_end
-    );
-    console.log(
-      'res.data.customer.data[0].subscriptions.data[0].status: ',
-      res.data.customer.data[0].subscriptions.data[0].status
-    );
+    // console.log('res.data.customer.data[0]: ', res.data.customer.data[0]);
+    // console.log(
+    //   'res.data.customer.data[0].delinquent: ',
+    //   res.data.customer.data[0].delinquent
+    // );
+    // console.log(
+    //   'res.data.customer.data[0].subscriptions.data[0].plan: ',
+    //   res.data.customer.data[0].subscriptions.data[0].plan.nickname
+    // );
+    // console.log(
+    //   'res.data.customer.data[0].subscriptions.data[0]cancel_at: ',
+    //   res.data.customer.data[0].subscriptions.data[0].cancel_at
+    // );
+    // console.log(
+    //   'res.data.customer.data[0].subscriptions.data[0]cancel_at_period_end: ',
+    //   res.data.customer.data[0].subscriptions.data[0].cancel_at_period_end
+    // );
+    // console.log(
+    //   'res.data.customer.data[0].subscriptions.data[0].status: ',
+    //   res.data.customer.data[0].subscriptions.data[0].status
+    // );
     //will need to change customer.data[0] to be search throug all later when have more
     //subscriptions
 
     dispatch({
       type: GET_PROFILE,
+      // payload: res.data.customer.data[0].delinquent
       payload: res.data
     });
   } catch (err) {
-    if (err === 'undefined') {
-      dispatch({
-        type: PROFILE_ERROR,
-        payload: { msg: 'undefined error', status: 500 }
-      });
-    } else
-      dispatch({
-        type: PROFILE_ERROR,
-        payload: { msg: err.response.statusText, status: err.response.status }
-      });
+    console.error('error in profile actions: ', err);
+    // if (err.response === 'undefined') {
+    //   dispatch({
+    //     type: PROFILE_ERROR,
+    //     payload: { msg: 'undefined error', status: 500 }
+    //   });
+    // } else
+    //   dispatch({
+    //     type: PROFILE_ERROR,
+    //     payload: { msg: err.response.statusText, status: err.response.status }
+    //   });
   }
 };
 
