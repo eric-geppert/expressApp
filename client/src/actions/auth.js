@@ -13,6 +13,7 @@ import {
   BUY_FAIL
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
+const DIS_TEST = 'DIS_TEST';
 
 //----
 export const canView = emailInput => async dispatch => {
@@ -75,6 +76,7 @@ export const canView = emailInput => async dispatch => {
   }
 };
 
+//todo: important: questions: why the heck can I not dispatch from here?
 export const unsubscribeMe = emailInput => async dispatch => {
   try {
     const config = {
@@ -88,19 +90,27 @@ export const unsubscribeMe = emailInput => async dispatch => {
       }
     };
     const body = JSON.stringify({ email: emailInput });
-    console.log('emailInput: ', body);
+    // console.log('emailInput: ', body);
     const res = await axios.post('/api/auth/getAllCustomers', body, config);
     // console.log('res: ', res);
     // console.log('res.data: ', res.data);
-    console.log(
-      'res.data.allCustomers.data[0].subscriptions.data[0].id: ',
-      res.data.allCustomers.data[0].subscriptions.data[0].id
-    );
+    // console.log(
+    //   'res.data.allCustomers.data[0].subscriptions.data[0].id: ',
+    //   res.data.allCustomers.data[0].subscriptions.data[0].id
+    // );
     const body2 = res.data.allCustomers.data[0].subscriptions.data[0].id;
     const res2 = await axios.put('/api/auth/unsubscribe', body2, config2);
 
     //dispatch success alert
     console.log('res2', res2);
+    console.log(
+      'res2.data.unsub.cancel_at_period_end',
+      res2.data.unsub.cancel_at_period_end
+    );
+
+    if (res2) {
+      dispatch(setAlert('successfully unsubscribed', 'success'));
+    }
 
     // console.log(
     //   'res.data[0].subscriptions.data[0].id',
@@ -109,7 +119,9 @@ export const unsubscribeMe = emailInput => async dispatch => {
 
     // return res; //take out
   } catch (err) {
-    return err;
+    dispatch(setAlert(err.msg, 'error'));
+    console.log('inside unsub action error: ', err);
+    // return err;
   }
 };
 

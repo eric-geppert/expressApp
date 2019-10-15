@@ -13,27 +13,19 @@ const stripe = require('stripe')('sk_test_0nG9Ty2vlJMtbg8rfGEmo8Ue00nraHrJ0Q');
 // @route    GET api/profile/me
 // @desc     Get current users profile
 // @access   Private
-//will it ever work if private? make post with username/pswd instead?
 router.get('/me', auth, async (req, res) => {
   try {
     let customer = await stripe.customers.list({
       email: req.user.email //get req.user from token since its an auth route
     });
-    res.json({ customer });
-    //populating the mongodb?
-    // const profile = await Profile.findOne({ user: req.user.id }).populate(
-    //   'user',
-    //   ['name', 'avatar']
-    // );
 
-    // if (!profile) {
-    //   return res.status(400).json({ msg: 'There is no profile for this user' });
-    // }
+    // console.log('customer response from api/profile/me: ', customer);
+    //may need more in depth check here
     if (!customer) {
       return res.status(404).json({ msg: 'Customer not found' });
     }
-
-    res.json(profile);
+    res.json({ customer });
+    // res.json(profile);
   } catch (err) {
     console.error(err.message);
     res.send(err); //status(500).send('Server Error');

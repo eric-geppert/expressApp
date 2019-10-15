@@ -12,6 +12,7 @@ import { unsubscribeMe } from '../../actions/auth';
 const Dashboard = ({
   getCurrentProfile,
   deleteAccount,
+  unsubscribeMe,
   auth: { user },
   profile: { profile, loading }
 }) => {
@@ -73,15 +74,24 @@ const Dashboard = ({
             </Link>
             <button
               className='btn btn-primary my-1'
-              onClick={
+              onClick={() =>
                 user !== 'undefined' && user !== null
                   ? unsubscribeMe(user.email)
-                  : console.log('user is undefined or null')
+                  : // console.log('calling unsub with: ', user)
+                    console.log('user is undefined or null')
               }
             >
               unsubscribeMe
             </button>
-            {/* <button onClick={unsubscribeMe(user.email)}>unsubscribeMe</button> */}
+            {/* {user !== 'undefined' && user !== null ? (
+              <Fragment>
+                <button onClick={() => unsubscribeMe(user.email)}>
+                  unsubscribe Me
+                </button>
+              </Fragment>
+            ) : (
+              <Fragment> user undefined</Fragment>
+            )} */}
           </Fragment>
         </Fragment>
       ) : (
@@ -94,6 +104,7 @@ const Dashboard = ({
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
+  unsubscribeMe: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
 };
