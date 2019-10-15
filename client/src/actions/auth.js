@@ -109,7 +109,12 @@ export const unsubscribeMe = emailInput => async dispatch => {
     );
 
     if (res2) {
-      dispatch(setAlert('successfully unsubscribed', 'success'));
+      dispatch(
+        setAlert(
+          'successfully unsubscribed, Profile page will reflect this next time you login',
+          'success'
+        )
+      );
     }
 
     // console.log(
