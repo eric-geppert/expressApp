@@ -94,7 +94,8 @@ router.post(
       //return json Web token
       const payload = {
         user: {
-          id: user.id
+          id: user.id,
+          email: user.email //set so can get customer profile info in stripe calls
         }
       };
 
@@ -183,6 +184,7 @@ router.post('/createPlan', async (req, res) => {
   try {
     let status = await stripe.plans.create({
       amount: 2000,
+      nickname: 'monthly subscription 1',
       interval: 'month',
       // product: 'prod_Fv4DqB50FbNbz0',
       product: 'prod_Fv1N6dgygh4RRo',
@@ -239,19 +241,20 @@ router.post('/createCustomer', async (req, res) => {
   }
 });
 
+//todo: question: need to make plans and products dynamic??
 router.post('/createSubscription', async (req, res) => {
   console.log('req.body: ' + req.body);
   try {
     console.log('creating sub');
     let { status } = await stripe.subscriptions.create({
       customer: req.body, //customerToBePassed, // //'cus_Fv6GMW8OfqErc6',
-      // customer: 'cus_Fv0pF1OJKL3umy',
+      // customer: 'cus_FxJLeRVoscOMLY', //'cus_Fv0pF1OJKL3umy',
       // 'jenny.rosen1@example.com', //'test9999@fakeme.com', //'cus_FugkTmiN6rJ6ty', //fix to hardcoded email then redux?
       items: [
         {
-          plan: 'plan_Fv1PvlqBSb9m1l' //monthly sub plan
+          plan: 'plan_FxJEuAl9bXXNo1' //monthly sub with nickname
+          //'plan_Fv1PvlqBSb9m1l' //monthly sub plan
           //'plan_Fv4F81jmdHtesu' //daily sub product for testing
-          // plan: 'plan_Fv1PvlqBSb9m1l'//'monthly subcription PRODUCT'
         }
       ]
     });

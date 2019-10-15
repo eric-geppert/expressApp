@@ -12,19 +12,29 @@ import {
 } from './types';
 
 // Get current users profile
+// export const getCurrentProfile = () => async dispatch => {
 export const getCurrentProfile = () => async dispatch => {
   try {
     const res = await axios.get('/api/profile/me');
+    //will need to change customer.data[0] to be search throug all later when have more
+    //subscriptions
 
     dispatch({
       type: GET_PROFILE,
       payload: res.data
     });
   } catch (err) {
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
+    console.error('error in profile actions: ', err);
+    // if (err.response === 'undefined') {
+    //   dispatch({
+    //     type: PROFILE_ERROR,
+    //     payload: { msg: 'undefined error', status: 500 }
+    //   });
+    // } else
+    //   dispatch({
+    //     type: PROFILE_ERROR,
+    //     payload: { msg: err.response.statusText, status: err.response.status }
+    //   });
   }
 };
 

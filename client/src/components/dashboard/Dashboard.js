@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -12,6 +12,7 @@ import { unsubscribeMe } from '../../actions/auth';
 const Dashboard = ({
   getCurrentProfile,
   deleteAccount,
+  unsubscribeMe,
   auth: { user },
   profile: { profile, loading }
 }) => {
@@ -19,75 +20,83 @@ const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
-  // unsubscribeMe(user.email);
-
-  // async onSubmit(ev) {
-  //   ev.preventDefault();
-  //   try{
-  //     console.log('auth.user', user.email);
-  //     unsubscribeMe(user.email);
-  //   }
-  //   catch(err){
-  //     return err;
-  //   }
-  // };
-
   return loading && profile === null ? (
     <Spinner />
   ) : (
     <Fragment>
-      {user !== 'undefined' && user !== null
-        ? console.log('user: ', user.email)
-        : // unsubscribeMe(user.email)
-          console.log('user is undefined or null')}
-      <h1 className='large text-primary'>Dashboard</h1>
-      <p className='lead'>
-        <i className='fas fa-user' /> Welcome {user && user.name}
-      </p>
-      <Fragment>
-        <p>
-          You have successfully logged in would you like to purchase the full
-          version of all our workout plans?
-        </p>
-        <p>In the mean time view our sample programs here.</p>
-        <Link to='/findMyProgram' className='btn btn-primary my-1'>
-          Sameple Programs
-        </Link>
-        <Link to='/CheckoutPage' className='btn btn-primary my-1'>
-          Buy Full Programs
-        </Link>
-        <button
-          className='btn btn-primary my-1'
-          onClick={
-            user !== 'undefined' && user !== null
-              ? unsubscribeMe(user.email)
-              : console.log('user is undefined or null')
-          }
-        >
-          unsubscribeMe
-        </button>
-        {/* <button onClick={unsubscribeMe(user.email)}>unsubscribeMe</button> */}
-      </Fragment>
-      {/* {profile !== null ? (
+      {profile.customer.data.length > 0 ? (
         <Fragment>
-          <DashboardActions />
-          <Experience experience={profile.experience} />
-          <Education education={profile.education} />
+          <h1 className='large text-primary'>Dashboard</h1>
+          <p className='lead'>
+            <i className='fas fa-user' /> Welcome to your profile page
+            {user && ' ' + user.name}
+          </p>
 
-          <div className='my-2'>
-            <button className='btn btn-danger' onClick={() => deleteAccount()}>
-              <i className='fas fa-user-minus' /> Delete My Account
+          <p> email: {profile.customer.data[0].email} </p>
+          <p>
+            subscription plan nickname:
+            {' ' + profile.customer.data[0].subscriptions.data[0].plan.nickname}
+          </p>
+          <p>
+            subscription cost: $
+            {profile.customer.data[0].subscriptions.data[0].plan.amount / 100}
+          </p>
+          <p>
+            charge every:
+            {' ' + profile.customer.data[0].subscriptions.data[0].plan.interval}
+          </p>
+          <p>
+            subscription status:
+            {' ' + profile.customer.data[0].subscriptions.data[0].status}
+          </p>
+          <p>
+            cancel at period end?:
+            {String(
+              ' ' +
+                profile.customer.data[0].subscriptions.data[0]
+                  .cancel_at_period_end
+            )}
+          </p>
+          <p>
+            Payment is delinquent: {String(profile.customer.data[0].delinquent)}
+          </p>
+          <Fragment>
+            <p>
+              You have successfully logged in would you like to purchase the
+              full version of all our workout plans?
+            </p>
+            <p>In the mean time view our sample programs here.</p>
+            <Link to='/findMyProgram' className='btn btn-primary my-1'>
+              Sameple Programs
+            </Link>
+            <Link to='/CheckoutPage' className='btn btn-primary my-1'>
+              Buy Full Programs
+            </Link>
+            <button
+              className='btn btn-primary my-1'
+              onClick={() =>
+                user !== 'undefined' && user !== null
+                  ? unsubscribeMe(user.email)
+                  : // console.log('calling unsub with: ', user)
+                    console.log('user is undefined or null')
+              }
+            >
+              unsubscribeMe
             </button>
-          </div>
+            {/* {user !== 'undefined' && user !== null ? (
+              <Fragment>
+                <button onClick={() => unsubscribeMe(user.email)}>
+                  unsubscribe Me
+                </button>
+              </Fragment>
+            ) : (
+              <Fragment> user undefined</Fragment>
+            )} */}
+          </Fragment>
         </Fragment>
       ) : (
-        <Fragment>
-          <p>You have not yet setup a profile, please add some info</p>
-          <Link to='/create-profile' className='btn btn-primary my-1'>
-            Create Profile
-          </Link>
-        </Fragment>
-      )} */}
+        <p>profile is null</p>
+      )}
     </Fragment>
   );
 };
@@ -95,6 +104,7 @@ const Dashboard = ({
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
+  unsubscribeMe: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
 };
