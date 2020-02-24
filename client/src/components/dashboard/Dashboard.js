@@ -33,30 +33,40 @@ const Dashboard = ({
           </p>
 
           <p> email: {profile.customer.data[0].email} </p>
-          <p>
-            subscription plan nickname:
-            {' ' + profile.customer.data[0].subscriptions.data[0].plan.nickname}
-          </p>
-          <p>
-            subscription cost: $
-            {profile.customer.data[0].subscriptions.data[0].plan.amount / 100}
-          </p>
-          <p>
-            charge every:
-            {' ' + profile.customer.data[0].subscriptions.data[0].plan.interval}
-          </p>
-          <p>
-            subscription status:
-            {' ' + profile.customer.data[0].subscriptions.data[0].status}
-          </p>
-          <p>
-            cancel at period end?:
-            {String(
-              ' ' +
-                profile.customer.data[0].subscriptions.data[0]
-                  .cancel_at_period_end
-            )}
-          </p>
+          {profile.customer.data[0].subscriptions.length > 0 ? (
+            <Fragment>
+              <p>
+                subscription plan nickname:
+                {' ' +
+                  profile.customer.data[0].subscriptions.data[0].plan.nickname}
+              </p>
+              <p>
+                subscription cost: $
+                {profile.customer.data[0].subscriptions.data[0].plan.amount /
+                  100}
+              </p>
+              <p>
+                charge every:
+                {' ' +
+                  profile.customer.data[0].subscriptions.data[0].plan.interval}
+              </p>
+              <p>
+                subscription status:
+                {' ' + profile.customer.data[0].subscriptions.data[0].status}
+              </p>
+              <p>
+                cancel at period end?:
+                {String(
+                  ' ' +
+                    profile.customer.data[0].subscriptions.data[0]
+                      .cancel_at_period_end
+                )}
+              </p>
+            </Fragment>
+          ) : (
+            <p>subscriptions: customer has no subscriptions</p>
+          )}
+
           <p>
             Payment is delinquent: {String(profile.customer.data[0].delinquent)}
           </p>
@@ -114,7 +124,8 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(
-  mapStateToProps,
-  { getCurrentProfile, deleteAccount, unsubscribeMe }
-)(Dashboard);
+export default connect(mapStateToProps, {
+  getCurrentProfile,
+  deleteAccount,
+  unsubscribeMe
+})(Dashboard);
