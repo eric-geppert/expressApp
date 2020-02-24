@@ -25,6 +25,7 @@ import Testimonials from '../../tabs/Testimonials2';
 //or I would have to just add padding/negative margins anyway
 import RadioButtonParent from '../../components/erics/RadioButtonParent';
 import CheckoutPage from '../../components/auth/CheckoutPage';
+import MyCalendar from '../../tabs/Calendar';
 
 const Routes = () => {
   return (
@@ -42,7 +43,7 @@ const Routes = () => {
         <PrivateRoute exact path='/add-education' component={AddEducation} />
         <PrivateRoute exact path='/posts' component={Posts} />
         <PrivateRoute exact path='/posts/:id' component={Post} />
-        {/* E Routes */}
+        {/* new Routes */}
         <Route exact path='/WOD' component={WOD} />
         <Route exact path='/ContactUs' component={ContactUs} />
         <Route
@@ -54,6 +55,7 @@ const Routes = () => {
         <Route exact path='/Testimonials' component={Testimonials} />
         <Route exact path='/FindMyProgram' component={RadioButtonParent} />
         <Route exact path='/CheckoutPage' component={CheckoutPage} />
+        <Route exact path='/Calendar' component={MyCalendar} />
         <Route component={NotFound} />
       </Switch>
     </section>

@@ -25,10 +25,10 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <li>
         <Link to='/FindMyProgram'>FindMyProgram</Link>
       </li>
-      {/* above is added */}
-      {/* <li>
-        <Link to='/profiles'>Developers</Link>
+      <li>
+        <Link to='/Calendar'>Calendar</Link>
       </li>
+      {/*
       <li>
         <Link to='/posts'>Posts</Link>
       </li> */}
@@ -49,6 +49,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   const guestLinks = (
     <ul>
+      <li>
+        <Link to='/Calendar'>Calendar</Link>
+      </li>
       <li>
         <Link to='/WOD'>WOD</Link>
       </li>
@@ -105,7 +108,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(
-  mapStateToProps,
-  { logout }
-)(Navbar);
+export default connect(mapStateToProps, { logout })(Navbar);
