@@ -13,12 +13,10 @@ import {
   BUY_FAIL
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
-const DIS_TEST = 'DIS_TEST';
 
 //----
 export const canView = emailInput => async dispatch => {
   try {
-    // console.log('email', email);
     const config = {
       headers: {
         'Content-Type': 'application/json'
@@ -26,30 +24,6 @@ export const canView = emailInput => async dispatch => {
     };
     const body = JSON.stringify({ email: emailInput });
     const can = await axios.post('api/auth/getAllCustomers', body, config);
-
-    // let can = await fetch('api/auth/getAllCustomers', {
-    //   method: 'GET',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: email
-    //   // body: auth.users.email
-    // // }).then(can => can.json());
-    console.log('can: ', can);
-    console.log(
-      'response can.data.allCustomers.data ',
-      can.data.allCustomers.data
-    );
-    console.log(
-      'response can.data.allCustomers.data[0].delinquent ',
-      can.data.allCustomers.data[0].delinquent
-    );
-    console.log(
-      'response can.data.allCustomers.data[0].subscriptions.total_count ',
-      can.data.allCustomers.data[0].subscriptions.total_count
-    );
-    // console.log('response canView.data[0].del: ', can.data[0].deliquent);
-    // // console.log('response canView.data[0]: ', can.data[0]);
-    // console.log('response canView.data.data: ', can.data[0]);
-    // console.log('response canView.data.data[0]: ', can.data.data[0]);
 
     const customer1 = can.data.allCustomers.data[0];
     if (
@@ -90,23 +64,9 @@ export const unsubscribeMe = emailInput => async dispatch => {
       }
     };
     const body = JSON.stringify({ email: emailInput });
-    // console.log('emailInput: ', body);
     const res = await axios.post('/api/auth/getAllCustomers', body, config);
-    // console.log('res: ', res);
-    // console.log('res.data: ', res.data);
-    // console.log(
-    //   'res.data.allCustomers.data[0].subscriptions.data[0].id: ',
-    //   res.data.allCustomers.data[0].subscriptions.data[0].id
-    // );
     const body2 = res.data.allCustomers.data[0].subscriptions.data[0].id;
     const res2 = await axios.put('/api/auth/unsubscribe', body2, config2);
-
-    //dispatch success alert
-    console.log('res2', res2);
-    console.log(
-      'res2.data.unsub.cancel_at_period_end',
-      res2.data.unsub.cancel_at_period_end
-    );
 
     if (res2) {
       dispatch(
@@ -116,21 +76,10 @@ export const unsubscribeMe = emailInput => async dispatch => {
         )
       );
     }
-
-    // console.log(
-    //   'res.data[0].subscriptions.data[0].id',
-    //   res.data[0].subscriptions.data[0].id
-    // );
-
-    // return res; //take out
   } catch (err) {
     dispatch(setAlert(err.msg, 'error'));
-    console.log('inside unsub action error: ', err);
-    // return err;
   }
 };
-
-//----
 
 // Load User
 export const loadUser = () => async dispatch => {
@@ -229,38 +178,6 @@ export const login = (email, password) => async dispatch => {
     });
   }
 };
-
-// export const checkPaid = (email, password) => async dispatch => {
-//   console.log('inside checkPaid in auth actions');
-//   const config = {
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   };
-
-//   const body = JSON.stringify({ email, password });
-
-//   try {
-//     const res = await axios.post('/api/auth/hasPaid', body, config);
-
-//     dispatch({
-//       type: BUY_SUCCESS
-//       // payload: res.data
-//     });
-
-//     dispatch(loadUser());
-//   } catch (err) {
-//     const errors = err.response.data.errors;
-
-//     if (errors) {
-//       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-//     }
-
-//     dispatch({
-//       type: BUY_FAIL
-//     });
-//   }
-// };
 
 // Logout / Clear Profile
 export const logout = () => dispatch => {
