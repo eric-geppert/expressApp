@@ -1,20 +1,62 @@
 [
   {
-    "title": "title for wk 1",
-    "contentwrapper": {
-      "content1": "cool content1",
-      "content2": "cool content1",
-      "content3": "cool content1",
-      "content4": "cool content1"
-    }
+    "title": "Workout title 0",
+    "contentwrapper": [
+      { "content": "cool content0" },
+      { "content": "cool content1" },
+      { "content": "cool content2" },
+      { "content": "cool content3" },
+      { "content": "cool content4" },
+      { "content": "cool content5" },
+      { "content": "cool content6" },
+      { "content": 7 },
+      { "content": null },
+      { "content": null }
+    ]
   },
   {
-    "title": "title for wk 2",
-    "contentwrapper": {
-      "content1": "cool content1",
-      "content2": "cool content1",
-      "content3": "cool content1",
-      "content4": "cool content1"
-    }
+    "title": "Workout title 1",
+    "contentwrapper": [
+      { "content": "cool content0" },
+      { "content": "cool content1" },
+      { "content": "cool content2" },
+      { "content": "cool content3" },
+      { "content": "cool content4" },
+      { "content": "cool content5" },
+      { "content": null },
+      { "content": null },
+      { "content": null },
+      { "content": null }
+    ]
+  },
+  {
+    "title": "Workout title 2",
+    "contentwrapper": [
+      { "content": "cool content0" },
+      { "content": "cool content1" },
+      { "content": "cool content2" },
+      { "content": "cool content3" },
+      { "content": "cool content4" },
+      { "content": "cool content5" },
+      { "content": "cool content6" },
+      { "content": null },
+      { "content": null },
+      { "content": null }
+    ]
+  },
+  {
+    "title": "Workout title 3",
+    "contentwrapper": [
+      { "content": "cool content0" },
+      { "content": "cool content1" },
+      { "content": "cool content2" },
+      { "content": "cool content3" },
+      { "content": "cool content4" },
+      { "content": "cool content5" },
+      { "content": "cool content6" },
+      { "content": null },
+      { "content": null },
+      { "content": null }
+    ]
   }
 ]
