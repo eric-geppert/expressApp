@@ -11,6 +11,41 @@ const { check, validationResult } = require('express-validator');
 const stripe = require('stripe')('sk_test_0nG9Ty2vlJMtbg8rfGEmo8Ue00nraHrJ0Q');
 router.use(require('body-parser').text());
 
+/**has to be post route so we can send information with it(email and password) */
+router.post('/getCustomerDate', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    let currentUser = await User.findOne({ email });
+    if (!currentUser) {
+      return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+    }
+
+    const isMatch = await bcrypt.compare(password, currentUser.password);
+
+    if (!isMatch) {
+      return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+    }
+    res.json(currentUser.date);
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
+router.get('/getIsCustomerDelinquent', async (req, res) => {
+  try {
+    let myCustomer = await stripe.customers.retrieve('cus_FvNKEiG1w8yUno');
+    console.log('myCustomer.delinquent');
+    console.log(myCustomer.delinquent);
+    // const delinquentcy= myCustomer.delinquent
+    res.json(myCustomer.delinquent);
+
+    // res.json({ myCustomer });
+  } catch (err) {
+    res.json({ err });
+  }
+});
+
 // @route
 //req type POST
 //endpoint api/auth/hasPaid
@@ -266,34 +301,6 @@ router.post('/createSubscription', async (req, res) => {
     res.json({ err });
   }
 });
-
-// router.get('/getCustomer', async (req, res) => {
-//   try {
-//     let myCustomer = await stripe.customers.retrieve('cus_FvNH01nTLOtLuu');
-//     console.log('myCustomer.subscriptions');
-//     console.log(myCustomer.subscriptions);
-//     console.log(myCustomer.subscriptions.data);
-//     console.log(myCustomer.subscriptions.total_count);
-
-//     res.json({ myCustomer });
-//   } catch (err) {
-//     res.json({ err });
-//   }
-// });
-
-// router.get('/getIsCustomerDelinquent', async (req, res) => {
-//   try {
-//     let myCustomer = await stripe.customers.retrieve('cus_FvNKEiG1w8yUno');
-//     console.log('myCustomer.delinquent');
-//     console.log(myCustomer.delinquent);
-//     // const delinquentcy= myCustomer.delinquent
-//     res.json(myCustomer.delinquent);
-
-//     // res.json({ myCustomer });
-//   } catch (err) {
-//     res.json({ err });
-//   }
-// });
 
 router.post('/getAllCustomers', async (req, res) => {
   try {

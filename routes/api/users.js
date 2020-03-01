@@ -52,7 +52,8 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     //destructuring req/body
-    const { name, email, password } = req.body;
+    console.log('req.body', req.body);
+    const { name, email, password } = req.body; //todo: add paid and date here???
 
     try {
       let user = await User.findOne({ email });
@@ -72,20 +73,26 @@ router.post(
 
       console.log('paid variable in reg: ' + paid);
 
+      //todo: make pull from model later
       user = new User({
         name,
         email,
-        paid,
+        // paid,
         password
-      }); //remove later add credit card cred?
+        // date
+      });
+      //remove later add credit card cred?
       //rl: cant because dont know exactly what its sending
 
-      // console.log('new user in register: ' + user);
       //encrypt pass
       const salt = await bcrypt.genSalt(10); //10 rounds more you have
       //the safer but the slower you are
 
       user.password = await bcrypt.hash(password, salt);
+
+      // user.date = new Date();
+      console.log('date toString: ' + user.addListener.toString);
+      console.log('user:', user);
 
       await user.save();
 
