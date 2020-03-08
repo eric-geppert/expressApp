@@ -13,30 +13,32 @@ router.use(require('body-parser').text());
 
 /**has to be post route so we can send information with it(email and password) */
 router.post('/getCustomerDate', async (req, res) => {
-  const { email, password } = req.body;
-
+  const { email } = req.body;
+  console.log('whattttt outside of brackets');
   try {
+    console.log('currentUser before');
     let currentUser = await User.findOne({ email });
+    console.log('currentUser: ', currentUser);
+
     if (!currentUser) {
       return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
     }
 
-    const isMatch = await bcrypt.compare(password, currentUser.password);
+    // const isMatch = await bcrypt.compare(password, currentUser.password);
 
-    if (!isMatch) {
-      return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
-    }
-    res.json(currentUser.date);
+    // if (!isMatch) {
+    //   return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+    // }
+    res.json(currentUser);
   } catch (err) {
-    res.json({ err });
+    console.log('errorrrrr: ', err);
+    res.json({ err: 'there is an error' });
   }
 });
 
 router.get('/getIsCustomerDelinquent', async (req, res) => {
   try {
     let myCustomer = await stripe.customers.retrieve('cus_FvNKEiG1w8yUno');
-    console.log('myCustomer.delinquent');
-    console.log(myCustomer.delinquent);
     // const delinquentcy= myCustomer.delinquent
     res.json(myCustomer.delinquent);
 
