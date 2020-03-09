@@ -3,20 +3,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-//destructure the auth that we get from props
-const getDateUserStarted = async ({ auth }) => {
-  console.log('auth is: ', auth);
-  if (auth.user !== undefined && auth.user !== null) {
-    console.log('auth.user', auth.user);
+//destructure the aa that we get from props
+export const getDateUserStarted = async aa => {
+  console.log('a is: ', aa);
+  if (aa.user !== undefined && aa.user !== null) {
+    console.log('aa.user', aa.user);
     try {
       const config = {
         headers: {
           'Content-Type': 'application/json'
         }
       };
-      console.log('auth.user.email is: ', auth.user.email);
+      console.log('aa.user.email is: ', aa.user.email);
 
-      const body = JSON.stringify({ email: auth.user.email });
+      const body = JSON.stringify({ email: aa.user.email });
       const request = await axios
         .post('api/auth/getCustomerDate', body, config)
         .then(response => {
@@ -31,16 +31,16 @@ const getDateUserStarted = async ({ auth }) => {
       return err;
     }
   }
-  console.log('auth.user is undefined or null');
+  console.log('aa.user is undefined or null');
   return 'invalid email, you must be logged in to use this feature'; //??? what do I want to return here??
   // return null; //???
 };
 // any.propTypes = {
-//   auth: PropTypes.object.isRequired
+//   aa: PropTypes.object.isRequired
 // };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  aa: state.aa
 });
 
-export default connect(mapStateToProps)(getDateUserStarted);
+connect(mapStateToProps)(getDateUserStarted);
