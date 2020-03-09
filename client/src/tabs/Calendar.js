@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import newWorkouts from '../resources/newWorkouts.json';
-import axios from 'axios';
+import { getDateUserStarted } from '../components/gymComponents/GetDateUserStarted';
 
 // import './App.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -26,33 +26,33 @@ class MyCalendar extends Component {
   //   return 'a@2.com';
   // }
 
-  async getDateUserStarted(emailInput) {
-    emailInput = 'a@2.com';
+  // async getDateUserStarted(emailInput) {
+  //   emailInput = 'a@2.com';
 
-    if (emailInput !== null || emailInput != undefined) {
-      //----
-      try {
-        const config = {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        };
-        const body = JSON.stringify({ email: emailInput });
-        const request = await axios
-          .post('api/auth/getCustomerDate', body, config)
-          .then(response => {
-            var differenceInDays =
-              new Date().getTime() - Date.parse(response.data.date);
-            differenceInDays = differenceInDays / (1000 * 60 * 60 * 24);
-            differenceInDays = Math.floor(differenceInDays);
-            this.setState({ dateStarted: differenceInDays });
-            return differenceInDays;
-          });
-      } catch (err) {
-        return err;
-      }
-    } else return 'invalid email, you must be logged in to use this feature';
-  }
+  //   if (emailInput !== null || emailInput != undefined) {
+  //     //----
+  //     try {
+  //       const config = {
+  //         headers: {
+  //           'Content-Type': 'application/json'
+  //         }
+  //       };
+  //       const body = JSON.stringify({ email: emailInput });
+  //       const request = await axios
+  //         .post('api/auth/getCustomerDate', body, config)
+  //         .then(response => {
+  //           var differenceInDays =
+  //             new Date().getTime() - Date.parse(response.data.date);
+  //           differenceInDays = differenceInDays / (1000 * 60 * 60 * 24);
+  //           differenceInDays = Math.floor(differenceInDays);
+  //           this.setState({ dateStarted: differenceInDays });
+  //           return differenceInDays;
+  //         });
+  //     } catch (err) {
+  //       return err;
+  //     }
+  //   } else return 'invalid email, you must be logged in to use this feature';
+  // }
 
   renderWorkouts() {
     var workoutArr = [];
@@ -101,7 +101,9 @@ class MyCalendar extends Component {
   }
 
   componentWillMount() {
-    this.getDateUserStarted('');
+    // this.props.getDateUserStarted();
+    // getDateUserStarted();
+    this.setState({ dateStarted: getDateUserStarted() });
   }
 
   render() {
