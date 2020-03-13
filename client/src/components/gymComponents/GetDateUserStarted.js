@@ -24,16 +24,18 @@ export const getDateUserStarted = async aa => {
             new Date().getTime() - Date.parse(response.data.date);
           differenceInDays = differenceInDays / (1000 * 60 * 60 * 24);
           differenceInDays = Math.floor(differenceInDays);
-          this.setState({ dateStarted: differenceInDays });
+          // this.setState({ dateStarted: differenceInDays });
+          console.log('diff in daz: ', differenceInDays);
           return differenceInDays;
         });
     } catch (err) {
+      console.error('caught error');
       return err;
     }
   }
   console.log('aa.user is undefined or null');
   return 'invalid email, you must be logged in to use this feature'; //??? what do I want to return here??
-  // return null; //???
+  // return differenceInDays; //???
 };
 // any.propTypes = {
 //   aa: PropTypes.object.isRequired
