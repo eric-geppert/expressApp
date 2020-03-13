@@ -1,59 +1,54 @@
 [
   {
-    "title": "Workout title 0",
+    "title": "Day 1 - Chest",
     "contentwrapper": [
-      { "content": "cool content0" },
-      { "content": "cool content1" },
-      { "content": "cool content2" },
-      { "content": "cool content3" },
-      { "content": "cool content4" },
-      { "content": "cool content5" },
-      { "content": "cool content6" },
-      { "content": 7 },
+      { "content": "Bench Press: 4 sets of 15 reps" },
+      { "content": "Incline DB Bench Press: 4 sets of 15 reps" },
+      { "content": "10 Burpees" },
+      { "content": "-Conditioning: " },
+      { "content": "5 rounds for time- " },
+      { "content": "0.25 Mile (400m) Run " },
+      { "content": "10 Burpees" },
+      { "content": null }
+    ]
+  },
+  {
+    "title": "Day 2 - Back",
+    "contentwrapper": [
+      { "content": "Seated Cable Row: 4 sets of 15 reps" },
+      {
+        "content": "Single Arm Dumbbell Lawnmower Row: 4 sets of 15 reps ea arm"
+      },
+      { "content": "-Conditioning: " },
+      { "content": "10 rounds on a stationary bike: " },
+      { "content": "1 min Fast (6 or 7 effort out of 10) " },
+      { "content": "1 min Slow (2 or 3 out of 10) " }
+    ]
+  },
+  {
+    "title": "Day 3 - Legs/Core",
+    "contentwrapper": [
+      { "content": "Back Squat: 4 sets of 15 reps" },
+      { "content": "Leg Press: 4 sets of 15 reps" },
+      { "content": "-Conditioning: " },
+      { "content": "15 min AMRAP (as many rounds as possible): " },
+      { "content": "15 Air Squats " },
+      { "content": "15 Box Jumps " },
+      { "content": "50 Jump Rope" },
+      { "content": "15 Situps (with an Abmat if available) " },
       { "content": null },
       { "content": null }
     ]
   },
   {
-    "title": "Workout title 1",
+    "title": "Day 5 - Shoulders",
     "contentwrapper": [
-      { "content": "cool content0" },
-      { "content": "cool content1" },
-      { "content": "cool content2" },
-      { "content": "cool content3" },
-      { "content": "cool content4" },
-      { "content": "cool content5" },
-      { "content": null },
-      { "content": null },
-      { "content": null },
-      { "content": null }
-    ]
-  },
-  {
-    "title": "Workout title 2",
-    "contentwrapper": [
-      { "content": "cool content0" },
-      { "content": "cool content1" },
-      { "content": "cool content2" },
-      { "content": "cool content3" },
-      { "content": "cool content4" },
-      { "content": "cool content5" },
-      { "content": "cool content6" },
-      { "content": null },
-      { "content": null },
-      { "content": null }
-    ]
-  },
-  {
-    "title": "Workout title 3",
-    "contentwrapper": [
-      { "content": "cool content0" },
-      { "content": "cool content1" },
-      { "content": "cool content2" },
-      { "content": "cool content3" },
-      { "content": "cool content4" },
-      { "content": "cool content5" },
-      { "content": "cool content6" },
+      { "content": "Strict Press: 4 sets of 15 reps " },
+      { "content": "DB Lateral Shoulder Raise: 4 sets of 15 reps " },
+      { "content": "-Conditioning: " },
+      { "content": "5 rounds- " },
+      { "content": "4 min Jog " },
+      { "content": "15 Pushups (use your legs to help kip if necessary) " },
       { "content": null },
       { "content": null },
       { "content": null }
@@ -62,13 +57,13 @@
   {
     "title": "Workout title 4",
     "contentwrapper": [
-      { "content": "cool content0" },
-      { "content": "cool content1" },
-      { "content": "cool content2" },
-      { "content": "cool content3" },
-      { "content": "cool content4" },
-      { "content": "cool content5" },
-      { "content": "cool content6" },
+      { "content": "content0" },
+      { "content": "content1" },
+      { "content": "content2" },
+      { "content": "content3" },
+      { "content": "content4" },
+      { "content": "content5" },
+      { "content": "content6" },
       { "content": null },
       { "content": null },
       { "content": null }
@@ -77,12 +72,12 @@
   {
     "title": "Workout title 5",
     "contentwrapper": [
-      { "content": "cool content0" },
-      { "content": "cool content1" },
-      { "content": "cool content2" },
-      { "content": "cool content3" },
-      { "content": "cool content4" },
-      { "content": "cool content5" },
+      { "content": "content0" },
+      { "content": "content1" },
+      { "content": "content2" },
+      { "content": "content3" },
+      { "content": "content4" },
+      { "content": "content5" },
       { "content": null },
       { "content": null }
     ]
@@ -90,13 +85,13 @@
   {
     "title": "Workout title 6",
     "contentwrapper": [
-      { "content": "cool content0" },
-      { "content": "cool content1" },
-      { "content": "cool content2" },
-      { "content": "cool content3" },
-      { "content": "cool content4" },
-      { "content": "cool content5" },
-      { "content": "cool content6" },
+      { "content": "content0" },
+      { "content": "content1" },
+      { "content": "content2" },
+      { "content": "content3" },
+      { "content": "content4" },
+      { "content": "content5" },
+      { "content": "content6" },
       { "content": null },
       { "content": null },
       { "content": null }
@@ -105,12 +100,12 @@
   {
     "title": "Workout title 7",
     "contentwrapper": [
-      { "content": "cool content0" },
-      { "content": "cool content1" },
-      { "content": "cool content2" },
-      { "content": "cool content3" },
-      { "content": "cool content4" },
-      { "content": "cool content5" },
+      { "content": "content0" },
+      { "content": "content1" },
+      { "content": "content2" },
+      { "content": "content3" },
+      { "content": "content4" },
+      { "content": "content5" },
       { "content": null },
       { "content": null }
     ]
@@ -118,13 +113,13 @@
   {
     "title": "Workout title 8",
     "contentwrapper": [
-      { "content": "cool content0" },
-      { "content": "cool content1" },
-      { "content": "cool content2" },
-      { "content": "cool content3" },
-      { "content": "cool content4" },
-      { "content": "cool content5" },
-      { "content": "cool content6" },
+      { "content": "content0" },
+      { "content": "content1" },
+      { "content": "content2" },
+      { "content": "content3" },
+      { "content": "content4" },
+      { "content": "content5" },
+      { "content": "content6" },
       { "content": null },
       { "content": null },
       { "content": null }
@@ -133,12 +128,12 @@
   {
     "title": "Workout title 9",
     "contentwrapper": [
-      { "content": "cool content0" },
-      { "content": "cool content1" },
-      { "content": "cool content2" },
-      { "content": "cool content3" },
-      { "content": "cool content4" },
-      { "content": "cool content5" },
+      { "content": "content0" },
+      { "content": "content1" },
+      { "content": "content2" },
+      { "content": "content3" },
+      { "content": "content4" },
+      { "content": "content5" },
       { "content": null },
       { "content": null }
     ]

@@ -22,7 +22,11 @@ class MyCalendar extends Component {
     var workoutArr = [];
 
     var i = 0;
-    while (this.state.selected.workout[i].content != null) {
+    /** NEED TO KEEP LAST LINE OF EVERY WORKOUT AS NULL */
+    while (
+      this.state.selected.workout[i] != undefined &&
+      this.state.selected.workout[i].content != null
+    ) {
       workoutArr.push(<p key={i}>{this.state.selected.workout[i].content}</p>);
       i++;
     }
