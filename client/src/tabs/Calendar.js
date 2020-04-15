@@ -2,31 +2,40 @@ import React, { Component } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import newWorkouts from '../resources/newWorkouts.json';
+// import { getDateUserStarted } from '../components/gymComponents/GetDateUserStarted';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
 // import './App.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { Fragment } from 'react';
 
 const localizer = momentLocalizer(moment);
-const currentlyOnDay = 2; //starts from day 0
 
 class MyCalendar extends Component {
   state = {
     selected: null,
-    events: []
+    dateStarted: null
   };
 
-  renderWorkouts() {
+  renderWorkouts = () => {
     var workoutArr = [];
 
     var i = 0;
-    while (this.state.selected.workout[i].content != null) {
+    /** NEED TO KEEP LAST LINE OF EVERY WORKOUT AS NULL */
+    while (
+      this.state.selected.workout[i] != undefined &&
+      this.state.selected.workout[i].content != null
+    ) {
       workoutArr.push(<p key={i}>{this.state.selected.workout[i].content}</p>);
       i++;
     }
     return workoutArr;
-  }
+  };
 
-  componentWillMount() {
+  setEvents = () => {
+    console.log('zzz: ', this.state.dateStarted);
+    const currentlyOnDay = this.state.dateStarted;
     var eventArr = [];
     newWorkouts.forEach(function(element, index) {
       eventArr.push({
@@ -44,26 +53,86 @@ class MyCalendar extends Component {
         eventIndex: index
       });
     });
-    this.setState({ events: eventArr });
+    return (
+      <Calendar
+        localizer={localizer}
+        defaultDate={new Date()}
+        defaultView='month'
+        events={eventArr}
+        style={{ height: '100vh' }}
+        onDoubleClickEvent={e => {
+          this.setState({
+            selected: e
+          });
+        }}
+      />
+    );
+  };
+
+  helperFunc = async () => {
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
+
+      const body = JSON.stringify({ email: this.props.auth.user.email });
+      const request = await axios
+        .post('api/auth/getCustomerDate', body, config)
+        .then(response => {
+          var differenceInDays =
+            new Date().getTime() - Date.parse(response.data.date);
+          differenceInDays = differenceInDays / (1000 * 60 * 60 * 24);
+          differenceInDays = Math.floor(differenceInDays);
+          console.log('diff in daz: ', differenceInDays);
+          this.setState({ dateStarted: differenceInDays });
+
+          return differenceInDays;
+        });
+    } catch (err) {
+      console.error('caught error');
+      return err;
+    }
+    console.log('this.props.auth.user is undefined or null');
+    return 'invalid email, you must be logged in to use this feature';
+  };
+
+  componentWillMount() {
+    console.log('auth before: ', this.props.auth);
+    if (this.props.auth.user != undefined) {
+      console.log('authz: ', this.props.auth);
+      console.log('helper func result: ', this.helperFunc());
+    } else {
+      console.log('auth is undefined');
+    }
   }
 
   render() {
     return this.state.selected === null || this.state.selected == undefined ? (
-      <div className='App'>
-        <Calendar
-          localizer={localizer}
-          defaultDate={new Date()}
-          defaultView='month'
-          events={this.state.events}
-          style={{ height: '100vh' }}
-          onDoubleClickEvent={e => {
-            this.setState({
-              selected: e
-            });
-          }}
-        />
-      </div>
+      this.state.dateStarted === null || this.state.dateStarted == undefined ? (
+        // if no startDate and nothing selected
+        <div>
+          <p>If you would like to use this feature you need to register.</p>
+          <Calendar
+            localizer={localizer}
+            defaultDate={new Date()}
+            defaultView='month'
+            events={[]}
+            style={{ height: '100vh' }}
+            onDoubleClickEvent={e => {
+              this.setState({
+                selected: e
+              });
+            }}
+          />
+        </div>
+      ) : (
+        /**if nothing selected but Has startDate */
+        <div>{this.setEvents()}</div>
+      )
     ) : (
+      /** if something is selected */
       <div className='WorkoutParent'>
         <h2> {this.state.selected.title}</h2>
         {this.renderWorkouts()}
@@ -71,5 +140,7 @@ class MyCalendar extends Component {
     );
   }
 }
-
-export default MyCalendar;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+export default connect(mapStateToProps)(MyCalendar);

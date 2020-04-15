@@ -8,6 +8,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
       <li>
+        <Link to='/Calendar'>Calendar</Link>
+      </li>
+      <li>
         <Link to='/WOD'>WOD</Link>
       </li>
       <li>
@@ -24,9 +27,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li>
       <li>
         <Link to='/FindMyProgram'>FindMyProgram</Link>
-      </li>
-      <li>
-        <Link to='/Calendar'>Calendar</Link>
       </li>
       {/*
       <li>
