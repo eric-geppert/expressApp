@@ -15,7 +15,12 @@ const localizer = momentLocalizer(moment);
 class MyCalendar extends Component {
   state = {
     selected: null,
-    dateStarted: null
+    dateStarted: null,
+  };
+
+  returnToCalView = () => {
+    console.log('inner Button clicked');
+    this.setState({ selected: null });
   };
 
   renderWorkouts = () => {
@@ -37,7 +42,7 @@ class MyCalendar extends Component {
     console.log('zzz: ', this.state.dateStarted);
     const currentlyOnDay = this.state.dateStarted;
     var eventArr = [];
-    newWorkouts.forEach(function(element, index) {
+    newWorkouts.forEach(function (element, index) {
       eventArr.push({
         start:
           index - currentlyOnDay < 0
@@ -50,7 +55,7 @@ class MyCalendar extends Component {
         allDay: true,
         title: newWorkouts[index].title,
         workout: newWorkouts[index].contentwrapper,
-        eventIndex: index
+        eventIndex: index,
       });
     });
     return (
@@ -60,9 +65,9 @@ class MyCalendar extends Component {
         defaultView='month'
         events={eventArr}
         style={{ height: '100vh' }}
-        onDoubleClickEvent={e => {
+        onDoubleClickEvent={(e) => {
           this.setState({
-            selected: e
+            selected: e,
           });
         }}
       />
@@ -73,14 +78,14 @@ class MyCalendar extends Component {
     try {
       const config = {
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       };
 
       const body = JSON.stringify({ email: this.props.auth.user.email });
       const request = await axios
         .post('api/auth/getCustomerDate', body, config)
-        .then(response => {
+        .then((response) => {
           var differenceInDays =
             new Date().getTime() - Date.parse(response.data.date);
           differenceInDays = differenceInDays / (1000 * 60 * 60 * 24);
@@ -120,9 +125,9 @@ class MyCalendar extends Component {
             defaultView='month'
             events={[]}
             style={{ height: '100vh' }}
-            onDoubleClickEvent={e => {
+            onDoubleClickEvent={(e) => {
               this.setState({
-                selected: e
+                selected: e,
               });
             }}
           />
@@ -134,13 +139,18 @@ class MyCalendar extends Component {
     ) : (
       /** if something is selected */
       <div className='WorkoutParent'>
+        {console.log('selected state: ', this.state.selected)}
+        <button onClick={() => this.returnToCalView()}>
+          {/* this.setState({ selected: null })> */}
+          Back to Calendar view
+        </button>
         <h2> {this.state.selected.title}</h2>
         {this.renderWorkouts()}
       </div>
     );
   }
 }
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 export default connect(mapStateToProps)(MyCalendar);
