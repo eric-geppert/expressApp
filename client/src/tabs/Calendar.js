@@ -140,7 +140,11 @@ class MyCalendar extends Component {
       /** if something is selected */
       <div className='WorkoutParent'>
         {console.log('selected state: ', this.state.selected)}
-        <button onClick={() => this.returnToCalView()}>
+        {/** note have to pass onClick reference to a function like I have
+         * if just called directly in function wihtout () then it would be
+         * calling the function and passing it onClick which results in nothing
+         * being done in this case because it just resets the state before it render the below*/}
+        <button className='btn-primary' onClick={() => this.returnToCalView()}>
           {/* this.setState({ selected: null })> */}
           Back to Calendar view
         </button>
