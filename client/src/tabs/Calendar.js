@@ -144,7 +144,10 @@ class MyCalendar extends Component {
          * if just called directly in function wihtout () then it would be
          * calling the function and passing it onClick which results in nothing
          * being done in this case because it just resets the state before it render the below*/}
-        <button className='btn-primary' onClick={() => this.returnToCalView()}>
+        <button
+          className='btn btn-primary'
+          onClick={() => this.returnToCalView()}
+        >
           {/* this.setState({ selected: null })> */}
           Back to Calendar view
         </button>
