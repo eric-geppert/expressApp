@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
-import newWorkouts from '../resources/newWorkouts.json';
+import TemplateWorkouts from '../resources/TemplateWorkouts.json';
+import HIITWorkouts from '../resources/HIITWorkouts.json';
 // import { getDateUserStarted } from '../components/gymComponents/GetDateUserStarted';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
 // import './App.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { Fragment } from 'react';
 
 const localizer = momentLocalizer(moment);
 
@@ -42,6 +42,11 @@ class MyCalendar extends Component {
     console.log('zzz: ', this.state.dateStarted);
     const currentlyOnDay = this.state.dateStarted;
     var eventArr = [];
+    console.log('Calendar this.props.plan: ', this.props.plan);
+    var newWorkouts = null;
+    if (this.props.plan == 'HIIT') {
+      newWorkouts = HIITWorkouts;
+    }
     newWorkouts.forEach(function (element, index) {
       eventArr.push({
         start:
