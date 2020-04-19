@@ -10,17 +10,25 @@ import {
   LOGOUT,
   CLEAR_PROFILE,
   BUY_SUCCESS,
-  BUY_FAIL
+  BUY_FAIL,
+  SET_PLAN,
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
 //----
-export const canView = emailInput => async dispatch => {
+export const setPlan = (plan) => async (dispatch) => {
+  dispatch({
+    type: SET_PLAN,
+    payload: plan,
+  });
+};
+
+export const canView = (emailInput) => async (dispatch) => {
   try {
     const config = {
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     };
     const body = JSON.stringify({ email: emailInput });
     const can = await axios.post('api/auth/getAllCustomers', body, config);
@@ -36,13 +44,13 @@ export const canView = emailInput => async dispatch => {
 
       dispatch({
         type: BUY_SUCCESS,
-        payload: true
+        payload: true,
       });
       return true; //need?
     }
     //and has subscription
     dispatch({
-      type: BUY_FAIL
+      type: BUY_FAIL,
     });
     return false;
   } catch (err) {
@@ -51,17 +59,17 @@ export const canView = emailInput => async dispatch => {
 };
 
 //todo: important: questions: why the heck can I not dispatch from here?
-export const unsubscribeMe = emailInput => async dispatch => {
+export const unsubscribeMe = (emailInput) => async (dispatch) => {
   try {
     const config = {
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     };
     const config2 = {
       headers: {
-        'Content-Type': 'text/plain'
-      }
+        'Content-Type': 'text/plain',
+      },
     };
     const body = JSON.stringify({ email: emailInput });
     const res = await axios.post('/api/auth/getAllCustomers', body, config);
@@ -82,7 +90,7 @@ export const unsubscribeMe = emailInput => async dispatch => {
 };
 
 // Load User
-export const loadUser = () => async dispatch => {
+export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
@@ -92,21 +100,21 @@ export const loadUser = () => async dispatch => {
 
     dispatch({
       type: USER_LOADED,
-      payload: res.data
+      payload: res.data,
     });
   } catch (err) {
     dispatch({
-      type: AUTH_ERROR
+      type: AUTH_ERROR,
     });
   }
 };
 
 // Register User
-export const register = ({ name, email, password }) => async dispatch => {
+export const register = ({ name, email, password }) => async (dispatch) => {
   const config = {
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   };
 
   const body = JSON.stringify({ name, email, password });
@@ -117,7 +125,7 @@ export const register = ({ name, email, password }) => async dispatch => {
     console.log('dispatching email: ' + email + ':from auth reducer');
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: res.data //user token
+      payload: res.data, //user token
       // payload: email
     });
 
@@ -126,21 +134,21 @@ export const register = ({ name, email, password }) => async dispatch => {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
 
     dispatch({
-      type: REGISTER_FAIL
+      type: REGISTER_FAIL,
     });
   }
 };
 
 // Login User
-export const login = (email, password) => async dispatch => {
+export const login = (email, password) => async (dispatch) => {
   const config = {
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   };
 
   const body = JSON.stringify({ email, password });
@@ -150,7 +158,7 @@ export const login = (email, password) => async dispatch => {
 
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: res.data
+      payload: res.data,
     });
 
     dispatch(loadUser());
@@ -162,32 +170,32 @@ export const login = (email, password) => async dispatch => {
     console.log('called /hasPaid res2.data: ' + res2.data);
     dispatch({
       type: BUY_SUCCESS,
-      payload: res2.data
+      payload: res2.data,
     });
   } catch (err) {
     console.log('err', err);
     if (err.response != undefined) {
       const errors = err.response.data.errors;
       if (errors) {
-        errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+        errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
       }
     }
 
     dispatch({
-      type: LOGIN_FAIL
+      type: LOGIN_FAIL,
     });
   }
 };
 
 // Logout / Clear Profile
-export const logout = () => dispatch => {
+export const logout = () => (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
   dispatch({ type: LOGOUT });
 };
 
-export const setPaidToTrue = () => async dispatch => {
+export const setPaidToTrue = () => async (dispatch) => {
   dispatch({
     type: BUY_SUCCESS,
-    payload: true
+    payload: true,
   });
 };

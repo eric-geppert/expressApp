@@ -36,6 +36,12 @@ router.post('/getCustomerDate', async (req, res) => {
   }
 });
 
+router.put('/setCustomerPlan', async (req, res) => {
+  User.findOneAndUpdate({ email: req.body.email }, { plan: req.body.plan })
+    .then(() => res.json({ success: true }))
+    .catch((err) => res.status(404).json({ success: false }));
+});
+
 router.get('/getIsCustomerDelinquent', async (req, res) => {
   try {
     let myCustomer = await stripe.customers.retrieve('cus_FvNKEiG1w8yUno');
@@ -102,7 +108,7 @@ router.post(
   '/',
   [
     check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Password is required').exists()
+    check('password', 'Password is required').exists(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -132,8 +138,8 @@ router.post(
       const payload = {
         user: {
           id: user.id,
-          email: user.email //set so can get customer profile info in stripe calls
-        }
+          email: user.email, //set so can get customer profile info in stripe calls
+        },
       };
 
       jwt.sign(
@@ -172,7 +178,7 @@ router.post('/charge', async (req, res) => {
       amount: 70,
       currency: 'usd',
       description: 'An example charge',
-      source: req.body
+      source: req.body,
     });
 
     res.json({ status });
@@ -193,7 +199,7 @@ router.post('/createProduct', async (req, res) => {
   try {
     let product = await stripe.products.create({
       name: 'monthy sub product',
-      type: 'service'
+      type: 'service',
     });
 
     res.json({ product });
@@ -207,7 +213,7 @@ router.post('/createDailyProduct', async (req, res) => {
   try {
     let product = await stripe.products.create({
       name: 'daily sub product',
-      type: 'service'
+      type: 'service',
     });
 
     res.json({ product });
@@ -225,10 +231,10 @@ router.post('/createPlan', async (req, res) => {
       interval: 'month',
       // product: 'prod_Fv4DqB50FbNbz0',
       product: 'prod_Fv1N6dgygh4RRo',
-      currency: 'usd'
+      currency: 'usd',
     });
     res.json({
-      status
+      status,
     }); /**be careful not to wrap both the original variable in {}
     as well as the response in {} you will get an empty response */
   } catch (err) {
@@ -246,12 +252,12 @@ router.post('/createSource', async (req, res) => {
         number: 4242424242424242,
         exp_month: 8,
         exp_year: 2020,
-        cvc: 330
+        cvc: 330,
       },
       currency: 'usd',
       owner: {
-        email: 'jenny.rosen@example.com'
-      }
+        email: 'jenny.rosen@example.com',
+      },
     });
     res.json({ source });
   } catch (err) {
@@ -264,7 +270,7 @@ router.post('/createCustomer', async (req, res) => {
     const customer = await stripe.customers.create({
       // id: req.body.email,
       email: req.body.email, //'jenny.rosen1@example.com',
-      source: req.body.source //'src_1FPAmPJTpKSfmpF2HMLziYGq'
+      source: req.body.source, //'src_1FPAmPJTpKSfmpF2HMLziYGq'
     });
     // console.log('customer id after creation: ' + customer.id);
     // console.log('customer: ', customer);
@@ -289,11 +295,11 @@ router.post('/createSubscription', async (req, res) => {
       // 'jenny.rosen1@example.com', //'test9999@fakeme.com', //'cus_FugkTmiN6rJ6ty', //fix to hardcoded email then redux?
       items: [
         {
-          plan: 'plan_FxJEuAl9bXXNo1' //monthly sub with nickname
+          plan: 'plan_FxJEuAl9bXXNo1', //monthly sub with nickname
           //'plan_Fv1PvlqBSb9m1l' //monthly sub plan
           //'plan_Fv4F81jmdHtesu' //daily sub product for testing
-        }
-      ]
+        },
+      ],
     });
     console.log('status');
     console.log(status);
@@ -310,7 +316,7 @@ router.post('/getAllCustomers', async (req, res) => {
     // console.log('inside getAllCustomers req.body.email: ', req.body.email);
 
     let allCustomers = await stripe.customers.list({
-      email: req.body.email
+      email: req.body.email,
       // email: 'a18@me.com'
     });
 
@@ -328,7 +334,7 @@ router.put('/unsubscribe', async (req, res) => {
   try {
     console.log('in unsub endpoint req.body: ', req.body);
     let unsub = await stripe.subscriptions.update(req.body, {
-      cancel_at_period_end: true
+      cancel_at_period_end: true,
     });
 
     res.json({ unsub });

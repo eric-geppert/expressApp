@@ -26,6 +26,7 @@ import Testimonials from '../../tabs/Testimonials2';
 import RadioButtonParent from '../../components/gymComponents/RadioButtonParent';
 import CheckoutPage from '../../components/auth/CheckoutPage';
 import MyCalendar from '../../tabs/Calendar';
+import CalendarLandingPage from '../../tabs/CalendarLandingPage';
 
 const Routes = () => {
   return (
@@ -55,7 +56,7 @@ const Routes = () => {
         <Route exact path='/Testimonials' component={Testimonials} />
         <Route exact path='/FindMyProgram' component={RadioButtonParent} />
         <Route exact path='/CheckoutPage' component={CheckoutPage} />
-        <Route exact path='/Calendar' component={MyCalendar} />
+        <Route exact path='/Calendar' component={CalendarLandingPage} />
         <Route component={NotFound} />
       </Switch>
     </section>
