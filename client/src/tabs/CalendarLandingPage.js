@@ -18,11 +18,8 @@ class CalendarLandingPage extends Component {
 --------
 1. assume know and make component
 */
-
-  /**todo: could abstract this out elsewhere. to the backend? how would that work with redux if in the backend? */
-  onSubmit = (workoutPlan) => async (dispatch) => {
-    console.log('clicked');
-    this.setState({ plan: workoutPlan });
+  async asyncHelper(workoutPlan) {
+    console.log('workoutPlan in async landingpage: ', workoutPlan);
     try {
       const config = {
         headers: {
@@ -44,11 +41,17 @@ class CalendarLandingPage extends Component {
       console.error('caught error');
       return err;
     }
-    dispatch({
-      type: SET_PLAN,
-      payload: workoutPlan,
-    });
-  };
+  }
+  /**todo: could abstract this out elsewhere. to the backend? how would that work with redux if in the backend? */
+  onSubmit(workoutPlan) {
+    console.log('clicked');
+    this.setState({ plan: workoutPlan });
+    this.asyncHelper(workoutPlan);
+    // dispatch({
+    //   type: SET_PLAN,
+    //   payload: workoutPlan,
+    // });
+  }
 
   componentWillMount() {
     if (this.props.auth.user != null) {
