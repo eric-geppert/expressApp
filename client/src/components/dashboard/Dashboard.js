@@ -14,13 +14,13 @@ const Dashboard = ({
   deleteAccount,
   unsubscribeMe,
   auth: { user },
-  profile: { profile, loading }
+  profile: { profile, loading },
 }) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
 
-  return loading && profile === null ? (
+  return loading || profile === null ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -116,16 +116,16 @@ Dashboard.propTypes = {
   deleteAccount: PropTypes.func.isRequired,
   unsubscribeMe: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
-  profile: state.profile
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, {
   getCurrentProfile,
   deleteAccount,
-  unsubscribeMe
+  unsubscribeMe,
 })(Dashboard);

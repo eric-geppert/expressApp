@@ -16,10 +16,36 @@ import {
 import setAuthToken from '../utils/setAuthToken';
 
 //----
-export const setPlan = (plan) => async (dispatch) => {
+export const setPlan = (workoutPlan, emailInput) => async (dispatch) => {
+  console.log('in Auth calling disp');
+  console.log('in Auth workoutPlan:', workoutPlan);
+
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    // export const setPlan = (workoutPlan, emailInput) => async (dispatch) => {
+    const body = JSON.stringify({
+      email: emailInput,
+      // email: this.props.auth.user.email,
+      plan: workoutPlan,
+    });
+    await axios
+      .put('api/auth/setCustomerPlan', body, config)
+      .then((response) => {
+        console.log('response', response);
+        //todo: check if successful
+      });
+  } catch (err) {
+    console.error('caught error');
+    return err;
+  }
+
   dispatch({
     type: SET_PLAN,
-    payload: plan,
+    payload: workoutPlan,
   });
 };
 
