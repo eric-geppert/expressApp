@@ -472,9 +472,7 @@
       { "content": "Rowing Sprints- " },
       { "content": "8 rounds- " },
       { "content": "250m/200m row " },
-      { "content": "~ rest 90 min" },
-      { "content": "null" },
-      { "content": "null" }
+      { "content": "~ rest 90 min" }
     ]
   },
   {
@@ -506,8 +504,7 @@
       },
       { "content": "8 Push-ups " },
       { "content": "6 Pullups (scale to jumping pullups) " },
-      { "content": "(Time Cap: 12 min) " },
-      { "content": "null" }
+      { "content": "(Time Cap: 12 min) " }
     ]
   },
   {
@@ -522,10 +519,7 @@
       {
         "content": "20 Double DB Deadlifts L1: (50/35) L2: (40/25) L3: (30/20) "
       },
-      { "content": "16 Double DB Box Step Overs (53/35) (24/20) " },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" }
+      { "content": "16 Double DB Box Step Overs (53/35) (24/20) " }
     ]
   },
   {
@@ -540,8 +534,7 @@
       { "content": "30 Snatches (75/45) ~30% " },
       { "content": "30 Snatches (135/75) ~ 55% " },
       { "content": "30 Snatches (165/100) ~65% " },
-      { "content": "Max Snatches (210/120) ~85% " },
-      { "content": "null" }
+      { "content": "Max Snatches (210/120) ~85% " }
     ]
   },
   {
@@ -556,8 +549,7 @@
       { "content": "25 Toes to Bar " },
       { "content": "50 KB Swings" },
       { "content": "25 Toes to Ba" },
-      { "content": "(Time Cap: 12 min)" },
-      { "content": "null" }
+      { "content": "(Time Cap: 12 min)" }
     ]
   },
   {
@@ -571,9 +563,7 @@
       { "content": "10 Alt DB Snatch ​L1: (50/35) L2: (40/25) L3: (30/20) " },
       { "content": "10 SA OH DB Squat " },
       { "content": "10 Chest to Bar Pullups " },
-      { "content": "(Time Cap: 15 min)" },
-      { "content": "null" },
-      { "content": "null" }
+      { "content": "(Time Cap: 15 min)" }
     ]
   },
   {
@@ -588,8 +578,7 @@
       { "content": "15/10 Cal Bike " },
       { "content": "200m run " },
       { "content": "~rest 2 min " },
-      { "content": "(Time Cap: 14 min) " },
-      { "content": "null" }
+      { "content": "(Time Cap: 14 min) " }
     ]
   },
   {
@@ -608,8 +597,7 @@
         "content": "20 Double DB Power Cleans L1: (50/35) L2: (40/25) L3: (30/20) "
       },
       { "content": "20 Toes to Bar " },
-      { "content": "(Time Cap: 18 min)" },
-      { "content": "null" }
+      { "content": "(Time Cap: 18 min)" }
     ]
   },
   {
@@ -623,9 +611,7 @@
       { "content": "7 min AMRAP: " },
       { "content": "10 Overhead Squats L1: (95/65) L2: (75/55) L3: (55/35) " },
       { "content": "8 Thrusters L1: (95/65) L2: (75/55) L3: (55/35) " },
-      { "content": "30 Double Unders " },
-      { "content": "null" },
-      { "content": "null" }
+      { "content": "30 Double Unders " }
     ]
   },
   {
@@ -656,8 +642,7 @@
       { "content": "~rest 90 sec " },
       { "content": "200m run " },
       { "content": "~rest 1 min " },
-      { "content": "(Time Cap: 20 min)" },
-      { "content": "null" }
+      { "content": "(Time Cap: 20 min)" }
     ]
   },
   {
@@ -672,8 +657,7 @@
       { "content": "15/10 Cal Bike " },
       { "content": "12 Double DB Snatch L1: (50/35) L2: (40/25) L3: (30/20) " },
       { "content": "~rest 2 min " },
-      { "content": "(Time Cap: 15 min)" },
-      { "content": "null" }
+      { "content": "(Time Cap: 15 min)" }
     ]
   },
   {
@@ -709,9 +693,7 @@
       {
         "content": "9 Ring Muscle Ups (Scale to C2B, BMU, Pulllups, Ring rows)"
       },
-      { "content": "(Time Cap: 14 min) " },
-      { "content": "null" },
-      { "content": "null" }
+      { "content": "(Time Cap: 14 min) " }
     ]
   },
   {
@@ -747,9 +729,7 @@
       { "content": "21-15-9 " },
       { "content": "Power Clean L1: (135/95) L2: (115/75) L3: (95/65) " },
       { "content": "Ring Dips (add band if needed or toes on ground) " },
-      { "content": "(Time Cap: 12 min) " },
-      { "content": "null" },
-      { "content": "null" }
+      { "content": "(Time Cap: 12 min) " }
     ]
   },
   {
@@ -810,127 +790,117 @@
     "contentwrapper": [
       { "content": "-Lift" },
       { "content": "Work up to a 1 RM Strict Press " },
+      { "content": "~then~ " },
+      { "content": "-25% for 3 sets of 3 " },
       { "content": "-WOD:" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" }
+      { "content": "7 min AMRAP: " },
+      { "content": "7 C2B " },
+      { "content": "9 KBS L1: (53/35) L2: (45/26) L3: (35/18) " },
+      { "content": "11 Wall Balls L1: (20/14) L2: (14/10) L3: (10/8) " }
     ]
   },
   {
     "title": "HIIT Day 53",
     "contentwrapper": [
       { "content": "-Lift" },
-      { "content": "null" },
+      { "content": "Work up to a 1 RM Squat Clean " },
       { "content": "-WOD:" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" }
+      { "content": "15-12-9 " },
+      { "content": "HSPU" },
+      { "content": "Box Jump Overs (30/24) " },
+      { "content": "~rest 1 min " },
+      { "content": "25 Thrusters ​L1: (95/65) L2: (75/55) L3: (55/35) " },
+      { "content": "1000m row " },
+
+      { "content": "(Time Cap: 15 min) " }
     ]
   },
   {
     "title": "HIIT Day 54",
     "contentwrapper": [
       { "content": "-Lift" },
-      { "content": "null" },
+      { "content": "Deadlift: " },
+      { "content": "2 sets of 3 @ 80-85%" },
+      { "content": "2 sets of 2 @ 85-90%" },
+      { "content": "2 sets of 1 @ 90-95% " },
       { "content": "-WOD:" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" }
+      { "content": "Bike Sprints: " },
+      { "content": "3 rounds- " },
+      { "content": "30/20 Cal Bike all out (or max cals in 2 min) " },
+      { "content": "~rest 3 min " }
     ]
   },
   {
     "title": "HIIT Day 55",
     "contentwrapper": [
       { "content": "-Lift" },
-      { "content": "null" },
+      { "content": "Work up to a heavy single on Back Squat " },
       { "content": "-WOD:" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" }
+      { "content": "4 rounds- " },
+      {
+        "content": "16 Reverse Single Arm OH DB Lunges L1: (50/35) L2: (40/25) L3: (30/20) "
+      },
+      { "content": "16 DB Alt Power Snatch " },
+      { "content": "(Time Cap: 10 min)" }
     ]
   },
   {
     "title": "HIIT Day 56",
     "contentwrapper": [
       { "content": "-Lift" },
-      { "content": "null" },
+      { "content": "Work up to a 1RM Squat Snatch " },
       { "content": "-WOD:" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" }
+      { "content": "For Time: " },
+      { "content": "60/40 Cal Row " },
+      { "content": "50 Bar Facing Burpees " },
+      { "content": "40 Toes to Bar " },
+      { "content": "(Time Cap: 16 min) " }
     ]
   },
   {
     "title": "HIIT Day 57",
     "contentwrapper": [
       { "content": "-Lift" },
-      { "content": "null" },
+      { "content": "Work up to a 1 RM Bench Press" },
+      { "content": "~then~" },
+      { "content": "-25% for 3 sets of 3 " },
       { "content": "-WOD:" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" }
+      { "content": "12 min AMRAP: " },
+      { "content": "200m run" },
+      { "content": "15 Pushups" },
+      { "content": "10 KBS L1: (70/53) L2: (53/45) L3: (45/35) " },
+      { "content": "5 Ring Dips " }
     ]
   },
   {
     "title": "HIIT Day 58",
     "contentwrapper": [
       { "content": "-Lift" },
-      { "content": "null" },
+      { "content": "10 min Alt EMOM:" },
+      { "content": "Even: 3 Touch n Go Power Cleans @ 65-75" },
+      { "content": "Odd: 5-10 Bar Facing Burpee" },
       { "content": "-WOD:" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" }
+      { "content": "10 min AMRAP: " },
+      { "content": "9 Thrusters L1: (95/65) L2: (75/55) L3: (55/35) " },
+      { "content": "35 Double Unders " }
     ]
   },
   {
     "title": "HIIT Day 59",
     "contentwrapper": [
       { "content": "-Lift" },
-      { "content": "null" },
+      { "content": "Deadlift:" },
+      { "content": "Work up to a heavy single on Deadlift " },
       { "content": "-WOD:" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" },
-      { "content": "null" }
+      { "content": "21-15-9 " },
+      { "content": "Wall Balls L1: (30/20) L2: (20/14) L3: (14/10)" },
+      { "content": "Box Jump Overs (24/20) " },
+      { "content": "(Time Cap: 10 min) " },
+      { "content": "~rest 2 min " },
+      { "content": "2 min max Wall Balls " },
+      { "content": "~rest 2 min " },
+      { "content": "2 min max Box Jump Overs" },
+      { "content": "(Max of 18 min total)" }
     ]
   }
 ]
