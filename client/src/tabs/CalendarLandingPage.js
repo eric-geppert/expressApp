@@ -39,7 +39,12 @@ export const CalendarLandingPage = ({ setPlan, auth }) => {
           >
             At Home Total Body
           </button>
-          <button> Option 3 </button>
+          <button
+            className='btn btn-primary'
+            onClick={() => helperFunction('MUSCLE')}
+          >
+            Build Muscle and Size
+          </button>
           <button> Option 4 </button>
           <button> Option 5 </button>
         </div>

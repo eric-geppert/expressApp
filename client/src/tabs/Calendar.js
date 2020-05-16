@@ -4,6 +4,7 @@ import moment from 'moment';
 import TemplateWorkouts from '../resources/TemplateWorkouts.json';
 import HIITWorkouts from '../resources/HIITWorkouts.json';
 import HomeWorkouts from '../resources/AtHomeTotalBody.json';
+import MuscleWorkouts from '../resources/BuildMuscleAndSize.json';
 
 // import { getDateUserStarted } from '../components/gymComponents/GetDateUserStarted';
 import { connect } from 'react-redux';
@@ -46,6 +47,8 @@ class MyCalendar extends Component {
         return HIITWorkouts;
       case 'HOME':
         return HomeWorkouts;
+      case 'MUSCLE':
+        return MuscleWorkouts;
       case null:
         return null;
       default:
@@ -172,9 +175,9 @@ class MyCalendar extends Component {
           {/* this.setState({ selected: null })> */}
           Back to Calendar view
         </button>
-        <h2> {this.state.selected.title}</h2>
+        <h2 style={{ paddingTop: '30px' }}> {this.state.selected.title}</h2>
         {this.renderWorkouts()}
-        <p>
+        <p style={{ paddingTop: '30px' }}>
           Note: Choose a weight that is difficult but achievable for the # of
           reps being performed. The goal is to increase weight as the reps
           decrease.
