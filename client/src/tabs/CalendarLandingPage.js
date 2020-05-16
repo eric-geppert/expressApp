@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react'; //had Component
 import { connect } from 'react-redux';
 import Calendar from './Calendar';
-import { setPlan } from './../actions/auth';
+import { setPlan, canView } from './../actions/auth';
 import { Link } from 'react-router-dom';
 
 export const CalendarLandingPage = ({ setPlan, auth }) => {
@@ -12,8 +12,18 @@ export const CalendarLandingPage = ({ setPlan, auth }) => {
   console.log('auth from destructuring: ', auth);
   const { plan } = formData;
   const helperFunction = (workoutPlan) => {
-    setPlan(workoutPlan, auth.user.email);
-    setFormData({ ...formData, plan: workoutPlan });
+    // if(canView(auth.user.email))
+    //trying without canView to see if I need it
+    if (auth.paid === true) {
+      console.log('paid good to see whole workout: ');
+      setPlan(workoutPlan, auth.user.email);
+      setFormData({ ...formData, plan: workoutPlan });
+    } else {
+      const workoutTrial = workoutPlan + 'trial';
+      console.log('not paid workoutTrial: ', workoutTrial);
+      setPlan(workoutTrial, auth.user.email);
+      setFormData({ ...formData, plan: workoutTrial });
+    }
   };
 
   return auth.user != null ? (
@@ -74,4 +84,6 @@ export const CalendarLandingPage = ({ setPlan, auth }) => {
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
-export default connect(mapStateToProps, { setPlan })(CalendarLandingPage);
+export default connect(mapStateToProps, { setPlan, canView })(
+  CalendarLandingPage
+);

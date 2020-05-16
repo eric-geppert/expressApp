@@ -3,8 +3,11 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import TemplateWorkouts from '../resources/TemplateWorkouts.json';
 import HIITWorkouts from '../resources/HIITWorkouts.json';
+import HIITWorkoutsTrial from '../resources/HIITWorkoutsTrial.json';
 import HomeWorkouts from '../resources/AtHomeTotalBody.json';
+import HomeWorkoutsTrial from '../resources/AtHomeTotalBodyTrial.json';
 import MuscleWorkouts from '../resources/BuildMuscleAndSize.json';
+import MuscleWorkoutsTrial from '../resources/BuildMuscleAndSizeTrial.json';
 
 // import { getDateUserStarted } from '../components/gymComponents/GetDateUserStarted';
 import { connect } from 'react-redux';
@@ -43,6 +46,12 @@ class MyCalendar extends Component {
 
   findWorkoutOption(shortPlan) {
     switch (shortPlan) {
+      case 'HIITtrial':
+        return HIITWorkoutsTrial;
+      case 'HOMEtrial':
+        return HomeWorkoutsTrial;
+      case 'MUSCLEtrial':
+        return MuscleWorkoutsTrial;
       case 'HIIT':
         return HIITWorkouts;
       case 'HOME':
