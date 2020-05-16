@@ -8,6 +8,7 @@ import Spinner from '../layout/Spinner';
 // import Education from './Education';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 import { unsubscribeMe } from '../../actions/auth';
+import CheckoutPage from '../auth/CheckoutPage';
 
 const Dashboard = ({
   getCurrentProfile,
@@ -75,10 +76,6 @@ const Dashboard = ({
               You have successfully logged in would you like to purchase the
               full version of all our workout plans?
             </p>
-            <p>In the mean time view our sample programs here.</p>
-            <Link to='/findMyProgram' className='btn btn-primary my-1'>
-              Sameple Programs
-            </Link>
             <Link to='/CheckoutPage' className='btn btn-primary my-1'>
               Buy Full Programs
             </Link>
@@ -105,7 +102,22 @@ const Dashboard = ({
           </Fragment>
         </Fragment>
       ) : (
-        <p>you dont seem to have a profile yet, subscribe to create one!</p>
+        <Fragment>
+          <h3 style={{ paddingBottom: '30px' }}>
+            {' '}
+            Subscribe to unlock all workouts, and see your profile!
+          </h3>
+          <CheckoutPage />
+          <p style={{ paddingTop: '30px' }}>
+            In the mean time you can view our sample programs here.
+          </p>
+          <Link to='/findMyProgram' className='btn btn-primary my-1'>
+            Sameple Programs (pdfs)
+          </Link>
+          <Link to='/Calendar' className='btn btn-primary my-1'>
+            Sameple Programs (in Calendar format)
+          </Link>
+        </Fragment>
       )}
     </Fragment>
   );

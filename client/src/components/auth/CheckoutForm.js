@@ -20,19 +20,19 @@ class CheckoutForm extends Component {
       let idToBePassed = token.id;
       const body = JSON.stringify({
         email: this.props.user.email,
-        source: idToBePassed
+        source: idToBePassed,
       });
 
       let response = await fetch('api/auth/createCustomer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body
-      }).then(response => response.json());
+        body,
+      }).then((response) => response.json());
 
       const res2 = await fetch('api/auth/createSubscription', {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain' },
-        body: response.customer.id
+        body: response.customer.id,
       });
       if (res2.status === 200) {
         this.setState({ complete: true });
@@ -51,7 +51,7 @@ class CheckoutForm extends Component {
     if (this.state.complete)
       return (
         <Fragment>
-          <Redirect to='/FindMyProgram' />
+          <Redirect to='/Calendar' />
         </Fragment>
       );
 
@@ -67,12 +67,11 @@ class CheckoutForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  user: state.auth.user
+  user: state.auth.user,
 });
 
-export default connect(
-  mapStateToProps,
-  { setAlert, setPaidToTrue }
-)(injectStripe(CheckoutForm));
+export default connect(mapStateToProps, { setAlert, setPaidToTrue })(
+  injectStripe(CheckoutForm)
+);

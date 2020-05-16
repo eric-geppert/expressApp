@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import TemplateWorkouts from '../resources/TemplateWorkouts.json';
@@ -158,7 +158,12 @@ class MyCalendar extends Component {
         </div>
       ) : (
         /**if nothing selected but Has startDate */
-        <div>{this.setEvents()}</div>
+        <Fragment>
+          <h3 style={{ paddingBottom: '30px' }}>
+            Double click on any event to view it.{' '}
+          </h3>
+          <div>{this.setEvents()}</div>
+        </Fragment>
       )
     ) : (
       /** if something is selected */
