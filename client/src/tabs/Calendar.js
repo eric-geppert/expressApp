@@ -3,6 +3,8 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import TemplateWorkouts from '../resources/TemplateWorkouts.json';
 import HIITWorkouts from '../resources/HIITWorkouts.json';
+import HomeWorkouts from '../resources/AtHomeTotalBody.json';
+
 // import { getDateUserStarted } from '../components/gymComponents/GetDateUserStarted';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -38,15 +40,29 @@ class MyCalendar extends Component {
     return workoutArr;
   };
 
+  findWorkoutOption(shortPlan) {
+    switch (shortPlan) {
+      case 'HIIT':
+        return HIITWorkouts;
+      case 'HOME':
+        return HomeWorkouts;
+      case null:
+        return null;
+      default:
+        console.log('WorkoutPlan passed does not exist'); //todo change to HIIT?
+    }
+  }
+
   setEvents = () => {
     console.log('zzz: ', this.state.dateStarted);
     const currentlyOnDay = this.state.dateStarted;
     var eventArr = [];
     console.log('Calendar this.props.plan: ', this.props.plan);
-    var newWorkouts = null;
-    if (this.props.plan == 'HIIT') {
-      newWorkouts = HIITWorkouts;
-    }
+    var newWorkouts = this.findWorkoutOption(this.props.plan);
+    // if (this.props.plan == 'HIIT') {
+    //   newWorkouts = HIITWorkouts;
+    // }
+
     newWorkouts.forEach(function (element, index) {
       eventArr.push({
         start:
@@ -158,6 +174,11 @@ class MyCalendar extends Component {
         </button>
         <h2> {this.state.selected.title}</h2>
         {this.renderWorkouts()}
+        <p>
+          Note: Choose a weight that is difficult but achievable for the # of
+          reps being performed. The goal is to increase weight as the reps
+          decrease.
+        </p>
       </div>
     );
   }

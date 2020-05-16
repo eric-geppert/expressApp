@@ -1,0 +1,661 @@
+[
+  {
+    "title": "Build Muscle Day 1 -Chest ",
+    "contentwrapper": [
+      { "content": "Bench Press: 5 sets of 5 reps DB Bench " },
+      { "content": "Press: 4 sets of 15 reps Incline Bench " },
+      { "content": "Press: 4 sets of 15 reps DB Bench " },
+      { "content": "Chest Flyes: 4 sets of 15 reps " },
+      { "content": "Pushups: 4 sets of 8 " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 2 - Back",
+    "contentwrapper": [
+      {
+        "content": "Deadlift: 5 sets of 5 reps Barbell Bent Rows: 4 sets of 15 reps "
+      },
+      { "content": "Seated Cable Row: 4 sets of 15 reps " },
+      {
+        "content": "Single Arm Dumbbell Lawnmower Row: 4 sets of 15 reps ea arm "
+      }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 3 -Legs/Core ",
+    "contentwrapper": [
+      { "content": "Back Squat: 5 sets of 5 reps " },
+      { "content": "Hack Squat: 4 sets of 15 reps " },
+      { "content": "Leg Press: 4 sets of 15 reps " },
+      { "content": "Hamstring Curl Machine: 4 sets of 15 reps " },
+      { "content": "Hollow Body Holds on Ground: 4 sets of 10-15sec " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 4 - Shoulders ",
+    "contentwrapper": [
+      { "content": "Strict Press: 5 sets of 5 reps " },
+      { "content": "DB Strict Press: 4 sets of 15 reps " },
+      { "content": "DB Arnold Press: 4 sets of 15 reps " },
+      { "content": "DB Lateral Shoulder Raise: 4 sets of 15 reps " }
+    ]
+  },
+
+  {
+    "title": "Build Muscle Day 5 - Arms/Core ",
+    "contentwrapper": [
+      { "content": "DB Bicep Curls (both arms): 4 sets of 15 reps " },
+      { "content": "EZ Bar Preacher Curl: 4 sets of 15 reps " },
+      { "content": "DB Overhead Triceps Extensions: 4 sets of 15 reps " },
+      { "content": "EZ Bar Skullcrushers: 4 sets of 15 reps " },
+      { "content": "Hanging Strict Leg Raises: 4 sets of 8 reps " },
+      { "content": "Weighted Situps: 4 sets of 15 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 6 -Chest ",
+    "contentwrapper": [
+      { "content": "Bench Press: 6 sets of 4 reps " },
+      { "content": "DB Bench Press: 4 sets of 12 reps " },
+      { "content": "Incline Bench Press: 4 sets of 12 reps " },
+      { "content": "DB Bench Chest Flyes: 4 sets of 12 reps " },
+      { "content": "Pushups: 4 sets of 10 " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 7 - Back ",
+    "contentwrapper": [
+      { "content": "Deadlift: 6 sets of 4 reps " },
+      { "content": "Barbell Bent Rows: 4 sets of 12 reps " },
+      { "content": "Seated Cable Row: 4 sets of 12 reps " },
+      {
+        "content": "Single Arm Dumbbell Lawnmower Row: 4 sets of 12 reps ea arm "
+      }
+    ]
+  },
+
+  {
+    "title": "Build Muscle Day 8 -Legs/Core ",
+    "contentwrapper": [
+      { "content": "Back Squat: 6 sets of 4 reps " },
+      { "content": "Hack Squat: 4 sets of 12 reps " },
+      { "content": "Leg Press: 4 sets of 12 reps " },
+      { "content": "Hamstring Curl Machine: 4 sets of 12 reps " },
+      { "content": "Hollow Body Holds on Ground: 4 sets of 15-20 sec " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 9 - Shoulders ",
+    "contentwrapper": [
+      { "content": "Strict Press: 6 sets of 4 reps " },
+      { "content": "DB Strict Press: 4 sets of 12 reps " },
+      { "content": "DB Arnold Press: 4 sets of 12 reps " },
+      { "content": "DB Lateral Shoulder Raise: 4 sets of 12 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 10 - Arms/Core ",
+    "contentwrapper": [
+      { "content": "DB Bicep Curls (both arms): 4 sets of 12 reps " },
+      { "content": "EZ Bar Preacher Curl: 4 sets of 12 reps " },
+      { "content": "DB Overhead Triceps Extensions: 4 sets of 12 reps " },
+      { "content": "EZ Bar Skullcrushers: 4 sets of 12 reps " },
+      { "content": "Hanging Strict Leg Raises: 4 sets of 10 reps " },
+      { "content": "Weighted Situps: 4 sets of 12 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 11 -Chest ",
+    "contentwrapper": [
+      { "content": "Bench Press: 5 sets of 3 reps " },
+      { "content": "DB Bench Press: 4 sets of 10 reps " },
+      { "content": "Incline Bench Press: 4 sets of 10 reps " },
+      { "content": "DB Bench Chest Flyes: 4 sets of 10 reps " },
+      { "content": "Pushups: 4 sets of 12 " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 12 - Back ",
+    "contentwrapper": [
+      { "content": "Deadlift: 5 sets of 3 reps " },
+      { "content": "Barbell Bent Rows: 4 sets of 10 reps " },
+      { "content": "Seated Cable Row: 4 sets of 10 reps " },
+      {
+        "content": "Single Arm Dumbbell Lawnmower Row: 4 sets of 10 reps ea arm "
+      }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 13 -Legs/Core ",
+    "contentwrapper": [
+      { "content": "Back Squat: 5 sets of 3 reps " },
+      { "content": "Hack Squat: 4 sets of 10 reps " },
+      { "content": "Leg Press: 4 sets of 10 reps " },
+      { "content": "Hamstring Curl Machine: 4 sets of 10 reps " },
+      { "content": "Hollow Body Holds on Ground: 4 sets of 20-25 sec " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 14 - Shoulders ",
+    "contentwrapper": [
+      { "content": "Strict Press: 5 sets of 3reps " },
+      { "content": "DB Strict Press: 4 sets of 10 reps " },
+      { "content": "DB Arnold Press: 4 sets of 10 reps " },
+      { "content": "DB Lateral Shoulder Raise: 4 sets of 10 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 15 - Arms/Core ",
+    "contentwrapper": [
+      { "content": "DB Bicep Curls (both arms): 4 sets of 10 reps " },
+      { "content": "EZ Bar Preacher Curl: 4 sets of 10 reps " },
+      { "content": "DB Overhead Triceps Extensions: 4 sets of 10 reps " },
+      { "content": "EZ Bar Skullcrushers: 4 sets of 10 reps " },
+      { "content": "Hanging Strict Leg Raises: 4 sets of 12 reps " },
+      { "content": "Weighted Situps: 4 sets of 10 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 16 -Chest ",
+    "contentwrapper": [
+      { "content": "Bench Press: 5 sets of 2 reps " },
+      { "content": "DB Bench Press: 4 sets of 8 reps " },
+      { "content": "Incline Bench Press: 4 sets of 8 reps " },
+      { "content": "DB Bench Chest Flyes: 4 sets of 8 reps " },
+      { "content": "Pushups: 4 sets of 15 " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 17 - Back ",
+    "contentwrapper": [
+      { "content": "Deadlift: 5 sets of 2 reps " },
+      { "content": "Barbell Bent Rows: 4 sets of 8 reps " },
+      { "content": "Seated Cable Row: 4 sets of 8 reps " },
+      {
+        "content": "Single Arm Dumbbell Lawnmower Row: 4 sets of 8 reps ea arm "
+      }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 18 -Legs/Core ",
+    "contentwrapper": [
+      { "content": "Back Squat: 5 sets of 2 reps " },
+      { "content": "Hack Squat: 4 sets of 8 reps " },
+      { "content": "Leg Press: 4 sets of 8 reps " },
+      { "content": "Hamstring Curl Machine: 4 sets of 8 reps " },
+      { "content": "Hollow Body Holds on Ground: 4 sets of 25-30 sec " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 19 - Shoulders ",
+    "contentwrapper": [
+      { "content": "Strict Press: 5 sets of 2 reps " },
+      { "content": "DB Strict Press: 4 sets of 8 reps " },
+      { "content": "DB Arnold Press: 4 sets of 8 reps " },
+      { "content": "DB Lateral Shoulder Raise: 4 sets of 8 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 20 - Arms/Core ",
+    "contentwrapper": [
+      { "content": "DB Bicep Curls (both arms): 4 sets of 8 reps " },
+      { "content": "EZ Bar Preacher Curl: 4 sets of 8 reps " },
+      { "content": "DB Overhead Triceps Extensions: 4 sets of 8 reps" },
+      { "content": " EZ Bar Skullcrushers: 4 sets of 8 reps " },
+      { "content": "Hanging Strict Leg Raises: 4 sets of 15 reps " },
+      { "content": "Weighted Situps: 4 sets of 8 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 21 -Chest ",
+    "contentwrapper": [
+      { "content": "Close Grip Bench Press: 5 sets of 5 reps " },
+      { "content": "Decline Bench Press: 4 sets of 15 reps " },
+      { "content": "DB Chest Pullovers: 4 sets of 15 reps " },
+      { "content": "Cable Chest Flyes: 4 sets of 15 reps " },
+      { "content": "Diamond Pushups: 4 sets of 8 " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 22 - Back ",
+    "contentwrapper": [
+      { "content": "Bent Rows: 5 sets of 5 reps " },
+      { "content": "Cable Lat Pulldowns: 4 sets of 15 reps " },
+      { "content": "Seated Cable Row: 4 sets of 15 reps " },
+      { "content": "Double Dumbbell Bent Row: 4 sets of 15 reps ea arm " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 23 -Legs/Core ",
+    "contentwrapper": [
+      { "content": "Barbell Reverse Lunges: 5 sets of 10 reps ea leg " },
+      { "content": "Front Squat: 4 sets of 15 reps " },
+      { "content": "Leg Press: 4 sets of 15 reps " },
+      { "content": "Hamstring Curl Machine: 4 sets of 15 reps" },
+      { "content": "Leg Extension Machine: 4 sets of 15 reps " },
+      { "content": "V-ups: 4 sets of 8 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 24 - Shoulder ",
+    "contentwrapper": [
+      { "content": "Push Press: 5 sets of 5 reps " },
+      { "content": "DB Strict Press: 4 sets of 15 reps " },
+      { "content": "DB Front Raise: 4 sets of 15 reps " },
+      { "content": "DB Lateral Shoulder Raise: 4 sets of 15 reps " },
+      { "content": "DB Rear Delt Raise: 4 sets of 15 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 25 - Arms/Core ",
+    "contentwrapper": [
+      { "content": "Barbell Bicep Curls: 4 sets of 15 reps " },
+      { "content": "EZ Bar Preacher Curl: 4 sets of 15 reps " },
+      { "content": "DB Hammer Curls: 4 sets of 15 reps " },
+      {
+        "content": "DB Overhead Triceps Extensions: 4 sets of 15 reps Barbell Skullcrushers: 4 sets of 15 reps "
+      },
+      { "content": "Cable Triceps Extensions: 4 sets of 15 reps " },
+      { "content": "Decline Situps: 4 sets of 8 reps " },
+      { "content": "Weighted Russian Twists: 4 sets of 50 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 26 -Chest ",
+    "contentwrapper": [
+      { "content": "Close Grip Bench Press: 6 sets of 4 reps " },
+      { "content": "Decline Bench Press: 4 sets of 12 reps " },
+      { "content": "DB Chest Pullovers: 4 sets of 12 reps " },
+      { "content": "Cable Chest Flyes: 4 sets of 12 reps " },
+      { "content": "Diamond Pushups: 4 sets of 10 " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 27 - Back ",
+    "contentwrapper": [
+      { "content": "Bent Rows: 6 sets of 4reps " },
+      { "content": "Cable Lat Pulldowns: 4 sets of 12 reps " },
+      { "content": "Seated Cable Row: 4 sets of 12 reps " },
+      { "content": "Double Dumbbell Bent Row: 4 sets of 12 reps eaarm " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 28 -Legs/Core ",
+    "contentwrapper": [
+      { "content": "Barbell Reverse Lunges: 5 sets of 8 reps ealeg " },
+      { "content": "Front Squat: 4 sets of 12 reps " },
+      { "content": "Leg Press: 4 sets of 12 reps " },
+      { "content": "Hamstring Curl Machine: 4 sets of 12 reps " },
+      { "content": "Leg Extension Machine: 4 sets of 12 reps " },
+      { "content": "V-ups: 4 sets of 10 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 29 - Shoulders ",
+    "contentwrapper": [
+      { "content": "Push Press: 6 sets of 4 reps " },
+      { "content": "DB Strict Press: 4 sets of 12 reps " },
+      { "content": "DB Front Raise: 4 sets of 12 reps " },
+      { "content": "DB Lateral Shoulder Raise: 4 sets of 12 reps " },
+      { "content": "DB Rear Delt Raise: 4 sets of 12 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 30 - Arms/Core ",
+    "contentwrapper": [
+      { "content": "Barbell Bicep Curls: 4 sets of 12 reps" },
+      { "content": "EZ Bar Preacher Curl: 4 sets of 12 reps " },
+      { "content": "DB Hammer Curls: 4 sets of 12 reps " },
+      { "content": "DB Overhead Triceps Extensions: 4 sets of 12 reps " },
+      { "content": "Barbell Skullcrushers: 4 sets of 12 reps " },
+      { "content": "Cable Triceps Extensions: 4 sets of 12 reps " },
+      { "content": "Decline Situps: 4 sets of 10 reps " },
+      { "content": "Weighted Russian Twists: 4 sets of 50 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 31 -Chest ",
+    "contentwrapper": [
+      { "content": "Close Grip Bench Press: 5 sets of 3 reps " },
+      { "content": "Decline Bench Press: 4 sets of 10reps " },
+      { "content": "DB Chest Pullovers: 4 sets of 10 reps " },
+      { "content": "Cable Chest Flyes: 4 sets of 10 reps " },
+      { "content": "Diamond Pushups: 4 sets of 12 " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 32 - Back ",
+    "contentwrapper": [
+      { "content": "Bent Rows: 5 sets of 3 reps " },
+      { "content": "Cable Lat Pulldowns: 4 sets of 10 reps " },
+      { "content": "Seated Cable Row: 4 sets of 10 reps " },
+      { "content": "Double Dumbbell Bent Row: 4 sets of 10 reps ea arm " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 33 -Legs/Core ",
+    "contentwrapper": [
+      { "content": "Barbell Reverse Lunges: 5 sets of 6 reps ealeg " },
+      { "content": "Front Squat: 4 sets of 10 reps " },
+      { "content": "Leg Press: 4 sets of 10 reps " },
+      { "content": "Hamstring Curl Machine: 4 sets of 10 reps " },
+      { "content": "Leg Extension Machine: 4 sets of 10 reps " },
+      { "content": "V-ups: 4 sets of 12 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 34 - Shoulders ",
+    "contentwrapper": [
+      { "content": "Push Press: 5 sets of 3 reps " },
+      { "content": "DB Strict Press: 4 sets of 10 reps " },
+      { "content": "DB Front Raise: 4 sets of 10 reps " },
+      { "content": "DB Lateral Shoulder Raise: 4 sets of 10 reps " },
+      { "content": "DB Rear Delt Raise: 4 sets of 10 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 35 - Arms/Core ",
+    "contentwrapper": [
+      { "content": "Barbell Bicep Curls: 4 sets of 10 reps " },
+      { "content": "EZ Bar Preacher Curl: 4 sets of 10 reps " },
+      { "content": "DB Hammer Curls: 4 sets of 10 reps " },
+      { "content": "DB Overhead Triceps Extensions: 4 sets of 10 reps " },
+      { "content": "Barbell Skullcrushers: 4 sets of 10 reps " },
+      { "content": "Cable Triceps Extensions: 4 sets of 10 reps " },
+      { "content": "Decline Situps: 4 sets of 12 reps " },
+      { "content": "Weighted Russian Twists: 4 sets of 50 reps " }
+    ]
+  },
+
+  {
+    "title": "Build Muscle Day 36 -Chest ",
+    "contentwrapper": [
+      { "content": "Close Grip Bench Press: 5 sets of 2 reps " },
+      { "content": "Decline Bench Press: 4 sets of 8 reps " },
+      { "content": "DB Chest Pullovers: 4 sets of 8 reps " },
+      { "content": "Cable Chest Flyes: 4 sets of 8 reps " },
+      { "content": "Diamond Pushups: 4 sets of 15 " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 37 - Back ",
+    "contentwrapper": [
+      { "content": "Bent Rows: 5 sets of 2 reps " },
+      { "content": "Cable Lat Pulldowns: 4 sets of 8 reps " },
+      { "content": "Seated Cable Row: 4 sets of 8 reps " },
+      { "content": "Double Dumbbell Bent Row: 4 sets of 8 reps ea arm " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 38 -Legs/Core ",
+    "contentwrapper": [
+      { "content": "Barbell Reverse Lunges: 5 sets of 5 reps ealeg" },
+      { "content": " Front Squat: 4 sets of 8 reps " },
+      { "content": "Leg Press: 4 sets of 8 reps " },
+      { "content": "Hamstring Curl Machine: 4 sets of 8 reps " },
+      { "content": "Leg Extension Machine: 4 sets of 8 reps " },
+      { "content": "V-ups: 4 sets of 15 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 39 - Shoulders ",
+    "contentwrapper": [
+      { "content": "Push Press: 5 sets of 2 reps " },
+      { "content": "DB Strict Press: 4 sets of 8 reps " },
+      { "content": "DB Front Raise: 4 sets of 8 reps " },
+      { "content": "DB Lateral Shoulder Raise: 4 sets of 8 reps " },
+      { "content": "DB Rear Delt Raise: 4 sets of 8 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 40 - Arms/Core ",
+    "contentwrapper": [
+      { "content": "Barbell Bicep Curls: 4 sets of 8 reps " },
+      { "content": "EZ Bar Preacher Curl: 4 sets of 8reps " },
+
+      { "content": "DB Hammer Curls: 4 sets of 8 reps " },
+      { "content": "DB Overhead Triceps Extensions: 4 sets of 8 reps " },
+
+      { "content": "Barbell Skullcrushers: 4 sets of 8 reps " },
+
+      { "content": "Cable Triceps Extensions: 4 sets of 8 reps" },
+
+      { "content": "Decline Situps: 4 sets of 15 reps " },
+
+      { "content": "Weighted Russian Twists: 4 sets of 50 reps " },
+      {
+        "content": "Week 9 (Choose a weight that is difficult but achievable for the # of reps being performed) "
+      }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 41 -Chest ",
+    "contentwrapper": [
+      { "content": "Bench Press: 5 sets of 5 reps " },
+      { "content": "Incline Bench Press: 5 sets of 15 reps " },
+      { "content": "DB Bench Press: 5 sets of 15 reps " },
+      { "content": "Pec Dec: 5 sets of 15 reps " },
+      { "content": "Cable Chest Flye: 5 sets of 15 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 42 - Back ",
+    "contentwrapper": [
+      { "content": "Deadlift: 5 sets of 5 reps " },
+      { "content": "Double DB Bent Rows: 5 sets of 15reps " },
+      { "content": "Seated Cable Row: 5 sets of 15 reps " },
+      { "content": "Pullup Machine: 5 sets of 15 reps " },
+      { "content": "Cable Lat Pulldown: 5 sets of 15 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 43 -Legs/Core ",
+    "contentwrapper": [
+      { "content": "Back Squat: 5 sets of 5 reps " },
+      { "content": "DB Reverse Lunges: 5 sets of 15 reps ea leg " },
+      { "content": "Leg Press: 5 sets of 15 reps " },
+      { "content": "Hamstring Curl Machine: 5 sets of 15 reps " },
+      { "content": "Leg Extension Machine: 5 sets of 15 reps " },
+      { "content": "Cable Crunch with Rope Attachment: 5 sets of 15 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 44 - Shoulders ",
+    "contentwrapper": [
+      { "content": "Barbell Strict Press: 5 sets of 5 reps " },
+      { "content": "DB Arnold Press: 5 sets of 15 reps " },
+      { "content": "Machine Shoulder Press: 5 sets of 15 reps " },
+      { "content": "DB Lateral Shoulder Raise: 5 sets of 15 reps " },
+
+      { "content": "Cable Rear Delt Raise: 5 sets of 15reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 45 - Arms/Core ",
+    "contentwrapper": [
+      { "content": "EZ Bar Bicep Curls: 5 sets of 15 reps " },
+      { "content": "DB Concentration Curl: 5 sets of 15 reps ea arm " },
+      { "content": "Cable Curls: 5 sets of 15 reps " },
+      { "content": "Double DB Tricep Kickbacks: 5 sets of 15 reps " },
+      { "content": "EZ Bar Skullcrushers: 5 sets of 15 reps " },
+      { "content": "Cable Triceps Extensions: 5 sets of 15 reps " },
+      { "content": "V-ups: 5 sets of 8 reps " },
+      { "content": "Planks: 5 sets of 45 sec " },
+      {
+        "content": "Week 10 (Choose a weight that is difficult but achievable for the # of reps being performed) "
+      }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 46 -Chest ",
+    "contentwrapper": [
+      { "content": "Bench Press: 6 sets of 4 reps " },
+      { "content": "Incline Bench Press: 5 sets of 12 reps " },
+      { "content": "DB Bench Press: 5 sets of 12 reps " },
+      { "content": "Pec Dec: 5 sets of 12 reps " },
+      { "content": "Cable Chest Flye: 5 sets of 12 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 47 - Back ",
+    "contentwrapper": [
+      { "content": "Deadlift: 6 sets of 4 reps " },
+      { "content": "Double DB Bent Rows: 5 sets of 12reps " },
+      { "content": "Seated Cable Row: 5 sets of 12 reps " },
+      { "content": "Pullup Machine: 5 sets of 12 reps " },
+      { "content": "Cable Lat Pulldown: 5 sets of 12 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 48 -Legs/Core ",
+    "contentwrapper": [
+      { "content": "Back Squat: 6 sets of 4 reps " },
+      { "content": "DB Reverse Lunges: 5 sets of 12 reps ea leg " },
+      { "content": "Leg Press: 5 sets of 12 reps " },
+      { "content": "Hamstring Curl Machine: 5 sets of 12 reps " },
+      { "content": "Leg Extension Machine: 5 sets of 12 reps " },
+      { "content": "Cable Crunch with Rope Attachment: 5 sets of 12 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 49 - Shoulders ",
+    "contentwrapper": [
+      { "content": "Barbell Strict Press: 6 sets of 4 reps " },
+      { "content": "DB Arnold Press: 5 sets of 12 reps " },
+      { "content": "Machine Shoulder Press: 5 sets of 12 reps " },
+      { "content": "DB Lateral Shoulder Raise: 5 sets of 12 reps " },
+      { "content": "Cable Rear Delt Raise: 5 sets of 12 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 50 - Arms/Core ",
+    "contentwrapper": [
+      { "content": "EZ Bar Bicep Curls: 5 sets of 12 reps " },
+      { "content": "DB Concentration Curl: 5 sets of 12 reps ea arm " },
+      { "content": "Cable Curls: 5 sets of 12 reps " },
+      { "content": "Double DB Tricep Kickbacks: 5 sets of 12 reps " },
+      { "content": "EZ Bar Skullcrushers: 5 sets of 12 reps " },
+      { "content": "Cable Triceps Extensions: 5 sets of 12 reps " },
+      { "content": "V-ups: 5 sets of 10 reps " },
+      { "content": "Planks: 5 sets of 60 sec " },
+      {
+        "content": "Week 11 (Choose a weight that is difficult but achievable for the # of reps being performed) "
+      }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 51 -Chest ",
+    "contentwrapper": [
+      { "content": "Bench Press: 5 sets of 3 reps " },
+      { "content": "Incline Bench Press: 5 sets of 10 reps " },
+      { "content": "DB Bench Press: 5 sets of 10 reps " },
+      { "content": "Pec Dec: 5 sets of 10 reps " },
+      { "content": "Cable Chest Flye: 5 sets of 10 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 52 - Back ",
+    "contentwrapper": [
+      { "content": "Deadlift: 5 sets of 3 reps " },
+      { "content": "Double DB Bent Rows: 5 sets of 10reps " },
+      { "content": "Seated Cable Row: 5 sets of 10 reps " },
+      { "content": "Pullup Machine: 5 sets of 10 reps " },
+      { "content": "Cable Lat Pulldown: 5 sets of 10 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 53 -Legs/Core ",
+    "contentwrapper": [
+      { "content": "Back Squat: 5 sets of 3 reps " },
+      { "content": "DB Reverse Lunges: 5 sets of 10 reps ea leg " },
+      { "content": "Leg Press: 5 sets of 10 reps " },
+      { "content": "Hamstring Curl Machine: 5 sets of 10 reps " },
+      { "content": "Leg Extension Machine: 5 sets of 10 reps " },
+      { "content": "Cable Crunch with Rope Attachment: 5 sets of 10 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 54 - Shoulders ",
+    "contentwrapper": [
+      { "content": "Barbell Strict Press: 5 sets of 3 reps " },
+      { "content": "DB Arnold Press: 5 sets of 10 reps " },
+      { "content": "Machine Shoulder Press: 5 sets of 10 reps " },
+      { "content": "DB Lateral Shoulder Raise: 5 sets of 10 reps " },
+      { "content": "Cable Rear Delt Raise: 5 sets of 10 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 55 - Arms/Core ",
+    "contentwrapper": [
+      { "content": "EZ Bar Bicep Curls: 5 sets of 10 reps " },
+      { "content": "DB Concentration Curl: 5 sets of 10 reps ea arm " },
+      { "content": "Cable Curls: 5 sets of 10 reps " },
+      {
+        "content": "Double DB Tricep Kickbacks: 5 sets of 10 reps EZ Bar Skullcrushers: 5 sets of 10 reps "
+      },
+      { "content": "Cable Triceps Extensions: 5 sets of 10 reps " },
+      { "content": "V-ups: 5 sets of 12 reps Planks: 5 sets of 70 sec " },
+      {
+        "content": "Week 12 (Choose a weight that is difficult but achievable for the # of reps being performed) "
+      }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 56 -Chest ",
+    "contentwrapper": [
+      { "content": "Bench Press: 5 sets of 2 reps " },
+      { "content": "Incline Bench Press: 5 sets of 8 reps " },
+      { "content": "DB Bench Press: 5 sets of 8 reps " },
+      { "content": "Pec Dec: 5 sets of 8 reps " },
+      { "content": "Cable Chest Flye: 5 sets of 8 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 57 - Back ",
+    "contentwrapper": [
+      { "content": "Deadlift: 5 sets of 2 reps " },
+
+      { "content": "Double DB Bent Rows: 5 sets of 8reps " },
+
+      { "content": "Seated Cable Row: 5 sets of 8 reps " },
+
+      { "content": "Pullup Machine: 5 sets of 8 reps " },
+
+      { "content": "Cable Lat Pulldown: 5 sets of 8 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 58 -Legs/Core ",
+    "contentwrapper": [
+      { "content": "Back Squat: 5 sets of 2 reps " },
+      { "content": "DB Reverse Lunges: 5 sets of 8 reps ea leg " },
+      { "content": "Leg Press: 5 sets of 8 reps " },
+      { "content": "Hamstring Curl Machine: 5 sets of 8 reps " },
+      { "content": "Leg Extension Machine: 5 sets of 8 reps " },
+      { "content": "Cable Crunch with Rope Attachment: 5 sets of 8 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 59 - Shoulders ",
+    "contentwrapper": [
+      { "content": "Barbell Strict Press: 5 sets of 2 reps " },
+      { "content": "DB Arnold Press: 5 sets of 8 reps " },
+      { "content": "Machine Shoulder Press: 5 sets of 8 reps " },
+      { "content": "DB Lateral Shoulder Raise: 5 sets of 8 reps " },
+      { "content": "Cable Rear Delt Raise: 5 sets of 8 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 60 - Arms/Core ",
+    "contentwrapper": [
+      { "content": "EZ Bar Bicep Curls: 5 sets of 8 reps " },
+      { "content": "DB Concentration Curl: 5 sets of 8 reps ea arm " },
+      { "content": "Cable Curls: 5 sets of 8 reps " },
+      { "content": "Double DB Tricep Kickbacks: 5 sets of 8 reps " },
+      { "content": "EZ Bar Skullcrushers: 5 sets of 8 reps " },
+      { "content": "Cable Triceps Extensions: 5 sets of 8 reps " },
+      { "content": "V-ups: 5 sets of 15 reps " },
+      { "content": "Planks: 5 sets of 80 sec" }
+    ]
+  }
+]

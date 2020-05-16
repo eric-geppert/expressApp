@@ -105,7 +105,7 @@ const Dashboard = ({
           </Fragment>
         </Fragment>
       ) : (
-        <p>you dont seem to have a profile yet, sign up to create one!</p>
+        <p>you dont seem to have a profile yet, subscribe to create one!</p>
       )}
     </Fragment>
   );
