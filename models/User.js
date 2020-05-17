@@ -4,21 +4,21 @@ const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    unique: true
+    unique: false,
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   paid: {
     type: Boolean,
     required: true,
-    default: false
+    default: false,
   },
   // avatar: {
   //   type: String
@@ -26,8 +26,13 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: new Date(),
-    required: true
-  }
+    required: true,
+  },
+  plan: {
+    type: String,
+    required: false /**since initially setting plan to null have to set required to false */,
+    default: null,
+  },
 });
 
 module.exports = User = mongoose.model('user', UserSchema);

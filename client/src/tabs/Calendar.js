@@ -1,14 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
-import newWorkouts from '../resources/newWorkouts.json';
+import TemplateWorkouts from '../resources/TemplateWorkouts.json';
+import HIITWorkouts from '../resources/HIITWorkouts.json';
+import HIITWorkoutsTrial from '../resources/HIITWorkoutsTrial.json';
+import HomeWorkouts from '../resources/AtHomeTotalBody.json';
+import HomeWorkoutsTrial from '../resources/AtHomeTotalBodyTrial.json';
+import MuscleWorkouts from '../resources/BuildMuscleAndSize.json';
+import MuscleWorkoutsTrial from '../resources/BuildMuscleAndSizeTrial.json';
+
 // import { getDateUserStarted } from '../components/gymComponents/GetDateUserStarted';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
 // import './App.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { Fragment } from 'react';
 
 const localizer = momentLocalizer(moment);
 
@@ -38,10 +44,37 @@ class MyCalendar extends Component {
     return workoutArr;
   };
 
+  findWorkoutOption(shortPlan) {
+    switch (shortPlan) {
+      case 'HIITtrial':
+        return HIITWorkoutsTrial;
+      case 'HOMEtrial':
+        return HomeWorkoutsTrial;
+      case 'MUSCLEtrial':
+        return MuscleWorkoutsTrial;
+      case 'HIIT':
+        return HIITWorkouts;
+      case 'HOME':
+        return HomeWorkouts;
+      case 'MUSCLE':
+        return MuscleWorkouts;
+      case null:
+        return null;
+      default:
+        console.log('WorkoutPlan passed does not exist'); //todo change to HIIT?
+    }
+  }
+
   setEvents = () => {
     console.log('zzz: ', this.state.dateStarted);
     const currentlyOnDay = this.state.dateStarted;
     var eventArr = [];
+    console.log('Calendar this.props.plan: ', this.props.plan);
+    var newWorkouts = this.findWorkoutOption(this.props.plan);
+    // if (this.props.plan == 'HIIT') {
+    //   newWorkouts = HIITWorkouts;
+    // }
+
     newWorkouts.forEach(function (element, index) {
       eventArr.push({
         start:
@@ -99,7 +132,6 @@ class MyCalendar extends Component {
       console.error('caught error');
       return err;
     }
-    console.log('this.props.auth.user is undefined or null');
     return 'invalid email, you must be logged in to use this feature';
   };
 
@@ -134,7 +166,12 @@ class MyCalendar extends Component {
         </div>
       ) : (
         /**if nothing selected but Has startDate */
-        <div>{this.setEvents()}</div>
+        <Fragment>
+          <h3 style={{ paddingBottom: '30px' }}>
+            Double click on any event to view it.{' '}
+          </h3>
+          <div>{this.setEvents()}</div>
+        </Fragment>
       )
     ) : (
       /** if something is selected */
@@ -151,8 +188,13 @@ class MyCalendar extends Component {
           {/* this.setState({ selected: null })> */}
           Back to Calendar view
         </button>
-        <h2> {this.state.selected.title}</h2>
+        <h2 style={{ paddingTop: '30px' }}> {this.state.selected.title}</h2>
         {this.renderWorkouts()}
+        <p style={{ paddingTop: '30px' }}>
+          Note: Choose a weight that is difficult but achievable for the # of
+          reps being performed. The goal is to increase weight as the reps
+          decrease.
+        </p>
       </div>
     );
   }

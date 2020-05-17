@@ -1,0 +1,61 @@
+[
+  {
+    "title": "At Home Total Body Day 1",
+    "contentwrapper": [
+      { "content": "5 rounds for time-" },
+      { "content": "0.25 Mile (400m) Run" },
+      { "content": "10 Burpees" }
+    ]
+  },
+  {
+    "title": "At Home Total Body Day 2",
+    "contentwrapper": [
+      { "content": "10 rounds of Air Squats:" },
+      { "content": "1 min of Air Squats" },
+      { "content": "1 min rest" }
+    ]
+  },
+  {
+    "title": "At Home Total Body Day 3",
+    "contentwrapper": [
+      { "content": "15 min AMRAP (as many rounds as possible)" },
+      { "content": "15 Pushups (can go to knees if needed)" },
+      { "content": "15 Chair Step Ups" },
+      { "content": "50 Jump Rope (or hops to a stair/ledge)" },
+      { "content": "15 Situps " }
+    ]
+  },
+  {
+    "title": "At Home Total Body Day 4",
+    "contentwrapper": [
+      { "content": "5 rounds-" },
+      { "content": "4 min Jog" },
+      { "content": "16 Reverse Lunges" }
+    ]
+  },
+  {
+    "title": "At Home Total Body Day 5",
+    "contentwrapper": [
+      { "content": "20 min AMRAP (as many rounds as possible)" },
+      { "content": "8 V-ups" },
+      { "content": "15 Air Squats" },
+      { "content": "15 Situps" },
+      { "content": "10 Burpees " }
+    ]
+  },
+  {
+    "title": "At Home Total Body Day 6",
+    "contentwrapper": [
+      { "content": "16 min Jog " },
+      { "content": "*Every 2 min do 10 Pushups" }
+    ]
+  },
+  {
+    "title": "At Home Total Body Day 7",
+    "contentwrapper": [
+      { "content": "5 rounds-" },
+      { "content": "20 Chair Step Ups" },
+      { "content": "10 Glute Bridges" }
+    ]
+  }
+]

@@ -8,19 +8,20 @@ import Spinner from '../layout/Spinner';
 // import Education from './Education';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 import { unsubscribeMe } from '../../actions/auth';
+import CheckoutPage from '../auth/CheckoutPage';
 
 const Dashboard = ({
   getCurrentProfile,
   deleteAccount,
   unsubscribeMe,
   auth: { user },
-  profile: { profile, loading }
+  profile: { profile, loading },
 }) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
 
-  return loading && profile === null ? (
+  return loading || profile === null ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -33,7 +34,16 @@ const Dashboard = ({
           </p>
 
           <p> email: {profile.customer.data[0].email} </p>
-          {profile.customer.data[0].subscriptions.length > 0 ? (
+          {console.log(
+            'profile.customer.data[0].subscriptions: ',
+            profile.customer.data[0].subscriptions
+          )}
+          {console.log(
+            'profile.customer.data[0].subscriptions.length: ',
+            profile.customer.data[0].subscriptions.length
+          )}
+
+          {profile.customer.data[0].subscriptions.data.length > 0 ? (
             <Fragment>
               <p>
                 subscription plan nickname:
@@ -71,14 +81,10 @@ const Dashboard = ({
             Payment is delinquent: {String(profile.customer.data[0].delinquent)}
           </p>
           <Fragment>
-            <p>
+            {/* <p>
               You have successfully logged in would you like to purchase the
               full version of all our workout plans?
-            </p>
-            <p>In the mean time view our sample programs here.</p>
-            <Link to='/findMyProgram' className='btn btn-primary my-1'>
-              Sameple Programs
-            </Link>
+            </p> */}
             <Link to='/CheckoutPage' className='btn btn-primary my-1'>
               Buy Full Programs
             </Link>
@@ -105,7 +111,22 @@ const Dashboard = ({
           </Fragment>
         </Fragment>
       ) : (
-        <p>you dont seem to have a profile yet, sign up to create one!</p>
+        <Fragment>
+          <h3 style={{ paddingBottom: '30px' }}>
+            {' '}
+            Subscribe to unlock all workouts, and see your profile!
+          </h3>
+          <CheckoutPage />
+          <p style={{ paddingTop: '30px' }}>
+            In the mean time you can view our sample programs here.
+          </p>
+          <Link to='/findMyProgram' className='btn btn-primary my-1'>
+            Sameple Programs (pdfs)
+          </Link>
+          <Link to='/Calendar' className='btn btn-primary my-1'>
+            Sameple Programs (in Calendar format)
+          </Link>
+        </Fragment>
       )}
     </Fragment>
   );
@@ -116,16 +137,16 @@ Dashboard.propTypes = {
   deleteAccount: PropTypes.func.isRequired,
   unsubscribeMe: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
-  profile: state.profile
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, {
   getCurrentProfile,
   deleteAccount,
-  unsubscribeMe
+  unsubscribeMe,
 })(Dashboard);

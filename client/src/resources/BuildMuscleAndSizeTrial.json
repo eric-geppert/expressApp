@@ -1,0 +1,76 @@
+[
+  {
+    "title": "Build Muscle Day 1 -Chest ",
+    "contentwrapper": [
+      { "content": "Bench Press: 5 sets of 5 reps DB Bench " },
+      { "content": "Press: 4 sets of 15 reps Incline Bench " },
+      { "content": "Press: 4 sets of 15 reps DB Bench " },
+      { "content": "Chest Flyes: 4 sets of 15 reps " },
+      { "content": "Pushups: 4 sets of 8 " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 2 - Back",
+    "contentwrapper": [
+      {
+        "content": "Deadlift: 5 sets of 5 reps Barbell Bent Rows: 4 sets of 15 reps "
+      },
+      { "content": "Seated Cable Row: 4 sets of 15 reps " },
+      {
+        "content": "Single Arm Dumbbell Lawnmower Row: 4 sets of 15 reps ea arm "
+      }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 3 -Legs/Core ",
+    "contentwrapper": [
+      { "content": "Back Squat: 5 sets of 5 reps " },
+      { "content": "Hack Squat: 4 sets of 15 reps " },
+      { "content": "Leg Press: 4 sets of 15 reps " },
+      { "content": "Hamstring Curl Machine: 4 sets of 15 reps " },
+      { "content": "Hollow Body Holds on Ground: 4 sets of 10-15sec " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 4 - Shoulders ",
+    "contentwrapper": [
+      { "content": "Strict Press: 5 sets of 5 reps " },
+      { "content": "DB Strict Press: 4 sets of 15 reps " },
+      { "content": "DB Arnold Press: 4 sets of 15 reps " },
+      { "content": "DB Lateral Shoulder Raise: 4 sets of 15 reps " }
+    ]
+  },
+
+  {
+    "title": "Build Muscle Day 5 - Arms/Core ",
+    "contentwrapper": [
+      { "content": "DB Bicep Curls (both arms): 4 sets of 15 reps " },
+      { "content": "EZ Bar Preacher Curl: 4 sets of 15 reps " },
+      { "content": "DB Overhead Triceps Extensions: 4 sets of 15 reps " },
+      { "content": "EZ Bar Skullcrushers: 4 sets of 15 reps " },
+      { "content": "Hanging Strict Leg Raises: 4 sets of 8 reps " },
+      { "content": "Weighted Situps: 4 sets of 15 reps " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 6 -Chest ",
+    "contentwrapper": [
+      { "content": "Bench Press: 6 sets of 4 reps " },
+      { "content": "DB Bench Press: 4 sets of 12 reps " },
+      { "content": "Incline Bench Press: 4 sets of 12 reps " },
+      { "content": "DB Bench Chest Flyes: 4 sets of 12 reps " },
+      { "content": "Pushups: 4 sets of 10 " }
+    ]
+  },
+  {
+    "title": "Build Muscle Day 7 - Back ",
+    "contentwrapper": [
+      { "content": "Deadlift: 6 sets of 4 reps " },
+      { "content": "Barbell Bent Rows: 4 sets of 12 reps " },
+      { "content": "Seated Cable Row: 4 sets of 12 reps " },
+      {
+        "content": "Single Arm Dumbbell Lawnmower Row: 4 sets of 12 reps ea arm "
+      }
+    ]
+  }
+]

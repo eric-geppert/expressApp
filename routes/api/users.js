@@ -25,7 +25,7 @@ router.put('/paid', async (req, res) => {
 
   User.findOneAndUpdate({ email: req.body.email }, { paid: true })
     .then(() => res.json({ success: true }))
-    .catch(err => res.status(404).json({ success: false }));
+    .catch((err) => res.status(404).json({ success: false }));
 });
 
 // @route
@@ -36,14 +36,12 @@ router.put('/paid', async (req, res) => {
 router.post(
   '/',
   [
-    check('name', 'Name is required')
-      .not()
-      .isEmpty(),
+    check('name', 'Name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
     check(
       'password',
       'Please enter a password with 6 or more characters'
-    ).isLength({ min: 1 })
+    ).isLength({ min: 1 }),
     //todo: change back to 6
   ],
   async (req, res) => {
@@ -69,16 +67,14 @@ router.post(
       //   r: 'pg',
       //   d: 'mm'
       // });
-      const paid = false;
-
-      console.log('paid variable in reg: ' + paid);
-
+      // const plan = null;
       //todo: make pull from model later
       user = new User({
         name,
         email,
         // paid,
-        password
+        password,
+        // plan,
         // date
       });
       //remove later add credit card cred?
@@ -100,8 +96,8 @@ router.post(
       const payload = {
         user: {
           id: user.id,
-          email: user.email
-        }
+          email: user.email,
+        },
       };
 
       jwt.sign(
