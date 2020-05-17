@@ -34,7 +34,16 @@ const Dashboard = ({
           </p>
 
           <p> email: {profile.customer.data[0].email} </p>
-          {profile.customer.data[0].subscriptions.length > 0 ? (
+          {console.log(
+            'profile.customer.data[0].subscriptions: ',
+            profile.customer.data[0].subscriptions
+          )}
+          {console.log(
+            'profile.customer.data[0].subscriptions.length: ',
+            profile.customer.data[0].subscriptions.length
+          )}
+
+          {profile.customer.data[0].subscriptions.data.length > 0 ? (
             <Fragment>
               <p>
                 subscription plan nickname:
@@ -72,10 +81,10 @@ const Dashboard = ({
             Payment is delinquent: {String(profile.customer.data[0].delinquent)}
           </p>
           <Fragment>
-            <p>
+            {/* <p>
               You have successfully logged in would you like to purchase the
               full version of all our workout plans?
-            </p>
+            </p> */}
             <Link to='/CheckoutPage' className='btn btn-primary my-1'>
               Buy Full Programs
             </Link>
