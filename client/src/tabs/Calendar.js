@@ -132,7 +132,6 @@ class MyCalendar extends Component {
       console.error('caught error');
       return err;
     }
-    console.log('this.props.auth.user is undefined or null');
     return 'invalid email, you must be logged in to use this feature';
   };
 

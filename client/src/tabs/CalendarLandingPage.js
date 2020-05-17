@@ -70,14 +70,12 @@ export const CalendarLandingPage = ({ setPlan, auth }) => {
         You must be logged in or registered to see this feature. Register to
         create a free account.
       </p>
-      <button className='btn btn-primary'>
-        <Link to='/register' />
+      <Link className='btn btn-primary' to='/register'>
         Register
-      </button>
-      <button className='btn btn-primary'>
-        <Link to='/login' />
+      </Link>
+      <Link className='btn btn-primary' to='/login'>
         Login
-      </button>
+      </Link>
     </Fragment>
   );
 };
