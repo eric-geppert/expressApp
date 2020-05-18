@@ -66,10 +66,8 @@ class MyCalendar extends Component {
   }
 
   setEvents = () => {
-    console.log('zzz: ', this.state.dateStarted);
     const currentlyOnDay = this.state.dateStarted;
     var eventArr = [];
-    console.log('Calendar this.props.plan: ', this.props.plan);
     var newWorkouts = this.findWorkoutOption(this.props.plan);
     // if (this.props.plan == 'HIIT') {
     //   newWorkouts = HIITWorkouts;

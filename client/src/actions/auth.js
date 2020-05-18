@@ -17,9 +17,6 @@ import setAuthToken from '../utils/setAuthToken';
 
 //----
 export const setPlan = (workoutPlan, emailInput) => async (dispatch) => {
-  console.log('in Auth calling disp');
-  console.log('in Auth workoutPlan:', workoutPlan);
-
   try {
     const config = {
       headers: {
@@ -35,7 +32,6 @@ export const setPlan = (workoutPlan, emailInput) => async (dispatch) => {
     await axios
       .put('api/auth/setCustomerPlan', body, config)
       .then((response) => {
-        console.log('response', response);
         //todo: check if successful
       });
   } catch (err) {
@@ -59,12 +55,15 @@ export const canView = (emailInput) => async (dispatch) => {
     const body = JSON.stringify({ email: emailInput });
     const can = await axios.post('api/auth/getAllCustomers', body, config);
 
+    console.log('zzz canView customers returned:', can);
+    // console.log('zzz canView.data.:', can);
+
     const customer1 = can.data.allCustomers.data[0];
     if (
       (can.data =
         !null &&
         customer1.delinquent === false &&
-        customer1.subscriptions.total_count > 0)
+        customer1.subscriptions.total_count > 0) // todo check this field to dc logic
     ) {
       console.log('yes you can view the full workout');
 
@@ -147,8 +146,6 @@ export const register = ({ name, email, password }) => async (dispatch) => {
 
   try {
     const res = await axios.post('/api/users', body, config);
-
-    console.log('dispatching email: ' + email + ':from auth reducer');
     dispatch({
       type: REGISTER_SUCCESS,
       payload: res.data, //user token
@@ -191,8 +188,6 @@ export const login = (email, password) => async (dispatch) => {
 
     const res2 = await axios.post('/api/auth/hasPaid', body, config);
 
-    console.log('repsonse 2: ');
-    console.log(res2);
     console.log('called /hasPaid res2.data: ' + res2.data);
     dispatch({
       type: BUY_SUCCESS,

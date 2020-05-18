@@ -4,31 +4,54 @@ import Calendar from './Calendar';
 import { setPlan, canView } from './../actions/auth';
 import { Link } from 'react-router-dom';
 
-export const CalendarLandingPage = ({ setPlan, auth }) => {
+export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
   const [formData, setFormData] = useState({
     plan: null,
     //todo set set default to '' and check for this instead?
   });
-  console.log('auth from destructuring: ', auth);
   const { plan } = formData;
   const helperFunction = (workoutPlan) => {
-    // if(canView(auth.user.email))
-    //trying without canView to see if I need it
+    console.log('inside CalLanding: auth.paid: ', auth.paid);
     if (auth.paid === true) {
       console.log('paid good to see whole workout: ');
       setPlan(workoutPlan, auth.user.email);
       setFormData({ ...formData, plan: workoutPlan });
-    } else {
-      const workoutTrial = workoutPlan + 'trial';
-      console.log('not paid workoutTrial: ', workoutTrial);
-      setPlan(workoutTrial, auth.user.email);
-      setFormData({ ...formData, plan: workoutTrial });
     }
+    if (auth.paid !== true) {
+      console.log('inside not paid loop1');
+      const temp = canView(auth.user.email);
+      console.log('canView Result: ', temp);
+      /** canView 1 sees if user is subscribed 2 sets the redux
+       * field paid for the furute if it was just purchased */
+      if (temp) {
+        console.log('paid good to see whole workout: ');
+        setPlan(workoutPlan, auth.user.email);
+        setFormData({ ...formData, plan: workoutPlan });
+      } else {
+        const workoutTrial = workoutPlan + 'trial';
+        console.log('not paid workoutTrial: ', workoutTrial);
+        setPlan(workoutTrial, auth.user.email);
+        setFormData({ ...formData, plan: workoutTrial });
+      }
+    }
+
+    // if (auth.paid === true) {
+    //   console.log('paid good to see whole workout: ');
+    //   setPlan(workoutPlan, auth.user.email);
+    //   setFormData({ ...formData, plan: workoutPlan });
+    // } else {
+    // const workoutTrial = workoutPlan + 'trial';
+    // console.log('not paid workoutTrial: ', workoutTrial);
+    // setPlan(workoutTrial, auth.user.email);
+    // setFormData({ ...formData, plan: workoutTrial });
+    // }
   };
 
   return auth.user != null ? (
-    plan == null && auth.user.plan == null ? (
+    plan == null && auth.plan == null ? (
       <Fragment>
+        plan {plan}
+        auth.user.plan {auth.user.plan}
         <h1>
           The Calendar view will show all your workout's day by day. Chose a
           plan
@@ -60,8 +83,10 @@ export const CalendarLandingPage = ({ setPlan, auth }) => {
         </div>
       </Fragment>
     ) : plan == null ? (
+      /**if sotred in redux not locally */
       <Calendar plan={auth.user.plan} />
     ) : (
+      /**if stored locally not */
       <Calendar plan={plan} />
     )
   ) : (
