@@ -1,0 +1,68 @@
+[
+  {
+    "title": "Conditioning Day 1",
+    "contentwrapper": [
+      { "content": "5 rounds for time-" },
+      { "content": "0.25 Mile (400m) Run " },
+      { "content": "10 Burpees" }
+    ]
+  },
+  {
+    "title": "Conditioning Day 2",
+    "contentwrapper": [
+      { "content": "10 rounds on a stationary bike:" },
+      { "content": "1 min Fast (6 or 7 effort out of 10)" },
+      { "content": "1 min Slow (2 or 3 out of 10)" }
+    ]
+  },
+  {
+    "title": "Conditioning Day 3",
+    "contentwrapper": [
+      { "content": "5 rounds-" },
+      { "content": "4 min Jog" },
+      { "content": "15 Pushups (use your legs to help kip if necessary)" }
+    ]
+  },
+  {
+    "title": "Conditioning Day 4",
+    "contentwrapper": [
+      { "content": "20 min AMRAP (as many rounds as possible):" },
+      { "content": "8 Hanging Strict Leg/Knee Raises" },
+      { "content": "1 min Stationary Bike/Rower" },
+      { "content": "15 Weighted Ab Mat Situps" },
+      { "content": "10 Burpees " }
+    ]
+  },
+  {
+    "title": "Conditioning Day 5",
+    "contentwrapper": [
+      { "content": "16 min bike " },
+      { "content": "*Every 2 min do 10 Pushups" }
+    ]
+  },
+  {
+    "title": "Conditioning Day 6",
+    "contentwrapper": [
+      { "content": "7 rounds-" },
+      { "content": "300m row fast" },
+      { "content": "~then 500m row slow and easy between each 300" }
+    ]
+  },
+  {
+    "title": "Conditioning Day 7",
+    "contentwrapper": [
+      { "content": "For Time-" },
+      { "content": "400m run" },
+      { "content": "300 Single Unders Jump Rope" },
+      { "content": "30 DB Walking Lunges" },
+      { "content": "30 Situps" },
+      { "content": "200 Single Unders" },
+      { "content": "20 DB Walking Lunges" },
+      { "content": "20 Situps" },
+      { "content": "100 Single Unders" },
+      { "content": "10 DB Walking Lunges" },
+      { "content": "10 Situps" },
+      { "content": "400m run" }
+    ]
+  }
+]

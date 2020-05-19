@@ -8,6 +8,8 @@ import HomeWorkouts from '../resources/AtHomeTotalBody.json';
 import HomeWorkoutsTrial from '../resources/AtHomeTotalBodyTrial.json';
 import MuscleWorkouts from '../resources/BuildMuscleAndSize.json';
 import MuscleWorkoutsTrial from '../resources/BuildMuscleAndSizeTrial.json';
+import ConditoningWorkouts from '../resources/ConditioningAndWeightLoss.json';
+import ConditoningWorkoutsTrial from '../resources/ConditioningAndWeightLossTrial.json';
 
 // import { getDateUserStarted } from '../components/gymComponents/GetDateUserStarted';
 import { connect } from 'react-redux';
@@ -52,12 +54,16 @@ class MyCalendar extends Component {
         return HomeWorkoutsTrial;
       case 'MUSCLEtrial':
         return MuscleWorkoutsTrial;
+      case 'CONDITIONINGtrial':
+        return ConditoningWorkoutsTrial;
       case 'HIIT':
         return HIITWorkouts;
       case 'HOME':
         return HomeWorkouts;
       case 'MUSCLE':
         return MuscleWorkouts;
+      case 'CONDITIONING':
+        return ConditoningWorkouts;
       case null:
         return null;
       default:
