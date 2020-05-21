@@ -33,7 +33,6 @@ class MyCalendar extends Component {
 
   renderWorkouts = () => {
     var workoutArr = [];
-
     var i = 0;
     /** NEED TO KEEP LAST LINE OF EVERY WORKOUT AS NULL */
     while (

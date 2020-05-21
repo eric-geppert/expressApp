@@ -42,6 +42,12 @@ router.put('/setCustomerPlan', async (req, res) => {
     .catch((err) => res.status(404).json({ success: false }));
 });
 
+router.put('/setCustomerDaysPerWeek', async (req, res) => {
+  User.findOneAndUpdate({ email: req.body.email }, { days: req.body.days })
+    .then(() => res.json({ success: true }))
+    .catch((err) => res.status(404).json({ success: false }));
+});
+
 router.get('/getIsCustomerDelinquent', async (req, res) => {
   try {
     let myCustomer = await stripe.customers.retrieve('cus_FvNKEiG1w8yUno');

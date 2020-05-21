@@ -1,91 +1,41 @@
-import React, { useState, Fragment } from 'react'; //had Component
+import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Calendar from './Calendar';
-import { setPlan, canView } from './../actions/auth';
-import { Link } from 'react-router-dom';
+import { setDaysPerWeek } from './../actions/auth';
 
-export const CalendarLandingPage = ({ setPlan, auth }) => {
+export const DaysPerWeekForm = ({ setDaysPerWeek, auth, plan }) => {
   const [formData, setFormData] = useState({
     // plan: null,
-    days: null,
+    daysState: null,
     //todo set set default to '' and check for this instead?
   });
-  const { plan } = formData;
-  const helperFunction = (workoutPlan) => {
-    // if(canView(auth.user.email))
-    //trying without canView to see if I need it
-    if (auth.paid === true) {
-      console.log('paid good to see whole workout: ');
-      setPlan(workoutPlan, auth.user.email);
-      setFormData({ ...formData, plan: workoutPlan });
-    } else {
-      const workoutTrial = workoutPlan + 'trial';
-      console.log('not paid workoutTrial: ', workoutTrial);
-      setPlan(workoutTrial, auth.user.email);
-      setFormData({ ...formData, plan: workoutTrial });
-    }
+  const { daysState } = formData;
+  const helperFunction = (daysPerWeekInput) => {
+    setDaysPerWeek(daysState, auth.user.email);
+    setFormData({ ...formData, daysState: daysPerWeekInput });
   };
 
-  return auth.user != null ? (
-    plan == null && auth.user.plan == null ? (
-      <Fragment>
-        <h1>
-          The Calendar view will show all your workout's day by day. Chose a
-          plan
-        </h1>
-        <div className='cal-landing-page-section'>
-          {/* add in flexbox styling from recomendations page */}
-          <button
-            className='btn btn-primary'
-            onClick={() => helperFunction('HIIT')}
-          >
-            HIIT
-            {/* <p>Super cool description text here</p>
-              <p>will definitely add some color here later</p> */}
-          </button>
-          <button
-            className='btn btn-primary'
-            onClick={() => helperFunction('HOME')}
-          >
-            At Home Total Body
-          </button>
-          <button
-            className='btn btn-primary'
-            onClick={() => helperFunction('MUSCLE')}
-          >
-            Build Muscle and Size
-          </button>
-          <button> Option 4 </button>
-          <button> Option 5 </button>
-        </div>
-      </Fragment>
-    ) : plan == null ? (
-      /**if sotred in redux not locally */
-      <Fragment>
-        <Calendar plan={auth.user.plan} />
-      </Fragment>
-    ) : (
-      /**if stored locally not redux */
-      <Calendar plan={plan} />
-    )
-  ) : (
+  return daysState === undefined || daysState === null ? (
     <Fragment>
-      <p>
-        You must be logged in or registered to see this feature. Register to
-        create a free account.
-      </p>
-      <Link className='btn btn-primary' to='/register'>
-        Register
-      </Link>
-      <Link className='btn btn-primary' to='/login'>
-        Login
-      </Link>
+      <h1>Choose the days/week you want to workout</h1>
+      <div className='cal-landing-page-section'>
+        <button className='btn btn-primary' onClick={() => helperFunction(3)}>
+          3 days per week
+        </button>
+        <button className='btn btn-primary' onClick={() => helperFunction(4)}>
+          4 days per week
+        </button>
+        <button className='btn btn-primary' onClick={() => helperFunction(5)}>
+          5 days per week
+        </button>
+      </div>
     </Fragment>
+  ) : (
+    <Calendar plan={plan} days={daysState}></Calendar>
   );
 };
+
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
-export default connect(mapStateToProps, { setPlan, canView })(
-  CalendarLandingPage
-);
+export default connect(mapStateToProps, { setDaysPerWeek })(DaysPerWeekForm);

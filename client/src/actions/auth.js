@@ -12,9 +12,34 @@ import {
   BUY_SUCCESS,
   BUY_FAIL,
   SET_PLAN,
+  SET_DAYS,
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
+export const setDaysPerWeek = (daysInput, emailInput) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const body = JSON.stringify({
+      email: emailInput,
+      days: daysInput,
+    });
+    await axios
+      .put('api/auth/setCustomerDaysPerWeek', body, config)
+      .then((response) => {});
+  } catch (err) {
+    console.error('caught error');
+    return err;
+  }
+
+  dispatch({
+    type: SET_DAYS,
+    payload: daysInput,
+  });
+};
 //----
 export const setPlan = (workoutPlan, emailInput) => async (dispatch) => {
   try {
@@ -23,10 +48,8 @@ export const setPlan = (workoutPlan, emailInput) => async (dispatch) => {
         'Content-Type': 'application/json',
       },
     };
-    // export const setPlan = (workoutPlan, emailInput) => async (dispatch) => {
     const body = JSON.stringify({
       email: emailInput,
-      // email: this.props.auth.user.email,
       plan: workoutPlan,
     });
     await axios

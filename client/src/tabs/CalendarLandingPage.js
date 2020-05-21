@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Calendar from './Calendar';
 import { setPlan, canView } from './../actions/auth';
 import { Link } from 'react-router-dom';
+import DaysPerWeekForm from './DaysPerWeekForm';
 
 export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
   const [formData, setFormData] = useState({
@@ -34,24 +35,13 @@ export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
         setFormData({ ...formData, plan: workoutTrial });
       }
     }
-
-    // if (auth.paid === true) {
-    //   console.log('paid good to see whole workout: ');
-    //   setPlan(workoutPlan, auth.user.email);
-    //   setFormData({ ...formData, plan: workoutPlan });
-    // } else {
-    // const workoutTrial = workoutPlan + 'trial';
-    // console.log('not paid workoutTrial: ', workoutTrial);
-    // setPlan(workoutTrial, auth.user.email);
-    // setFormData({ ...formData, plan: workoutTrial });
-    // }
   };
 
   return auth.user != null ? (
     plan == null && auth.plan == null ? (
       <Fragment>
-        plan {plan}
-        auth.user.plan {auth.user.plan}
+        {/* plan {plan}
+        auth.user.plan {auth.user.plan} */}
         <h1>
           The Calendar view will show all your workout's day by day. Chose a
           plan
@@ -84,15 +74,17 @@ export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
           >
             Conditioning and Weight Loss
           </button>
-          <button> Option 5 </button>
+          <button> Total Body Transformation 5 </button>
         </div>
       </Fragment>
     ) : plan == null ? (
       /**if sotred in redux not locally */
-      <Calendar plan={auth.user.plan} />
+      // <Calendar plan={auth.user.plan} />
+      <DaysPerWeekForm plan={auth.user.plan} />
     ) : (
-      /**if stored locally not */
-      <Calendar plan={plan} />
+      /**if stored locally */
+      <DaysPerWeekForm plan={plan} />
+      // <Calendar plan={plan} />
     )
   ) : (
     <Fragment>
