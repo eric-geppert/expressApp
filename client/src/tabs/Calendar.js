@@ -10,6 +10,9 @@ import MuscleWorkouts from '../resources/BuildMuscleAndSize.json';
 import MuscleWorkoutsTrial from '../resources/BuildMuscleAndSizeTrial.json';
 import ConditoningWorkouts from '../resources/ConditioningAndWeightLoss.json';
 import ConditoningWorkoutsTrial from '../resources/ConditioningAndWeightLossTrial.json';
+import { ThreeDayPlan } from '../components/auth/ThreeDayPlan';
+import { FourDayPlan } from '../components/auth/FourDayPlan';
+import { FiveDayPlan } from '../components/auth/FiveDayPlan';
 
 // import { getDateUserStarted } from '../components/gymComponents/GetDateUserStarted';
 import { connect } from 'react-redux';
@@ -70,36 +73,48 @@ class MyCalendar extends Component {
     }
   }
 
+  //returns array of events
+  // ThreeDayPlan = (workoutArray) => {};
+
   setEvents = () => {
+    //adjust for currently on day***************** todo
+    //fix picking 4 or 5 days
     const currentlyOnDay = this.state.dateStarted;
     var eventArr = [];
+    console.log('initial eventArr: ', eventArr);
     var newWorkouts = this.findWorkoutOption(this.props.plan);
-    // if (this.props.plan == 'HIIT') {
-    //   newWorkouts = HIITWorkouts;
-    // }
 
-    newWorkouts.forEach(function (element, index) {
-      eventArr.push({
-        start:
-          index - currentlyOnDay < 0
-            ? new Date(moment().subtract(currentlyOnDay - index, 'days'))
-            : new Date(moment().add(index - currentlyOnDay, 'days')),
-        end:
-          index - currentlyOnDay < 0
-            ? new Date(moment().subtract(currentlyOnDay - index, 'days'))
-            : new Date(moment().add(index - currentlyOnDay, 'days')),
-        allDay: true,
-        title: newWorkouts[index].title,
-        workout: newWorkouts[index].contentwrapper,
-        eventIndex: index,
-      });
-    });
+    var actuallyReturns;
+
+    console.log('this.props.days: ', this.props.days);
+    switch (this.props.days) {
+      case 3:
+        console.log('calling 3 day switch case');
+        actuallyReturns = ThreeDayPlan(newWorkouts);
+        break;
+      case 4:
+        console.log('calling 4 day switch case');
+        actuallyReturns = FourDayPlan(newWorkouts);
+        break;
+      case 5:
+        console.log('calling 5 day switch case');
+        actuallyReturns = FiveDayPlan(newWorkouts);
+        break;
+      case null:
+        console.log('this.props.days is null');
+        break;
+      default:
+        console.log('workout days passed does not exist');
+    }
+    // var actuallyReturns = ThreeDayPlan(newWorkouts);
+    console.log('actuallyReturns: ', actuallyReturns);
     return (
       <Calendar
         localizer={localizer}
         defaultDate={new Date()}
         defaultView='month'
-        events={eventArr}
+        // events={eventArr}
+        events={actuallyReturns}
         style={{ height: '100vh' }}
         onDoubleClickEvent={(e) => {
           this.setState({
