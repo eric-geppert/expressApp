@@ -89,15 +89,12 @@ class MyCalendar extends Component {
     console.log('this.props.days: ', this.props.days);
     switch (this.props.days) {
       case 3:
-        console.log('calling 3 day switch case');
         actuallyReturns = ThreeDayPlan(newWorkouts);
         break;
       case 4:
-        console.log('calling 4 day switch case');
         actuallyReturns = FourDayPlan(newWorkouts);
         break;
       case 5:
-        console.log('calling 5 day switch case');
         actuallyReturns = FiveDayPlan(newWorkouts);
         break;
       case null:
@@ -106,8 +103,6 @@ class MyCalendar extends Component {
       default:
         console.log('workout days passed does not exist');
     }
-    // var actuallyReturns = ThreeDayPlan(newWorkouts);
-    console.log('actuallyReturns: ', actuallyReturns);
     return (
       <Calendar
         localizer={localizer}

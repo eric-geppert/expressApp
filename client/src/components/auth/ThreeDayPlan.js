@@ -4,7 +4,6 @@ export const ThreeDayPlan = (workoutArray) => {
   //todo adjust for currently on day***************** todo *****************
   //   const currentlyOnDay = this.state.dateStarted;
   var eventArr = [];
-  console.log('initial eventArr: ', eventArr);
   // var workoutArray = this.findWorkoutOption(this.props.plan);
 
   var x;
@@ -13,7 +12,6 @@ export const ThreeDayPlan = (workoutArray) => {
     x = index % 3;
 
     weekAdjustment = Math.floor(index / 3) * 2;
-    console.log('index/3: ', Math.floor(index / 3));
     if (x == 0) {
       if (index < 3) {
         eventArr.push({

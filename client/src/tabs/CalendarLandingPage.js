@@ -38,10 +38,8 @@ export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
   };
 
   return auth.user != null ? (
-    plan == null && auth.plan == null ? (
+    plan == null && auth.user.plan == null ? (
       <Fragment>
-        {/* plan {plan}
-        auth.user.plan {auth.user.plan} */}
         <h1>
           The Calendar view will show all your workout's day by day. Chose a
           plan
@@ -79,7 +77,6 @@ export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
       </Fragment>
     ) : plan == null ? (
       /**if sotred in redux not locally */
-      // <Calendar plan={auth.user.plan} />
       <DaysPerWeekForm plan={auth.user.plan} />
     ) : (
       /**if stored locally */

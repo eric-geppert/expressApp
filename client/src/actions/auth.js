@@ -17,6 +17,7 @@ import {
 import setAuthToken from '../utils/setAuthToken';
 
 export const setDaysPerWeek = (daysInput, emailInput) => async (dispatch) => {
+  console.log('dayssssssssssssssssssssssssss Input: ', daysInput);
   try {
     const config = {
       headers: {

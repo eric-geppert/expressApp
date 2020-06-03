@@ -10,6 +10,7 @@ import {
   BUY_SUCCESS,
   BUY_FAIL,
   SET_PLAN,
+  SET_DAYS,
 } from '../actions/types';
 
 const initialState = {
@@ -91,6 +92,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         plan: payload,
+      };
+    case SET_DAYS:
+      return {
+        ...state,
+        days: payload,
       };
     default:
       return state;
