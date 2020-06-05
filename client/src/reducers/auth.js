@@ -20,7 +20,7 @@ const initialState = {
   user: null,
   email: null,
   paid: null,
-  plan: null,
+  // plan: null, put inside of user object
 };
 
 export default function (state = initialState, action) {
@@ -91,12 +91,19 @@ export default function (state = initialState, action) {
     case SET_PLAN:
       return {
         ...state,
-        plan: payload,
+        user: {
+          ...state.user,
+          plan: payload,
+        },
+        // plan: payload,
       };
     case SET_DAYS:
       return {
         ...state,
-        days: payload,
+        user: {
+          ...state.user,
+          days: payload,
+        },
       };
     default:
       return state;
