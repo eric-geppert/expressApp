@@ -85,7 +85,8 @@ export default function (state = initialState, action) {
       };
     case BUY_FAIL:
       return {
-        state,
+        ...state,
+        paid: false,
       };
     //todo: add error failures for this
     case SET_PLAN:

@@ -11,20 +11,25 @@ export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
     //todo set set default to '' and check for this instead?
   });
   const { plan } = formData;
+
   const helperFunction = (workoutPlan) => {
     console.log('inside CalLanding: auth.paid: ', auth.paid);
-    if (auth.paid === true) {
+    /** must use ==ture here, otherwise will return true even if false */
+    if (auth.paid == true) {
       console.log('paid good to see whole workout: ');
       setPlan(workoutPlan, auth.user.email);
       setFormData({ ...formData, plan: workoutPlan });
     }
     if (auth.paid !== true) {
-      console.log('inside not paid loop1');
+      //todo change to auth.user.paid??
       const temp = canView(auth.user.email);
-      console.log('canView Result: ', temp);
+      const tempData = temp;
+      console.log('canView Result: ', tempData);
       /** canView 1 sees if user is subscribed 2 sets the redux
        * field paid for the furute if it was just purchased */
-      if (temp) {
+      //was temp" here if have to use that then call async function
+      //so I can call await for it
+      if (temp === true) {
         console.log('paid good to see whole workout: ');
         setPlan(workoutPlan, auth.user.email);
         setFormData({ ...formData, plan: workoutPlan });

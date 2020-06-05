@@ -86,6 +86,7 @@ export const canView = (emailInput) => async (dispatch) => {
     if (
       (can.data =
         !null &&
+        customer1 != undefined &&
         customer1.delinquent === false &&
         customer1.subscriptions.total_count > 0) // todo check this field to dc logic
     ) {
@@ -96,12 +97,15 @@ export const canView = (emailInput) => async (dispatch) => {
         payload: true,
       });
       return true; //need?
+    } else {
+      console.log('no you cannot view the full workout');
+
+      //and has subscription
+      dispatch({
+        type: BUY_FAIL,
+      });
+      return false;
     }
-    //and has subscription
-    dispatch({
-      type: BUY_FAIL,
-    });
-    return false;
   } catch (err) {
     return err;
   }
