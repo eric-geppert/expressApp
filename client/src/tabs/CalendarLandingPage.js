@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from 'react'; //had Component
 import { connect } from 'react-redux';
-import Calendar from './Calendar';
 import { setPlan, canView } from './../actions/auth';
 import { Link } from 'react-router-dom';
 import DaysPerWeekForm from './DaysPerWeekForm';
@@ -12,7 +11,8 @@ export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
   });
   const { plan } = formData;
 
-  const helperFunction = (workoutPlan) => {
+  // const helperFunction = (workoutPlan) => {
+  async function helperFunction(workoutPlan) {
     console.log('inside CalLanding: auth.paid: ', auth.paid);
     /** must use ==ture here, otherwise will return true even if false */
     if (auth.paid == true) {
@@ -22,9 +22,7 @@ export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
     }
     if (auth.paid !== true) {
       //todo change to auth.user.paid??
-      const temp = canView(auth.user.email);
-      const tempData = temp;
-      console.log('canView Result: ', tempData);
+      const temp = await canView(auth.user.email);
       /** canView 1 sees if user is subscribed 2 sets the redux
        * field paid for the furute if it was just purchased */
       //was temp" here if have to use that then call async function
@@ -40,7 +38,7 @@ export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
         setFormData({ ...formData, plan: workoutTrial });
       }
     }
-  };
+  }
 
   return auth.user != null ? (
     plan == null && auth.user.plan == null ? (
@@ -92,7 +90,6 @@ export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
     ) : (
       /**if stored locally */
       <DaysPerWeekForm plan={plan} />
-      // <Calendar plan={plan} />
     )
   ) : (
     <Fragment>

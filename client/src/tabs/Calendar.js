@@ -103,10 +103,10 @@ class MyCalendar extends Component {
         console.log('workout days passed does not exist');
     }
     //now adjust actually returns days
-    actuallyReturns.forEach(element) {
-      console.log('element.start: ', element.start);
-      // element.start
-    });
+    // actuallyReturns.forEach(element) {
+    //   console.log('element.start: ', element.start);
+    //   // element.start
+    // });
 
     return (
       <Calendar
