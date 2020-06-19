@@ -77,7 +77,13 @@ export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
           >
             Conditioning and Weight Loss
           </button>
-          <button> Total Body Transformation 5 </button>
+          <button
+            className='btn btn-primary'
+            onClick={() => helperFunction('TOTALBODY')}
+          >
+            {' '}
+            Total Body Transformation{' '}
+          </button>
         </div>
       </Fragment>
     ) : plan == null ? (

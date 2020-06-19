@@ -10,6 +10,9 @@ import MuscleWorkouts from '../resources/BuildMuscleAndSize.json';
 import MuscleWorkoutsTrial from '../resources/BuildMuscleAndSizeTrial.json';
 import ConditoningWorkouts from '../resources/ConditioningAndWeightLoss.json';
 import ConditoningWorkoutsTrial from '../resources/ConditioningAndWeightLossTrial.json';
+import TotalBodyTransformation from '../resources/TotalBodyTransformation.json';
+import TotalBodyTransformationTrial from '../resources/TotalBodyTransformationTrial.json';
+
 import { ThreeDayPlan } from '../components/auth/ThreeDayPlan';
 import { FourDayPlan } from '../components/auth/FourDayPlan';
 import { FiveDayPlan } from '../components/auth/FiveDayPlan';
@@ -58,6 +61,8 @@ class MyCalendar extends Component {
         return MuscleWorkoutsTrial;
       case 'CONDITIONINGtrial':
         return ConditoningWorkoutsTrial;
+      case 'TOTALBODYtrial':
+        return TotalBodyTransformationTrial;
       case 'HIIT':
         return HIITWorkouts;
       case 'HOME':
@@ -66,6 +71,8 @@ class MyCalendar extends Component {
         return MuscleWorkouts;
       case 'CONDITIONING':
         return ConditoningWorkouts;
+      case 'TOTALBODY':
+        return TotalBodyTransformation;
       case null:
         return null;
       default:
@@ -73,20 +80,12 @@ class MyCalendar extends Component {
     }
   }
 
-  //returns array of events
-  // ThreeDayPlan = (workoutArray) => {};
-
   setEvents = () => {
     //adjust for currently on day***************** todo
-    //fix picking 4 or 5 days
     const currentlyOnDay = this.state.dateStarted;
-    var eventArr = [];
-    console.log('initial eventArr: ', eventArr);
     var newWorkouts = this.findWorkoutOption(this.props.plan);
 
     var actuallyReturns;
-
-    console.log('this.props.days: ', this.props.days);
     switch (this.props.days) {
       case 3:
         actuallyReturns = ThreeDayPlan(newWorkouts);
@@ -103,12 +102,17 @@ class MyCalendar extends Component {
       default:
         console.log('workout days passed does not exist');
     }
+    //now adjust actually returns days
+    actuallyReturns.forEach(element) {
+      console.log('element.start: ', element.start);
+      // element.start
+    });
+
     return (
       <Calendar
         localizer={localizer}
         defaultDate={new Date()}
         defaultView='month'
-        // events={eventArr}
         events={actuallyReturns}
         style={{ height: '100vh' }}
         onDoubleClickEvent={(e) => {

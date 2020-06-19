@@ -1,0 +1,88 @@
+[
+  {
+    "title": "Day 1 - Chest",
+    "contentwrapper": [
+      { "content": "Bench Press: 4 sets of 15 reps" },
+      { "content": "Incline DB Bench Press: 4 sets of 15 reps " },
+      { "content": "-Conditioning: " },
+      { "content": "5 rounds for time-" },
+      { "content": "0.25 Mile (400m) Run " },
+      { "content": "10 Burpees" }
+    ]
+  },
+  {
+    "title": "Day 2 - Back",
+    "contentwrapper": [
+      { "content": "Seated Cable Row: 4 sets of 15 reps" },
+      {
+        "content": "Single Arm Dumbbell Lawnmower Row: 4 sets of 15 reps ea arm"
+      },
+      { "content": "-Conditioning:" },
+      { "content": "10 rounds on a stationary bike:" },
+      { "content": "1 min Fast (6 or 7 effort out of 10)" },
+      { "content": "1 min Slow (2 or 3 out of 10)" }
+    ]
+  },
+  {
+    "title": "Day 3 - Legs/Core",
+    "contentwrapper": [
+      { "content": "Back Squat: 4 sets of 15 reps" },
+      { "content": "Leg Press: 4 sets of 15 reps" },
+      { "content": "-Conditioning:" },
+      { "content": "15 min AMRAP (as many rounds as possible):" },
+      { "content": "15 Air Squats" },
+      { "content": "15 Box Jumps " },
+      { "content": "50 Jump Rope" },
+      { "content": "15 Situps (with an Abmat if available)" }
+    ]
+  },
+  {
+    "title": "Day 4 - Shoulders",
+    "contentwrapper": [
+      { "content": "Strict Press: 4 sets of 15 reps" },
+      { "content": "DB Lateral Shoulder Raise: 4 sets of 15 reps" },
+      { "content": "-Conditioning:" },
+      { "content": "5 rounds-" },
+      { "content": "4 min Jog" },
+      { "content": "15 Pushups (use your legs to help kip if necessary)" }
+    ]
+  },
+  {
+    "title": "Day 5 - Arms/Core",
+    "contentwrapper": [
+      { "content": "Day 6 - Arms/Core" },
+      { "content": "" },
+      { "content": "DB Bicep Curls (both arms): 4 sets of 15 reps" },
+      { "content": "DB Overhead Triceps Extensions: 4 sets of 15 reps " },
+      { "content": "-Conditioning:" },
+      { "content": "20 min AMRAP (as many rounds as possible):" },
+      { "content": "8 Hanging Strict Leg/Knee Raises" },
+      { "content": "1 min Stationary Bike/Rower" },
+      { "content": "15 Weighted Ab Mat Situps" },
+      { "content": "10 Burpees " }
+    ]
+  },
+  {
+    "title": "Day 6 - Chest",
+    "contentwrapper": [
+      { "content": "Bench Press: 4 sets of 12 reps" },
+      { "content": "Incline DB Bench Press: 4 sets of 12 reps " },
+      { "content": "-Conditioning: " },
+      { "content": "16 min bike " },
+      { "content": "*Every 2 min do 10 Pushups" }
+    ]
+  },
+  {
+    "title": "Day 7 - Back",
+    "contentwrapper": [
+      { "content": "Seated Cable Row: 4 sets of 12 reps" },
+      {
+        "content": "Single Arm Dumbbell Lawnmower Row: 4 sets of 12 reps ea arm"
+      },
+      { "content": "-Conditioning:" },
+      { "content": "7 rounds-" },
+      { "content": "300m row fast" },
+      { "content": "~then 500m row slow and easy between each 300" }
+    ]
+  }
+]
