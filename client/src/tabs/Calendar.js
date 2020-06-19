@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
-import TemplateWorkouts from '../resources/TemplateWorkouts.json';
 import HIITWorkouts from '../resources/HIITWorkouts.json';
 import HIITWorkoutsTrial from '../resources/HIITWorkoutsTrial.json';
 import HomeWorkouts from '../resources/AtHomeTotalBody.json';
