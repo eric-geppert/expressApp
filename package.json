@@ -13,7 +13,6 @@
   "author": "Eric Geppert",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/icons": "^4.9.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "braintree-web": "^3.52.0",

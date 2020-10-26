@@ -1,44 +1,30 @@
 import React, { useState, Fragment } from 'react'; //had Component
 import { connect } from 'react-redux';
+import Calendar from './Calendar';
 import { setPlan, canView } from './../actions/auth';
 import { Link } from 'react-router-dom';
-import DaysPerWeekForm from './DaysPerWeekForm';
 
-export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
+export const CalendarLandingPage = ({ setPlan, auth }) => {
   const [formData, setFormData] = useState({
     plan: null,
     //todo set set default to '' and check for this instead?
   });
+  console.log('auth from destructuring: ', auth);
   const { plan } = formData;
-
-  // const helperFunction = (workoutPlan) => {
-  async function helperFunction(workoutPlan) {
-    console.log('inside CalLanding: auth.paid: ', auth.paid);
-    /** must use ==ture here, otherwise will return true even if false */
-    if (auth.paid == true) {
+  const helperFunction = (workoutPlan) => {
+    // if(canView(auth.user.email))
+    //trying without canView to see if I need it
+    if (auth.paid === true) {
       console.log('paid good to see whole workout: ');
       setPlan(workoutPlan, auth.user.email);
       setFormData({ ...formData, plan: workoutPlan });
+    } else {
+      const workoutTrial = workoutPlan + 'trial';
+      console.log('not paid workoutTrial: ', workoutTrial);
+      setPlan(workoutTrial, auth.user.email);
+      setFormData({ ...formData, plan: workoutTrial });
     }
-    if (auth.paid !== true) {
-      //todo change to auth.user.paid??
-      const temp = await canView(auth.user.email);
-      /** canView 1 sees if user is subscribed 2 sets the redux
-       * field paid for the furute if it was just purchased */
-      //was temp" here if have to use that then call async function
-      //so I can call await for it
-      if (temp === true) {
-        console.log('paid good to see whole workout: ');
-        setPlan(workoutPlan, auth.user.email);
-        setFormData({ ...formData, plan: workoutPlan });
-      } else {
-        const workoutTrial = workoutPlan + 'trial';
-        console.log('not paid workoutTrial: ', workoutTrial);
-        setPlan(workoutTrial, auth.user.email);
-        setFormData({ ...formData, plan: workoutTrial });
-      }
-    }
-  }
+  };
 
   return auth.user != null ? (
     plan == null && auth.user.plan == null ? (
@@ -69,27 +55,14 @@ export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
           >
             Build Muscle and Size
           </button>
-          <button
-            className='btn btn-primary'
-            onClick={() => helperFunction('CONDITIONING')}
-          >
-            Conditioning and Weight Loss
-          </button>
-          <button
-            className='btn btn-primary'
-            onClick={() => helperFunction('TOTALBODY')}
-          >
-            {' '}
-            Total Body Transformation{' '}
-          </button>
+          <button> Option 4 </button>
+          <button> Option 5 </button>
         </div>
       </Fragment>
     ) : plan == null ? (
-      /**if sotred in redux not locally */
-      <DaysPerWeekForm plan={auth.user.plan} />
+      <Calendar plan={auth.user.plan} />
     ) : (
-      /**if stored locally */
-      <DaysPerWeekForm plan={plan} />
+      <Calendar plan={plan} />
     )
   ) : (
     <Fragment>

@@ -1,20 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
+import TemplateWorkouts from '../resources/TemplateWorkouts.json';
 import HIITWorkouts from '../resources/HIITWorkouts.json';
 import HIITWorkoutsTrial from '../resources/HIITWorkoutsTrial.json';
 import HomeWorkouts from '../resources/AtHomeTotalBody.json';
 import HomeWorkoutsTrial from '../resources/AtHomeTotalBodyTrial.json';
 import MuscleWorkouts from '../resources/BuildMuscleAndSize.json';
 import MuscleWorkoutsTrial from '../resources/BuildMuscleAndSizeTrial.json';
-import ConditoningWorkouts from '../resources/ConditioningAndWeightLoss.json';
-import ConditoningWorkoutsTrial from '../resources/ConditioningAndWeightLossTrial.json';
-import TotalBodyTransformation from '../resources/TotalBodyTransformation.json';
-import TotalBodyTransformationTrial from '../resources/TotalBodyTransformationTrial.json';
-
-import { ThreeDayPlan } from '../components/auth/ThreeDayPlan';
-import { FourDayPlan } from '../components/auth/FourDayPlan';
-import { FiveDayPlan } from '../components/auth/FiveDayPlan';
 
 // import { getDateUserStarted } from '../components/gymComponents/GetDateUserStarted';
 import { connect } from 'react-redux';
@@ -38,6 +31,7 @@ class MyCalendar extends Component {
 
   renderWorkouts = () => {
     var workoutArr = [];
+
     var i = 0;
     /** NEED TO KEEP LAST LINE OF EVERY WORKOUT AS NULL */
     while (
@@ -58,20 +52,12 @@ class MyCalendar extends Component {
         return HomeWorkoutsTrial;
       case 'MUSCLEtrial':
         return MuscleWorkoutsTrial;
-      case 'CONDITIONINGtrial':
-        return ConditoningWorkoutsTrial;
-      case 'TOTALBODYtrial':
-        return TotalBodyTransformationTrial;
       case 'HIIT':
         return HIITWorkouts;
       case 'HOME':
         return HomeWorkouts;
       case 'MUSCLE':
         return MuscleWorkouts;
-      case 'CONDITIONING':
-        return ConditoningWorkouts;
-      case 'TOTALBODY':
-        return TotalBodyTransformation;
       case null:
         return null;
       default:
@@ -80,41 +66,37 @@ class MyCalendar extends Component {
   }
 
   setEvents = () => {
-    //adjust for currently on day***************** todo
+    console.log('zzz: ', this.state.dateStarted);
     const currentlyOnDay = this.state.dateStarted;
+    var eventArr = [];
+    console.log('Calendar this.props.plan: ', this.props.plan);
     var newWorkouts = this.findWorkoutOption(this.props.plan);
+    // if (this.props.plan == 'HIIT') {
+    //   newWorkouts = HIITWorkouts;
+    // }
 
-    var actuallyReturns;
-    switch (this.props.days) {
-      case 3:
-        actuallyReturns = ThreeDayPlan(newWorkouts, 5);
-        // this.state.dateStarted;
-        //dateStarted is diff in days
-        break;
-      case 4:
-        actuallyReturns = FourDayPlan(newWorkouts);
-        break;
-      case 5:
-        actuallyReturns = FiveDayPlan(newWorkouts);
-        break;
-      case null:
-        console.log('this.props.days is null');
-        break;
-      default:
-        console.log('workout days passed does not exist');
-    }
-    //now adjust actually returns days
-    // actuallyReturns.forEach(element) {
-    //   console.log('element.start: ', element.start);
-    //   // element.start
-    // });
-
+    newWorkouts.forEach(function (element, index) {
+      eventArr.push({
+        start:
+          index - currentlyOnDay < 0
+            ? new Date(moment().subtract(currentlyOnDay - index, 'days'))
+            : new Date(moment().add(index - currentlyOnDay, 'days')),
+        end:
+          index - currentlyOnDay < 0
+            ? new Date(moment().subtract(currentlyOnDay - index, 'days'))
+            : new Date(moment().add(index - currentlyOnDay, 'days')),
+        allDay: true,
+        title: newWorkouts[index].title,
+        workout: newWorkouts[index].contentwrapper,
+        eventIndex: index,
+      });
+    });
     return (
       <Calendar
         localizer={localizer}
         defaultDate={new Date()}
         defaultView='month'
-        events={actuallyReturns}
+        events={eventArr}
         style={{ height: '100vh' }}
         onDoubleClickEvent={(e) => {
           this.setState({
