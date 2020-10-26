@@ -27,3 +27,4 @@ export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 export const BUY_SUCCESS = 'BUY_SUCCESS';
 export const BUY_FAIL = 'BUY_FAIL';
 export const SET_PLAN = 'SET_PLAN';
+export const SET_DAYS = 'SET_DAYS';
