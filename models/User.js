@@ -33,11 +33,6 @@ const UserSchema = new mongoose.Schema({
     required: false /**since initially setting plan to null have to set required to false */,
     default: null,
   },
-  days: {
-    type: Number,
-    required: false,
-    default: null,
-  },
 });
 
 module.exports = User = mongoose.model('user', UserSchema);

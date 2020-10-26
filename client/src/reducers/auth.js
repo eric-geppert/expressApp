@@ -10,7 +10,6 @@ import {
   BUY_SUCCESS,
   BUY_FAIL,
   SET_PLAN,
-  SET_DAYS,
 } from '../actions/types';
 
 const initialState = {
@@ -20,7 +19,7 @@ const initialState = {
   user: null,
   email: null,
   paid: null,
-  // plan: null, put inside of user object
+  plan: null,
 };
 
 export default function (state = initialState, action) {
@@ -85,26 +84,13 @@ export default function (state = initialState, action) {
       };
     case BUY_FAIL:
       return {
-        ...state,
-        paid: false,
+        state,
       };
     //todo: add error failures for this
     case SET_PLAN:
       return {
         ...state,
-        user: {
-          ...state.user,
-          plan: payload,
-        },
-        // plan: payload,
-      };
-    case SET_DAYS:
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          days: payload,
-        },
+        plan: payload,
       };
     default:
       return state;
