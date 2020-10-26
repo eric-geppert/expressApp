@@ -87,7 +87,9 @@ class MyCalendar extends Component {
     var actuallyReturns;
     switch (this.props.days) {
       case 3:
-        actuallyReturns = ThreeDayPlan(newWorkouts);
+        actuallyReturns = ThreeDayPlan(newWorkouts, 5);
+        // this.state.dateStarted;
+        //dateStarted is diff in days
         break;
       case 4:
         actuallyReturns = FourDayPlan(newWorkouts);
