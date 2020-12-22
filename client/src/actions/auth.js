@@ -69,6 +69,7 @@ export const setPlan = (workoutPlan, emailInput) => async (dispatch) => {
   });
 };
 
+// make changezzzz here
 export const canView = (emailInput) => async (dispatch) => {
   try {
     const config = {
@@ -77,11 +78,7 @@ export const canView = (emailInput) => async (dispatch) => {
       },
     };
     const body = JSON.stringify({ email: emailInput });
-    const can = await axios.post('api/auth/getAllCustomers', body, config);
-
-    console.log('zzz canView customers returned:', can);
-    // console.log('zzz canView.data.:', can);
-
+    var can = await axios.post('api/auth/getAllCustomers', body, config);
     const customer1 = can.data.allCustomers.data[0];
     if (
       (can.data =

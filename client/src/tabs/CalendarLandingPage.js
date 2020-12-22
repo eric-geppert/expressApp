@@ -7,6 +7,7 @@ import DaysPerWeekForm from './DaysPerWeekForm';
 export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
   const [formData, setFormData] = useState({
     plan: null,
+    canViewtoday: null
     //todo set set default to '' and check for this instead?
   });
   const { plan } = formData;
@@ -39,6 +40,42 @@ export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
       }
     }
   }
+
+  // get Uncaught Invariant Violation: Objects are not valid as a React child (found: [object Promise]). If you meant to render a collection of children, use an array instead.
+  // if try to render a promise
+  function CheckIfPaidUpToday() {
+    // var workoutTrial = ""
+    const temp =  canView(auth.user.email);
+    if(temp===true)
+    //   setFormData({canViewtoday: true})
+    // //set redux to true
+    // else
+    //   setFormData({canViewtoday: false})
+    // }
+
+
+    if(plan == null)
+        return <DaysPerWeekForm plan={auth.user.plan} />
+      else
+        return <DaysPerWeekForm plan={plan} />
+    else{
+      //make changes here so can change to paid plan later
+      if(plan==null){
+        return <DaysPerWeekForm plan={auth.user.plan} />
+      }
+      else{
+        return <DaysPerWeekForm plan={plan} />
+      }
+    }
+  }
+      // return <p>not today jr</p> 
+  // async function checkIfPaidUpToday(workoutPlan) {
+  //   const temp = await canView(auth.user.email);
+  //   if(temp===true)
+  //     return <DaysPerWeekForm plan={plan} />
+  //   else
+  //     return <p>not today jr</p> 
+  // }
 
   return auth.user != null ? (
     plan == null && auth.user.plan == null ? (
@@ -84,13 +121,31 @@ export const CalendarLandingPage = ({ setPlan, auth, canView }) => {
           </button>
         </div>
       </Fragment>
-    ) : plan == null ? (
+    ) :
+    <CheckIfPaidUpToday/>
+    // : plan == null ? (
+          
+    //         // ---------------
+    //         <div>
+    //           {/* //check if auth updated render */}
+    //           {this.CheckIfPaidUpToday()}
+
+    //           <p></p>
+    //         </div>
       /**if sotred in redux not locally */
-      <DaysPerWeekForm plan={auth.user.plan} />
-    ) : (
-      /**if stored locally */
-      <DaysPerWeekForm plan={plan} />
-    )
+      // authorized to see it?
+      // authorizedToday != undefined ? (
+
+      //   authorizedToday ? <DaysPerWeekForm plan={auth.user.plan} /> :
+      //   // if not authorized today
+      //   <p>not authorized</p>
+      // ):
+      // <p>undefined so far</p>
+            // ---------------
+    // ) : (
+    //   /**if stored locally */
+    //   <DaysPerWeekForm plan={plan} />
+    // )
   ) : (
     <Fragment>
       <p>
