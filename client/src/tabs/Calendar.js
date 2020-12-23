@@ -12,6 +12,7 @@ import ConditoningWorkoutsTrial from '../resources/ConditioningAndWeightLossTria
 import TotalBodyTransformation from '../resources/TotalBodyTransformation.json';
 import TotalBodyTransformationTrial from '../resources/TotalBodyTransformationTrial.json';
 
+
 import { ThreeDayPlan } from '../components/auth/ThreeDayPlan';
 import { FourDayPlan } from '../components/auth/FourDayPlan';
 import { FiveDayPlan } from '../components/auth/FiveDayPlan';
@@ -19,8 +20,6 @@ import { FiveDayPlan } from '../components/auth/FiveDayPlan';
 // import { getDateUserStarted } from '../components/gymComponents/GetDateUserStarted';
 import { connect } from 'react-redux';
 import axios from 'axios';
-
-// import './App.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const localizer = momentLocalizer(moment);
@@ -29,11 +28,6 @@ class MyCalendar extends Component {
   state = {
     selected: null,
     dateStarted: null,
-  };
-
-  returnToCalView = () => {
-    console.log('inner Button clicked');
-    this.setState({ selected: null });
   };
 
   renderWorkouts = () => {
@@ -92,7 +86,7 @@ class MyCalendar extends Component {
         //dateStarted is diff in days
         break;
       case 4:
-        actuallyReturns = FourDayPlan(newWorkouts);
+        actuallyReturns = FourDayPlan(newWorkouts,);
         break;
       case 5:
         actuallyReturns = FiveDayPlan(newWorkouts);
@@ -153,6 +147,7 @@ class MyCalendar extends Component {
     return 'invalid email, you must be logged in to use this feature';
   };
 
+  //why tf do I need this? it won't load wihtout it?
   componentWillMount() {
     console.log('auth before: ', this.props.auth);
     if (this.props.auth.user != undefined) {
@@ -201,9 +196,8 @@ class MyCalendar extends Component {
          * being done in this case because it just resets the state before it render the below*/}
         <button
           className='btn btn-primary'
-          onClick={() => this.returnToCalView()}
+          onClick={() => this.setState({ selected: null })}
         >
-          {/* this.setState({ selected: null })> */}
           Back to Calendar view
         </button>
         <h2 style={{ paddingTop: '30px' }}> {this.state.selected.title}</h2>
