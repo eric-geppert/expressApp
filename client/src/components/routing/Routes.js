@@ -25,8 +25,10 @@ import Testimonials from '../../tabs/Testimonials2';
 //or I would have to just add padding/negative margins anyway
 import RadioButtonParent from '../../components/gymComponents/RadioButtonParent';
 import CheckoutPage from '../../components/auth/CheckoutPage';
-import MyCalendar from '../../tabs/Calendar';
-import CalendarLandingPage from '../../tabs/CalendarLandingPage';
+// import MyCalendar from '../../tabs/Calendar';
+// import CalendarLandingPage from '../../tabs/CalendarLandingPage';
+import CalendarLandingPage1 from '../../tabs/CalendarLandingPage1';
+
 
 const Routes = () => {
   return (
@@ -56,7 +58,7 @@ const Routes = () => {
         <Route exact path='/Testimonials' component={Testimonials} />
         <Route exact path='/FindMyProgram' component={RadioButtonParent} />
         <Route exact path='/CheckoutPage' component={CheckoutPage} />
-        <Route exact path='/Calendar' component={CalendarLandingPage} />
+        <Route exact path='/Calendar' component={CalendarLandingPage1} />
         <Route component={NotFound} />
       </Switch>
     </section>
