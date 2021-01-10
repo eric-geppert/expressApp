@@ -48,19 +48,6 @@ router.put('/setCustomerDaysPerWeek', async (req, res) => {
     .catch((err) => res.status(404).json({ success: false }));
 });
 
-// not called anywhere depricated
-// router.get('/getIsCustomerDelinquent', async (req, res) => {
-  // try {
-  //   console.log("customer Data req:", req)
-  //   let myCustomer = await stripe.customers.retrieve('cus_FvNKEiG1w8yUno');
-  //   // const delinquentcy= myCustomer.delinquent
-  //   res.json(myCustomer.delinquent);
-
-  //   // res.json({ myCustomer });
-  // } catch (err) {
-  //   res.json({ err });
-//   }
-// });
 
 // @route
 //req type POST
@@ -333,18 +320,9 @@ router.post('/createSubscription', async (req, res) => {
 // todo rename to getCusomer
 router.post('/getAllCustomers', async (req, res) => {
   try {
-    // console.log("zzzzzzzzzzzzzzzz stripe.customers", await stripe.customers)
-
-    // console.log('inside getAllCustomers req.body.email: ', req.body.email);
     let allCustomers = await stripe.customers.list({
       email: req.body.email,
-      // email: 'a18@me.com'
     });
-
-    console.log("cust:", allCustomers)
-    //   'allCustomers.data[0].subscriptions.data[0].id',
-    //   allCustomers.data[0].subscriptions.data[0].id
-    // );
     res.json({ allCustomers });
   } catch (err) {
     res.json({ err });
