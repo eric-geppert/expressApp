@@ -19,8 +19,6 @@ import setAuthToken from '../utils/setAuthToken';
 
 
 export const setSelectedCalendarWorkout = (selected) => async (dispatch) => {
-  console.log("in actions auth, calling setSelectedCalendarWorkout selected is:", selected)
-
   dispatch({
     type: SET_SELECTED_WORKOUT,
     payload: selected,
@@ -29,7 +27,6 @@ export const setSelectedCalendarWorkout = (selected) => async (dispatch) => {
 
 
 export const setDaysPerWeek = (daysInput, emailInput) => async (dispatch) => {
-  console.log('dayssssssssssssssssssssssssss Input: ', daysInput);
   try {
     const config = {
       headers: {
@@ -53,7 +50,7 @@ export const setDaysPerWeek = (daysInput, emailInput) => async (dispatch) => {
     payload: daysInput,
   });
 };
-//----
+
 export const setPlan = (workoutPlan, emailInput) => async (dispatch) => {
   try {
     const config = {

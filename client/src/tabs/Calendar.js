@@ -11,12 +11,9 @@ import ConditoningWorkouts from '../resources/ConditioningAndWeightLoss.json';
 import ConditoningWorkoutsTrial from '../resources/ConditioningAndWeightLossTrial.json';
 import TotalBodyTransformation from '../resources/TotalBodyTransformation.json';
 import TotalBodyTransformationTrial from '../resources/TotalBodyTransformationTrial.json';
-
-
 import { ThreeDayPlan } from '../components/auth/ThreeDayPlan';
 import { FourDayPlan } from '../components/auth/FourDayPlan';
 import { FiveDayPlan } from '../components/auth/FiveDayPlan';
-
 // import { getDateUserStarted } from '../components/gymComponents/GetDateUserStarted';
 import { connect } from 'react-redux';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -28,10 +25,6 @@ const localizer = momentLocalizer(moment);
 export const MyCalendar = ({ auth, setSelectedCalendarWorkout }) => {
 
   const renderWorkouts = () => {
-    console.log("in renderworkouts")
-    console.log("auth:", auth)
-
-    // setSelectedCalendarWorkout(null)
     var workoutArr = [];
     var i = 0;
     const workout = auth.user.selectedCalendarWorkout.workout
