@@ -13,11 +13,20 @@ import {
   BUY_FAIL,
   SET_PLAN,
   SET_DAYS,
+  SET_SELECTED_WORKOUT
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
+
+export const setSelectedCalendarWorkout = (selected) => async (dispatch) => {
+  dispatch({
+    type: SET_SELECTED_WORKOUT,
+    payload: selected,
+  });
+};
+
+
 export const setDaysPerWeek = (daysInput, emailInput) => async (dispatch) => {
-  console.log('dayssssssssssssssssssssssssss Input: ', daysInput);
   try {
     const config = {
       headers: {
@@ -41,7 +50,7 @@ export const setDaysPerWeek = (daysInput, emailInput) => async (dispatch) => {
     payload: daysInput,
   });
 };
-//----
+
 export const setPlan = (workoutPlan, emailInput) => async (dispatch) => {
   try {
     const config = {
@@ -69,6 +78,7 @@ export const setPlan = (workoutPlan, emailInput) => async (dispatch) => {
   });
 };
 
+// make changezzzz here
 export const canView = (emailInput) => async (dispatch) => {
   try {
     const config = {
@@ -77,11 +87,7 @@ export const canView = (emailInput) => async (dispatch) => {
       },
     };
     const body = JSON.stringify({ email: emailInput });
-    const can = await axios.post('api/auth/getAllCustomers', body, config);
-
-    console.log('zzz canView customers returned:', can);
-    // console.log('zzz canView.data.:', can);
-
+    var can = await axios.post('api/auth/getAllCustomers', body, config);
     const customer1 = can.data.allCustomers.data[0];
     if (
       (can.data =

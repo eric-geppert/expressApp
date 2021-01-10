@@ -28,3 +28,4 @@ export const BUY_SUCCESS = 'BUY_SUCCESS';
 export const BUY_FAIL = 'BUY_FAIL';
 export const SET_PLAN = 'SET_PLAN';
 export const SET_DAYS = 'SET_DAYS';
+export const SET_SELECTED_WORKOUT = 'SET_SELECTED_WORKOUT';

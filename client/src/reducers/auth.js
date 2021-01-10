@@ -11,6 +11,7 @@ import {
   BUY_FAIL,
   SET_PLAN,
   SET_DAYS,
+  SET_SELECTED_WORKOUT
 } from '../actions/types';
 
 const initialState = {
@@ -104,6 +105,14 @@ export default function (state = initialState, action) {
         user: {
           ...state.user,
           days: payload,
+        },
+      };
+    case SET_SELECTED_WORKOUT:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          selectedCalendarWorkout: payload,
         },
       };
     default:

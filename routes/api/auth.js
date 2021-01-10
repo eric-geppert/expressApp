@@ -48,17 +48,6 @@ router.put('/setCustomerDaysPerWeek', async (req, res) => {
     .catch((err) => res.status(404).json({ success: false }));
 });
 
-router.get('/getIsCustomerDelinquent', async (req, res) => {
-  try {
-    let myCustomer = await stripe.customers.retrieve('cus_FvNKEiG1w8yUno');
-    // const delinquentcy= myCustomer.delinquent
-    res.json(myCustomer.delinquent);
-
-    // res.json({ myCustomer });
-  } catch (err) {
-    res.json({ err });
-  }
-});
 
 // @route
 //req type POST
@@ -66,24 +55,37 @@ router.get('/getIsCustomerDelinquent', async (req, res) => {
 //@desc see if user has paid
 //@access Public
 router.post('/hasPaid', async (req, res) => {
-  const { email, password } = req.body;
   try {
-    let user = await User.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
-    }
-
-    const isMatch = await bcrypt.compare(password, user.password);
-
-    if (!isMatch) {
-      return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
-    }
-    res.json(user.paid);
+    console.error("remove hasPaid from code don't use anymore")
+    // console.log("customer Data req:", req)
+    // let myCustomer = await stripe.customers.retrieve('cus_FvNKEiG1w8yUno');
+    // // const delinquentcy= myCustomer.delinquent
+    // // res.json(myCustomer.delinquent);
+    // res.json({ myCustomer });
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
+    res.json({ err });
   }
 });
+
+// old has paid that checked bd
+//   const { email, password } = req.body;
+//   try {
+//     let user = await User.findOne({ email });
+//     if (!user) {
+//       return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+//     }
+
+//     const isMatch = await bcrypt.compare(password, user.password);
+
+//     if (!isMatch) {
+//       return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+//     }
+//     res.json(user.paid);
+//   } catch (err) {
+//     console.error(err.message);
+//     res.status(500).send('Server Error');
+//   }
+// });
 
 // @route
 //req type GET
@@ -174,7 +176,6 @@ router.post(
 //todo: q: add in auth middleware here????????????
 router.post('/charge', async (req, res) => {
   //todo: add in error checking here
-
   console.log(
     'inside /charge route----------------------------------------------------------------------------------'
   );
@@ -316,20 +317,12 @@ router.post('/createSubscription', async (req, res) => {
   }
 });
 
+// todo rename to getCusomer
 router.post('/getAllCustomers', async (req, res) => {
   try {
-    // console.log('inside getAllCustomers req.body: ', req.body);
-    // console.log('inside getAllCustomers req.body.email: ', req.body.email);
-
     let allCustomers = await stripe.customers.list({
       email: req.body.email,
-      // email: 'a18@me.com'
     });
-
-    // console.log(
-    //   'allCustomers.data[0].subscriptions.data[0].id',
-    //   allCustomers.data[0].subscriptions.data[0].id
-    // );
     res.json({ allCustomers });
   } catch (err) {
     res.json({ err });
