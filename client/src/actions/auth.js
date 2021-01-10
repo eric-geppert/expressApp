@@ -13,8 +13,20 @@ import {
   BUY_FAIL,
   SET_PLAN,
   SET_DAYS,
+  SET_SELECTED_WORKOUT
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
+
+
+export const setSelectedCalendarWorkout = (selected) => async (dispatch) => {
+  console.log("in actions auth, calling setSelectedCalendarWorkout selected is:", selected)
+
+  dispatch({
+    type: SET_SELECTED_WORKOUT,
+    payload: selected,
+  });
+};
+
 
 export const setDaysPerWeek = (daysInput, emailInput) => async (dispatch) => {
   console.log('dayssssssssssssssssssssssssss Input: ', daysInput);
