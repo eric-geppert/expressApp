@@ -18,11 +18,12 @@ import { FiveDayPlan } from '../components/auth/FiveDayPlan';
 import { connect } from 'react-redux';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { setSelectedCalendarWorkout } from '../actions/auth';
+import { setPlan, canView } from './../actions/auth';
 
 
 const localizer = momentLocalizer(moment);
 
-export const MyCalendar = ({ auth, setSelectedCalendarWorkout }) => {
+export const MyCalendar = ({ auth, setSelectedCalendarWorkout, canView }) => {
 
   const renderWorkouts = () => {
     var workoutArr = [];
@@ -69,7 +70,17 @@ export const MyCalendar = ({ auth, setSelectedCalendarWorkout }) => {
   const setEvents = () => {
     //adjust for currently on day***************** todo
     // const currentlyOnDay = this.state.dateStarted;
-    var newWorkouts = findWorkoutOption(auth.user.plan);
+    var newWorkouts =""
+    console.warn("auth.user.plan:", auth.user.plan)
+    console.warn("auth.user.plan:", typeof(auth.user.plan))
+    console.warn("auth.user.plan strang:", auth.user.plan+'trial')
+
+    // const strang=auth.user.plan
+    if(auth.paid===true)
+      newWorkouts = findWorkoutOption(auth.user.plan);
+    else
+      newWorkouts = findWorkoutOption(auth.user.plan+'trial');
+    console.log("auth.paid",auth.paid)
 
     var actuallyReturns;
     switch (auth.user.days) {
@@ -141,4 +152,4 @@ export const MyCalendar = ({ auth, setSelectedCalendarWorkout }) => {
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
-export default connect(mapStateToProps, { setSelectedCalendarWorkout })(MyCalendar);
+export default connect(mapStateToProps, { setSelectedCalendarWorkout, canView })(MyCalendar);

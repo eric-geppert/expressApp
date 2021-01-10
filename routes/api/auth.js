@@ -56,7 +56,18 @@ router.put('/setCustomerDaysPerWeek', async (req, res) => {
 //@access Public
 router.post('/hasPaid', async (req, res) => {
   try {
-    console.error("remove hasPaid from code don't use anymore")
+    console.log("remove /haspaid")
+    console.error("in /hasPaid in api/auth.js req:", req)
+
+
+    // try {
+    //   let customer = await stripe.customers.list({
+    //     email: req.body.email,
+    //   });
+    //   res.json({ customer });
+    // } catch (err) {
+    //   res.json({ err });
+    // }
     // console.log("customer Data req:", req)
     // let myCustomer = await stripe.customers.retrieve('cus_FvNKEiG1w8yUno');
     // // const delinquentcy= myCustomer.delinquent
@@ -317,8 +328,8 @@ router.post('/createSubscription', async (req, res) => {
   }
 });
 
-// todo rename to getCusomer
-router.post('/getAllCustomers', async (req, res) => {
+router.post('/getCustomer', async (req, res) => {
+  console.warn("looking for email:", req.body.email)
   try {
     let allCustomers = await stripe.customers.list({
       email: req.body.email,
