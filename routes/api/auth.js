@@ -14,12 +14,8 @@ router.use(require('body-parser').text());
 /**has to be post route so we can send information with it(email and password) */
 router.post('/getCustomerDate', async (req, res) => {
   const { email } = req.body;
-  console.log('whattttt outside of brackets');
   try {
-    console.log('currentUser before');
     let currentUser = await User.findOne({ email });
-    console.log('currentUser: ', currentUser);
-
     if (!currentUser) {
       return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
     }
@@ -47,56 +43,6 @@ router.put('/setCustomerDaysPerWeek', async (req, res) => {
     .then(() => res.json({ success: true }))
     .catch((err) => res.status(404).json({ success: false }));
 });
-
-
-// @route
-//req type POST
-//endpoint api/auth/hasPaid
-//@desc see if user has paid
-//@access Public
-router.post('/hasPaid', async (req, res) => {
-  try {
-    console.log("remove /haspaid")
-    console.error("in /hasPaid in api/auth.js req:", req)
-
-
-    // try {
-    //   let customer = await stripe.customers.list({
-    //     email: req.body.email,
-    //   });
-    //   res.json({ customer });
-    // } catch (err) {
-    //   res.json({ err });
-    // }
-    // console.log("customer Data req:", req)
-    // let myCustomer = await stripe.customers.retrieve('cus_FvNKEiG1w8yUno');
-    // // const delinquentcy= myCustomer.delinquent
-    // // res.json(myCustomer.delinquent);
-    // res.json({ myCustomer });
-  } catch (err) {
-    res.json({ err });
-  }
-});
-
-// old has paid that checked bd
-//   const { email, password } = req.body;
-//   try {
-//     let user = await User.findOne({ email });
-//     if (!user) {
-//       return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
-//     }
-
-//     const isMatch = await bcrypt.compare(password, user.password);
-
-//     if (!isMatch) {
-//       return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
-//     }
-//     res.json(user.paid);
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).send('Server Error');
-//   }
-// });
 
 // @route
 //req type GET
@@ -329,7 +275,6 @@ router.post('/createSubscription', async (req, res) => {
 });
 
 router.post('/getCustomer', async (req, res) => {
-  console.warn("looking for email:", req.body.email)
   try {
     let allCustomers = await stripe.customers.list({
       email: req.body.email,
@@ -342,7 +287,6 @@ router.post('/getCustomer', async (req, res) => {
 
 router.put('/unsubscribe', async (req, res) => {
   try {
-    console.log('in unsub endpoint req.body: ', req.body);
     let unsub = await stripe.subscriptions.update(req.body, {
       cancel_at_period_end: true,
     });

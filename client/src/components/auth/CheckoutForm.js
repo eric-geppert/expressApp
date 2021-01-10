@@ -3,23 +3,13 @@ import { CardElement, injectStripe } from 'react-stripe-elements';
 import { Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { setPaidToTrue, canView } from '../../actions/auth';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {BUY_SUCCESS} from '../../actions/types'
 
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
     this.state = { complete: false };
     this.submit = this.submit.bind(this);
-  }
-
-  bought = () => async (dispatch) => {
-    console.log("calling bought to dispatch")
-    dispatch({
-      type: BUY_SUCCESS,
-      payload: true,
-    });
   }
 
   async submit(ev) {
@@ -44,14 +34,8 @@ class CheckoutForm extends Component {
         body: response.customer.id,
       });
       if (res2.status === 200) {
-        // canView(this.props.user.email)
-        // dispatch({
-        //   type: BUY_SUCCESS,
-        //   payload: true,
-        // });
-        this.bought();
-        this.setState({ complete: true });
         this.props.canView();
+        this.setState({ complete: true });
         this.props.setAlert('Purchase complete!', 'success');
       }
       // else
