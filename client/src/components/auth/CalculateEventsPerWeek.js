@@ -51,5 +51,3 @@ export const CalculateEventsPerWeek = (workoutArray, dateStarted, daysPerWeek) =
 
   return eventArr;
 };
-
-// todo at the end is abstract x DaysWorkingOutPerWeek
