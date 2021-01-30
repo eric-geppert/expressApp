@@ -15,11 +15,11 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  paid: {
-    type: Boolean,
-    required: true,
-    default: false,
-  },
+  // paid: {
+  //   type: Boolean,
+  //   required: true,
+  //   default: false,
+  // },
   // avatar: {
   //   type: String
   // },

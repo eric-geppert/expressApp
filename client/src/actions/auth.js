@@ -87,7 +87,7 @@ export const canView = (emailInput) => async (dispatch) => {
       },
     };
     const body = JSON.stringify({ email: emailInput });
-    var can = await axios.post('api/auth/getAllCustomers', body, config);
+    var can = await axios.post('api/auth/getCustomer', body, config);
     const customer1 = can.data.allCustomers.data[0];
     if (
       (can.data =
@@ -131,14 +131,14 @@ export const unsubscribeMe = (emailInput) => async (dispatch) => {
       },
     };
     const body = JSON.stringify({ email: emailInput });
-    const res = await axios.post('/api/auth/getAllCustomers', body, config);
+    const res = await axios.post('/api/auth/getCustomer', body, config);
     const body2 = res.data.allCustomers.data[0].subscriptions.data[0].id;
     const res2 = await axios.put('/api/auth/unsubscribe', body2, config2);
 
     if (res2) {
       dispatch(
         setAlert(
-          'successfully unsubscribed, Profile page will reflect this next time you login',
+          'successfully unsubscribed, Profile page will reflect if you refresh the page',
           'success'
         )
       );
@@ -156,6 +156,8 @@ export const loadUser = () => async (dispatch) => {
 
   try {
     const res = await axios.get('/api/auth');
+
+    dispatch(canView(res.data.email));
 
     dispatch({
       type: USER_LOADED,
@@ -217,16 +219,7 @@ export const login = (email, password) => async (dispatch) => {
       type: LOGIN_SUCCESS,
       payload: res.data,
     });
-
     dispatch(loadUser());
-
-    const res2 = await axios.post('/api/auth/hasPaid', body, config);
-
-    console.log('called /hasPaid res2.data: ' + res2.data);
-    dispatch({
-      type: BUY_SUCCESS,
-      payload: res2.data,
-    });
   } catch (err) {
     console.log('err', err);
     if (err.response != undefined) {

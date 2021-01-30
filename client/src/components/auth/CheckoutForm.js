@@ -2,8 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import { Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
-import { setPaidToTrue } from '../../actions/auth';
-import PropTypes from 'prop-types';
+import { setPaidToTrue, canView } from '../../actions/auth';
 import { connect } from 'react-redux';
 
 class CheckoutForm extends Component {
@@ -35,6 +34,7 @@ class CheckoutForm extends Component {
         body: response.customer.id,
       });
       if (res2.status === 200) {
+        this.props.canView();
         this.setState({ complete: true });
         this.props.setAlert('Purchase complete!', 'success');
       }
@@ -72,6 +72,6 @@ const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { setAlert, setPaidToTrue })(
+export default connect(mapStateToProps, { setAlert, setPaidToTrue, canView })(
   injectStripe(CheckoutForm)
 );

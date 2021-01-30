@@ -11,10 +11,7 @@ import ConditoningWorkouts from '../resources/ConditioningAndWeightLoss.json';
 import ConditoningWorkoutsTrial from '../resources/ConditioningAndWeightLossTrial.json';
 import TotalBodyTransformation from '../resources/TotalBodyTransformation.json';
 import TotalBodyTransformationTrial from '../resources/TotalBodyTransformationTrial.json';
-import { ThreeDayPlan } from '../components/auth/ThreeDayPlan';
-import { FourDayPlan } from '../components/auth/FourDayPlan';
-import { FiveDayPlan } from '../components/auth/FiveDayPlan';
-// import { getDateUserStarted } from '../components/gymComponents/GetDateUserStarted';
+import { CalculateEventsPerWeek } from '../components/auth/CalculateEventsPerWeek';
 import { connect } from 'react-redux';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { setSelectedCalendarWorkout } from '../actions/auth';
@@ -67,35 +64,14 @@ export const MyCalendar = ({ auth, setSelectedCalendarWorkout }) => {
   };
 
   const setEvents = () => {
-    //adjust for currently on day***************** todo
-    // const currentlyOnDay = this.state.dateStarted;
-    var newWorkouts = findWorkoutOption(auth.user.plan);
-
-    var actuallyReturns;
-    switch (auth.user.days) {
-      case 3:
-        actuallyReturns = ThreeDayPlan(newWorkouts, 0);
-        // this.state.dateStarted;
-        //dateStarted is diff in days
-        break;
-      case 4:
-        actuallyReturns = FourDayPlan(newWorkouts);
-        break;
-      case 5:
-        actuallyReturns = FiveDayPlan(newWorkouts);
-        break;
-      case null:
-        console.log('auth.user.days is null');
-        break;
-      default:
-        console.log('workout days passed does not exist');
-    };
-    
-    //now adjust actually returns days
-    // actuallyReturns.forEach(element) {
-    //   console.log('element.start: ', element.start);
-    //   // element.start
-    // });
+    var newWorkouts =""
+    if(auth.paid===true)
+      newWorkouts = findWorkoutOption(auth.user.plan);
+    else
+      newWorkouts = findWorkoutOption(auth.user.plan+'trial');
+      
+    /** CalculateEventsPerWeek(entireWorkout arrary, date user started program, days per week user is working out) */
+    var actuallyReturns = CalculateEventsPerWeek(newWorkouts, auth.user.date, auth.user.days);
 
     return (
       <Calendar
