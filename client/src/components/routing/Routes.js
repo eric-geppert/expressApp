@@ -20,11 +20,10 @@ import ContactUs from '../../tabs/ContactUs';
 import PersonalizedProgramming from '../../tabs/PersonalizedProgramming';
 import Movement from '../../tabs/Movement';
 import Testimonials from '../../tabs/Testimonials2';
-//have Testimonials original which is the grid version, which is more
-//"professional" way of doing it but it has to stretch the imgaes to take up the full container
-//or I would have to just add padding/negative margins anyway
-import RadioButtonParent from '../../components/erics/RadioButtonParent';
+import RadioButtonParent from '../../components/gymComponents/RadioButtonParent';
 import CheckoutPage from '../../components/auth/CheckoutPage';
+import CalendarLandingPage1 from '../../tabs/CalendarLandingPage1';
+
 
 const Routes = () => {
   return (
@@ -42,7 +41,7 @@ const Routes = () => {
         <PrivateRoute exact path='/add-education' component={AddEducation} />
         <PrivateRoute exact path='/posts' component={Posts} />
         <PrivateRoute exact path='/posts/:id' component={Post} />
-        {/* E Routes */}
+        {/* new Routes */}
         <Route exact path='/WOD' component={WOD} />
         <Route exact path='/ContactUs' component={ContactUs} />
         <Route
@@ -54,6 +53,7 @@ const Routes = () => {
         <Route exact path='/Testimonials' component={Testimonials} />
         <Route exact path='/FindMyProgram' component={RadioButtonParent} />
         <Route exact path='/CheckoutPage' component={CheckoutPage} />
+        <Route exact path='/Calendar' component={CalendarLandingPage1} />
         <Route component={NotFound} />
       </Switch>
     </section>

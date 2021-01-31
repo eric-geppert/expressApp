@@ -1,15 +1,3 @@
-// const express = require('express');
-// const router = express.Router();
-
-// // @route
-// //req type GET
-// //endpoint api/profiles
-// //@desc test route
-// //@access Public
-// router.get('/', (req, res) => res.send('Profiles route'));
-
-// module.exports = router;
-
 const express = require('express');
 const request = require('request');
 const config = require('config');
@@ -20,25 +8,27 @@ const { check, validationResult } = require('express-validator/check');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const Post = require('../../models/Post');
+const stripe = require('stripe')('sk_test_0nG9Ty2vlJMtbg8rfGEmo8Ue00nraHrJ0Q');
 
 // @route    GET api/profile/me
 // @desc     Get current users profile
 // @access   Private
 router.get('/me', auth, async (req, res) => {
   try {
-    const profile = await Profile.findOne({ user: req.user.id }).populate(
-      'user',
-      ['name', 'avatar']
-    );
+    let customer = await stripe.customers.list({
+      email: req.user.email //get req.user from token since its an auth route
+    });
 
-    if (!profile) {
-      return res.status(400).json({ msg: 'There is no profile for this user' });
+    // console.log('customer response from api/profile/me: ', customer);
+    //may need more in depth check here
+    if (!customer) {
+      return res.status(404).json({ msg: 'Customer not found' });
     }
-
-    res.json(profile);
+    res.json({ customer });
+    // res.json(profile);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.send(err); //status(500).send('Server Error');
   }
 });
 

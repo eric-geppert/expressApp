@@ -1,0 +1,101 @@
+[
+  {
+    "title": "HIIT Day 1",
+    "contentwrapper": [
+      { "content": "-Lift" },
+      { "content": "Back Squat: 4 sets of 6 reps @ 65-70% " },
+      { "content": "-WOD:" },
+      { "content": "3 rounds for time- " },
+      { "content": "15 Thrusters L1: (95/65)  L2: (75/55) L3: (55/35)" },
+      { "content": "15 Bar Facing Burpees  " },
+      { "content": "(Time Cap: 12 min)" }
+    ]
+  },
+  {
+    "title": "HIIT Day 2",
+    "contentwrapper": [
+      { "content": "-Lift" },
+      { "content": "Squat Snatch:" },
+      { "content": "6 sets of 3 reps @ 50-65% build up by feel" },
+      { "content": "-WOD:" },
+      { "content": "7 min AMRAP (As Many Rounds as Possible)-" },
+      {
+        "content": "12 Alt DB Power Snatch L1: (50/35) L2: (40/25) L3: (30/20) "
+      },
+      { "content": "9 Toes to Bar (Scale to Hanging Leg Raises) " },
+      { "content": "6/4 Cal Bike " }
+    ]
+  },
+  {
+    "title": "HIIT Day 3",
+    "contentwrapper": [
+      { "content": "-Lift" },
+      { "content": "12 min Alternating EMOM (Every Minute on the Minute): " },
+      { "content": "Even: 6 Strict Press @ 65-75% " },
+      {
+        "content": "Odd: 3-10 Strict Pullups (Scale to Banded Pullups, Ring Rows) "
+      },
+      { "content": "-WOD:" },
+      { "content": "5 rounds for time- " },
+      { "content": "50 Double Unders (Scale to 100 Single Jump Rope) " },
+      { "content": "10 Front Squat L1: (135/95) L2: (115/75) L3: (95/65" },
+      {
+        "content": "10 Chest to Bar Pullups (scale to chin above bar or jumping pullups)"
+      },
+      { "content": "(Time Cap: 18 min) " }
+    ]
+  },
+  {
+    "title": "HIIT Day 4",
+    "contentwrapper": [
+      { "content": "-Lift" },
+      { "content": "Power Clean and Push Jerk:" },
+      { "content": "10 min EMOM- " },
+      { "content": "5 Touch n Go Reps @ 40-45% -" },
+      { "content": "-WOD:" },
+      { "content": "For Time- " },
+      { "content": "50 cal row " },
+      { "content": "40 Pushups" },
+      { "content": "30 DB Push Press L1: (50/35) L2: (40/25) L3: (30/20) " },
+      {
+        "content": "20 Kettlebell Swings L1: (70/53) L2: (53/35) L3: (45/26) "
+      },
+      { "content": "(Time Cap: 12 min Cap)" }
+    ]
+  },
+  {
+    "title": "HIIT Day 5",
+    "contentwrapper": [
+      { "content": "-Lift" },
+      { "content": "Deadlift: 4 sets of 6 @ 65-70% " },
+      { "content": "-WOD:" },
+      { "content": "Every 2 min for 20 min: " },
+      { "content": "200m run " }
+    ]
+  },
+  {
+    "title": "HIIT Day 6",
+    "contentwrapper": [
+      { "content": "-Lift" },
+      { "content": "Back Squat: 5 sets of 5 reps @ 70-75% " },
+      { "content": "-WOD:" },
+      { "content": "21-15-9 " },
+      { "content": "Box Jumps L1: (30in/24in) L2: (24/20) " },
+      { "content": "Power Cleans L1: (115/75) L2: (95/65) L3: (65/45) " },
+      { "content": "(Time Cap: 10 min) " }
+    ]
+  },
+  {
+    "title": "HIIT Day 7",
+    "contentwrapper": [
+      { "content": "-Lift" },
+      { "content": "Squat Snatch: " },
+      { "content": "5 Touch n Go Reps @ 40-45% " },
+      { "content": "-WOD:" },
+      { "content": "7 rounds- " },
+      { "content": "7 HSPU (scale to box pike pushups) " },
+      { "content": "7/5 Cal Bike " },
+      { "content": "(Time Cap: 12 min) " }
+    ]
+  }
+]

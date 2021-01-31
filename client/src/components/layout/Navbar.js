@@ -8,6 +8,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
       <li>
+        <Link to='/Calendar'>Calendar</Link>
+      </li>
+      <li>
         <Link to='/WOD'>WOD</Link>
       </li>
       <li>
@@ -25,10 +28,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <li>
         <Link to='/FindMyProgram'>FindMyProgram</Link>
       </li>
-      {/* above is added */}
-      {/* <li>
-        <Link to='/profiles'>Developers</Link>
-      </li>
+      {/*
       <li>
         <Link to='/posts'>Posts</Link>
       </li> */}
@@ -50,13 +50,16 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <ul>
       <li>
+        <Link to='/Calendar'>Calendar</Link>
+      </li>
+      <li>
         <Link to='/WOD'>WOD</Link>
       </li>
       <li>
-        <Link to='/ContactUs'>ContactUs</Link>
+        <Link to='/ContactUs'>Contact Us</Link>
       </li>
       <li>
-        <Link to='/PersonalizedProgramming'>PersonalizedProgramming</Link>
+        <Link to='/PersonalizedProgramming'>Personalized Programming</Link>
       </li>
       <li>
         <Link to='/Movement'>Movement Library</Link>
@@ -105,7 +108,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(
-  mapStateToProps,
-  { logout }
-)(Navbar);
+export default connect(mapStateToProps, { logout })(Navbar);

@@ -25,7 +25,7 @@ router.put('/paid', async (req, res) => {
 
   User.findOneAndUpdate({ email: req.body.email }, { paid: true })
     .then(() => res.json({ success: true }))
-    .catch(err => res.status(404).json({ success: false }));
+    .catch((err) => res.status(404).json({ success: false }));
 });
 
 // @route
@@ -36,14 +36,12 @@ router.put('/paid', async (req, res) => {
 router.post(
   '/',
   [
-    check('name', 'Name is required')
-      .not()
-      .isEmpty(),
+    check('name', 'Name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
     check(
       'password',
       'Please enter a password with 6 or more characters'
-    ).isLength({ min: 1 })
+    ).isLength({ min: 1 }),
     //todo: change back to 6
   ],
   async (req, res) => {
@@ -52,7 +50,8 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     //destructuring req/body
-    const { name, email, password } = req.body;
+    console.log('req.body', req.body);
+    const { name, email, password } = req.body; //todo: add paid and date here???
 
     try {
       let user = await User.findOne({ email });
@@ -68,32 +67,37 @@ router.post(
       //   r: 'pg',
       //   d: 'mm'
       // });
-      const paid = false;
-
-      console.log('paid variable in reg: ' + paid);
-
+      // const plan = null;
+      //todo: make pull from model later
       user = new User({
         name,
         email,
-        paid,
-        password
-      }); //remove later add credit card cred?
+        // paid,
+        password,
+        // plan,
+        // date
+      });
+      //remove later add credit card cred?
       //rl: cant because dont know exactly what its sending
 
-      console.log('new user in register: ' + user);
       //encrypt pass
       const salt = await bcrypt.genSalt(10); //10 rounds more you have
       //the safer but the slower you are
 
       user.password = await bcrypt.hash(password, salt);
 
+      // user.date = new Date();
+      console.log('date toString: ' + user.addListener.toString);
+      console.log('user:', user);
+
       await user.save();
 
       //return json Web token
       const payload = {
         user: {
-          id: user.id
-        }
+          id: user.id,
+          email: user.email,
+        },
       };
 
       jwt.sign(

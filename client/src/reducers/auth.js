@@ -8,7 +8,10 @@ import {
   LOGOUT,
   ACCOUNT_DELETED,
   BUY_SUCCESS,
-  BUY_FAIL
+  BUY_FAIL,
+  SET_PLAN,
+  SET_DAYS,
+  SET_SELECTED_WORKOUT
 } from '../actions/types';
 
 const initialState = {
@@ -17,19 +20,20 @@ const initialState = {
   loading: true,
   user: null,
   email: null,
-  paid: null
+  paid: null,
+  // plan: null, put inside of user object
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   const { type, payload } = action;
-  console.log('payload in reducer: ' + payload);
+  // console.log('payload in reducer: ' + payload);
   switch (type) {
     case USER_LOADED:
       return {
         ...state,
         isAuthenticated: true,
         loading: false,
-        user: payload
+        user: payload,
       };
     case REGISTER_SUCCESS:
       localStorage.setItem('token', payload.token); //question: just added why was it not there?
@@ -40,7 +44,7 @@ export default function(state = initialState, action) {
         //^since our profiles aren't personalized we can do this to fix our lag issue
         //with paid
         // user: payload,
-        auth: payload
+        auth: payload,
 
         // token: payload.token
       };
@@ -51,7 +55,7 @@ export default function(state = initialState, action) {
         ...state,
         ...payload,
         isAuthenticated: true,
-        loading: false
+        loading: false,
       };
     //todo: add email here as well
     case REGISTER_FAIL:
@@ -65,7 +69,7 @@ export default function(state = initialState, action) {
         isAuthenticated: false,
         loading: false,
         user: null,
-        paid: false
+        paid: false,
       };
     case ACCOUNT_DELETED:
       localStorage.removeItem('token');
@@ -73,18 +77,44 @@ export default function(state = initialState, action) {
         ...state,
         token: null,
         isAuthenticated: false,
-        loading: false
+        loading: false,
       };
     case BUY_SUCCESS:
       return {
         ...state,
-        paid: payload //question: need to set paid inside of user to true?? how?
+        paid: payload, //question: need to set paid inside of user to true?? how?
       };
     case BUY_FAIL:
       return {
-        state
+        ...state,
+        paid: false,
       };
     //todo: add error failures for this
+    case SET_PLAN:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          plan: payload,
+        },
+        // plan: payload,
+      };
+    case SET_DAYS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          days: payload,
+        },
+      };
+    case SET_SELECTED_WORKOUT:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          selectedCalendarWorkout: payload,
+        },
+      };
     default:
       return state;
   }
