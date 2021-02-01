@@ -202,6 +202,41 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   }
 };
 
+/**update user weightTracker */
+export const addWeightElement = (email, weightObject) => async (dispatch) => {
+  console.log("weightObject in action creater:",weightObject)
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  const body = JSON.stringify({ email, weightObject });
+  
+  try {
+    const res = await axios.post('/api/auth/addWeightElement', body, config);
+    console.log("response in action creater:", res)
+    // dispatch({
+    //   type: LOGIN_SUCCESS,
+    //   payload: res.data,
+    // });
+    // dispatch(loadUser());
+  } catch (err) {
+    console.log('err', err);
+    if (err.response != undefined) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      }
+    }
+
+    // dispatch({
+    //   type: LOGIN_FAIL,
+    // });
+  }
+};
+
 // Login User
 export const login = (email, password) => async (dispatch) => {
   const config = {
