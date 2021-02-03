@@ -11,7 +11,8 @@ import {
   BUY_FAIL,
   SET_PLAN,
   SET_DAYS,
-  SET_SELECTED_WORKOUT
+  SET_SELECTED_WORKOUT,
+  UPDATE_WEIGHTTRACKER_ARRAY,
 } from '../actions/types';
 
 const initialState = {
@@ -113,6 +114,16 @@ export default function (state = initialState, action) {
         user: {
           ...state.user,
           selectedCalendarWorkout: payload,
+        },
+      };
+    case UPDATE_WEIGHTTRACKER_ARRAY:
+      /**only want to add an item to weightTracker array so: keep
+       * state of user object, keep state of current array, add new object to array */
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          weightTracker: [...state.user.weightTracker, payload],
         },
       };
     default:
