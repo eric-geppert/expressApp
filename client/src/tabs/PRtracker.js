@@ -6,7 +6,7 @@ import moment from 'moment';
 
 export const PRtracker = ({ auth, addWeightElement }) => {
   const [formData, setFormData] = useState({
-    weight: 0,
+    weight: '',
     dateRecorded: '',
     stateChanged: false,
     /** input format mm/dd/yyyy */
@@ -51,9 +51,6 @@ export const PRtracker = ({ auth, addWeightElement }) => {
 
   const renderWeights = () => {
     var weightArr = [];
-    // todo put in order!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //test by adding a new one
-
     // todo use better sort algorithm? won't matter until later
     var inOrderArr = bubbleSort(auth.user.weightTracker);
     inOrderArr.forEach(function (value, index) {
