@@ -3,6 +3,15 @@ import { connect } from 'react-redux';
 // import { addWeightElement } from '../../actions/auth';
 import { addWeightElement } from '../actions/auth';
 import moment from 'moment';
+import {
+  XYPlot,
+  VerticalGridLines,
+  HorizontalGridLines,
+  XAxis,
+  YAxis,
+  LineSeries,
+} from 'react-vis';
+import 'react-vis/dist/style.css';
 
 export const PRtracker = ({ auth, addWeightElement }) => {
   const [formData, setFormData] = useState({
@@ -42,7 +51,6 @@ export const PRtracker = ({ auth, addWeightElement }) => {
           temp = arr[j];
           arr[j] = arr[j + 1];
           arr[j + 1] = temp;
-          console.log('array post swap:', arr);
         }
       }
     }
@@ -61,6 +69,34 @@ export const PRtracker = ({ auth, addWeightElement }) => {
       );
     });
     return weightArr;
+  };
+
+  const renderChart = () => {
+    var data = [];
+    console.log('date:', Date(2012, 1, 1));
+    var date;
+    var inOrderArr = bubbleSort(auth.user.weightTracker);
+    inOrderArr.forEach(function (value, index) {
+      // date= new Date(2012,1,index)
+      //   data.push({ x: value.dateRecorded, y: value.weight });
+      data.push({ x: new Date(2012, 1, index), y: value.weight });
+    });
+    console.log('data[0]:', data[0]);
+    console.log('data[0]:', data[0].x);
+    console.log('data[0]:', Date(data[0].x));
+    console.log('data[0]:', typeof Date(data[0].x));
+
+    return (
+      <Fragment>
+        <XYPlot xType='time' height={800} width={1200}>
+          <VerticalGridLines />
+          <HorizontalGridLines />
+          <XAxis />
+          <YAxis />
+          <LineSeries data={data} />
+        </XYPlot>
+      </Fragment>
+    );
   };
 
   const onChange = (e) =>
@@ -91,7 +127,16 @@ export const PRtracker = ({ auth, addWeightElement }) => {
         </div>
         <input type='submit' className='btn btn-primary' value='Submit' />
       </form>
-      {auth.user == undefined ? <p>loading</p> : renderWeights()}
+      {auth.user == undefined ? <p>loading</p> : renderChart()}
+      {/* <div className='displayChart'>
+        <XYPlot height={400} width={400}>
+          <VerticalGridLines />
+          <HorizontalGridLines />
+          <XAxis />
+          <YAxis />
+          <LineSeries data={data} />
+        </XYPlot>
+      </div> */}
     </Fragment>
   );
 };
