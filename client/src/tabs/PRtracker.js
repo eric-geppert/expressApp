@@ -32,14 +32,11 @@ export const PRtracker = ({ auth, addWeightElement }) => {
   //todo swap to reverse for more effecient search if people put dates in in reverse order over time????
   const bubbleSort = (arr) => {
     //todo first case everything as a moment then sort that arrary?
-    console.log('array pre swap:', arr);
-
     var i;
     var j;
     var temp;
     for (i = 0; i < arr.length; i++) {
       for (j = 0; j < arr.length - i - 1; j++) {
-        // console.log('moment: ', moment(arr[j].dateRecorded));
         /** casts to a date type compares to see if j is later date then j+1 */
         if (
           moment(arr[j].dateRecorded).diff(
@@ -73,22 +70,25 @@ export const PRtracker = ({ auth, addWeightElement }) => {
 
   const renderChart = () => {
     var data = [];
-    console.log('date:', Date(2012, 1, 1));
-    var date;
     var inOrderArr = bubbleSort(auth.user.weightTracker);
+    console.log('date:', inOrderArr);
+
     inOrderArr.forEach(function (value, index) {
-      // date= new Date(2012,1,index)
       //   data.push({ x: value.dateRecorded, y: value.weight });
-      data.push({ x: new Date(2012, 1, index), y: value.weight });
+      data.push({ x: new Date(value.dateRecorded), y: value.weight });
     });
     console.log('data[0]:', data[0]);
-    console.log('data[0]:', data[0].x);
-    console.log('data[0]:', Date(data[0].x));
-    console.log('data[0]:', typeof Date(data[0].x));
+    console.log('data[0]:', data[inOrderArr.length - 1].x);
 
     return (
       <Fragment>
-        <XYPlot xType='time' height={800} width={1200}>
+        <XYPlot
+          xType='time'
+          xDomain={[data[0].x, data[inOrderArr.length - 1].x]}
+          yDomain={[170, 200]}
+          height={500}
+          width={1000}
+        >
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
