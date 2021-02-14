@@ -202,10 +202,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   }
 };
 
-// loadWeightRecords use as refresh? delete if not
 /** loads all of a users weight records */
-//todo check redux state for them first?
-
 const validateWeightEntry = (weightInput, dateRecordedInput) => {
   console.log('www:', dateRecordedInput);
   console.log('www type:', typeof dateRecordedInput);

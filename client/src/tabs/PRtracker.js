@@ -1,6 +1,5 @@
-import React, { useState, Fragment } from 'react'; //had Component
+import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
-// import { addWeightElement } from '../../actions/auth';
 import { addWeightElement } from '../actions/auth';
 import moment from 'moment';
 import {
