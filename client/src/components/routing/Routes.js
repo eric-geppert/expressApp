@@ -23,6 +23,7 @@ import Testimonials from '../../tabs/Testimonials2';
 import RadioButtonParent from '../../components/gymComponents/RadioButtonParent';
 import CheckoutPage from '../../components/auth/CheckoutPage';
 import CalendarLandingPage1 from '../../tabs/CalendarLandingPage1';
+import PRtracker from '../../tabs/PRtracker';
 
 
 const Routes = () => {
@@ -54,6 +55,8 @@ const Routes = () => {
         <Route exact path='/FindMyProgram' component={RadioButtonParent} />
         <Route exact path='/CheckoutPage' component={CheckoutPage} />
         <Route exact path='/Calendar' component={CalendarLandingPage1} />
+        <Route exact path='/PRtracker' component={PRtracker} />
+
         <Route component={NotFound} />
       </Switch>
     </section>
