@@ -15,16 +15,19 @@ import { CalculateEventsPerWeek } from '../components/auth/CalculateEventsPerWee
 import { connect } from 'react-redux';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { setSelectedCalendarWorkout } from '../actions/auth';
-
+// import { renderWorkouts } from './RenderCalendarWorkout';
 
 const localizer = momentLocalizer(moment);
 
-export const MyCalendar = ({ auth, setSelectedCalendarWorkout }) => {
-
+export const MyCalendar = ({
+  auth,
+  setSelectedCalendarWorkout,
+  // renderWorkouts,
+}) => {
   const renderWorkouts = () => {
     var workoutArr = [];
     var i = 0;
-    const workout = auth.user.selectedCalendarWorkout.workout
+    const workout = auth.user.selectedCalendarWorkout.workout;
 
     /** NEED TO KEEP LAST LINE OF EVERY WORKOUT AS NULL */
     while (workout[i] != undefined && workout[i].content != null) {
@@ -64,14 +67,16 @@ export const MyCalendar = ({ auth, setSelectedCalendarWorkout }) => {
   };
 
   const setEvents = () => {
-    var newWorkouts =""
-    if(auth.paid===true)
-      newWorkouts = findWorkoutOption(auth.user.plan);
-    else
-      newWorkouts = findWorkoutOption(auth.user.plan+'trial');
-      
+    var newWorkouts = '';
+    if (auth.paid === true) newWorkouts = findWorkoutOption(auth.user.plan);
+    else newWorkouts = findWorkoutOption(auth.user.plan + 'trial');
+
     /** CalculateEventsPerWeek(entireWorkout arrary, date user started program, days per week user is working out) */
-    var actuallyReturns = CalculateEventsPerWeek(newWorkouts, auth.user.date, auth.user.days);
+    var actuallyReturns = CalculateEventsPerWeek(
+      newWorkouts,
+      auth.user.date,
+      auth.user.days
+    );
 
     return (
       <Calendar
@@ -86,35 +91,44 @@ export const MyCalendar = ({ auth, setSelectedCalendarWorkout }) => {
       />
     );
   };
-    //else has StartDate and nothing selected
-  return  auth.user.selectedCalendarWorkout !== null && auth.user.selectedCalendarWorkout !== undefined ? 
-        <Fragment>
-          <div className='WorkoutParent'>
-          <button
-              className='btn btn-primary'
-              onClick={() => {setSelectedCalendarWorkout(null)}}
-          >
-              Back to Calendar view
-          </button>
-          <h2 style={{ paddingTop: '30px' }}> title</h2>
-          {renderWorkouts()}
-          <p style={{ paddingTop: '30px' }}>
-              Note: Choose a weight that is difficult but achievable for the # of
-              reps being performed. The goal is to increase weight as the reps
-              decrease.
-          </p>
-          </div>
-        </Fragment>
-      :
-      <Fragment>
-        <h3 style={{ paddingBottom: '30px' }}>
-          Double click on any event to view it.{' '}
-        </h3>
-        <div>{setEvents()}</div>
-      </Fragment>      
-        
-}
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
-export default connect(mapStateToProps, { setSelectedCalendarWorkout })(MyCalendar);
+  //else has StartDate and nothing selected
+  return auth.user.selectedCalendarWorkout !== null &&
+    auth.user.selectedCalendarWorkout !== undefined ? (
+    <Fragment>
+      <div className='WorkoutParent'>
+        <button
+          className='btn btn-primary'
+          onClick={() => {
+            setSelectedCalendarWorkout(null);
+          }}
+        >
+          Back to Calendar view
+        </button>
+        <h2 style={{ paddingTop: '30px' }}> title</h2>
+        {renderWorkouts()}
+        <p style={{ paddingTop: '30px' }}>
+          Note: Choose a weight that is difficult but achievable for the # of
+          reps being performed. The goal is to increase weight as the reps
+          decrease.
+        </p>
+      </div>
+    </Fragment>
+  ) : (
+    <Fragment>
+      <h3 style={{ paddingBottom: '30px' }}>
+        Double click on any event to view it.{' '}
+      </h3>
+      <div>{setEvents()}</div>
+    </Fragment>
+  );
+};
+// const mapStateToProps = (state) => ({
+//   auth: state.auth,
+// });
+const mapStateToProps = (state) => {
+  return { auth: state.auth };
+};
+export default connect(mapStateToProps, {
+  setSelectedCalendarWorkout,
+  // renderWorkouts,
+})(MyCalendar);

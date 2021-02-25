@@ -27,12 +27,14 @@ const UserSchema = new mongoose.Schema({
     required: false /** since initially setting plan to null have to set required to false */,
     default: null,
   },
-  /** days/week user works out */
-  days: {
-    type: Number,
-    required: false,
-    default: null,
-  },
+  /** days of the week user works out. 0 being Sunday */
+  days: [
+    {
+      type: Number,
+      required: false,
+      default: null,
+    },
+  ],
   /** users current weight to track weight loss/gain */
   weightTracker: [
     {
@@ -42,9 +44,9 @@ const UserSchema = new mongoose.Schema({
       },
       dateRecorded: {
         type: Date,
-        required: true
-      }
-    }
+        required: true,
+      },
+    },
   ],
 });
 

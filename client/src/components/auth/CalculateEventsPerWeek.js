@@ -1,53 +1,65 @@
 import moment from 'moment';
 
-export const CalculateEventsPerWeek = (workoutArray, dateStarted, daysPerWeek) => {
-  if(daysPerWeek === undefined || daysPerWeek === null)
-    console.error("daysPerWeek is null or undefined")
-  if(dateStarted === undefined || dateStarted === null)
-    console.error("dateStarted is null or undefined")
+//todo change name daysOfTheWeek -> daysOfWeek
+export const CalculateEventsPerWeek = (
+  workoutArray,
+  dateStarted,
+  daysOfTheWeek
+) => {
+  if (
+    daysOfTheWeek === undefined ||
+    daysOfTheWeek === null ||
+    daysOfTheWeek.length === 0
+  )
+    console.error('daysOfTheWeek is null, undefined, or 0');
+  if (dateStarted === undefined || dateStarted === null)
+    console.error('dateStarted is null or undefined');
+
+  //todo: ADD ERROR CATCHES IF INIITY OR ZERO HERE
+  const totalWeeks = Math.ceil(workoutArray.length / daysOfTheWeek.length);
+  const daysToAdjustForStartingDay = moment().isoWeekday();
   var eventArr = [];
-  var indexModDaysPerWeek;
-  var weekAdjustment;
-  var dayOfTheWeekAdjustment;
-  var currentWeek;
-  var unadjustedForDayUserStarted;
   var finalDate;
+  var totalIndex = 0;
 
-  const now = moment();
-  const dateStartedMoment = moment(dateStarted);
-  const differenceInDaysFromBeginning = dateStartedMoment.diff(now, 'days') //will be a negative number
-
-  
-// 1 figure out what week were on (adjusted to have x workouts/week)
-// 2 adjust the day to 4(days working out per week) different days that week
-// 3 subtract by number of days user has been working on this program
-  workoutArray.forEach(function (element, index) {
-    indexModDaysPerWeek = index % daysPerWeek;
-    weekAdjustment = Math.floor(index / daysPerWeek) * (daysPerWeek-1);
-    if(daysPerWeek<5)
-        dayOfTheWeekAdjustment = 2 * indexModDaysPerWeek
-    else
-        dayOfTheWeekAdjustment = indexModDaysPerWeek
-    currentWeek = index - indexModDaysPerWeek - weekAdjustment
-    unadjustedForDayUserStarted = 7 * currentWeek + dayOfTheWeekAdjustment
-
-    if (unadjustedForDayUserStarted + differenceInDaysFromBeginning >= 0){
-                                          // differenceInDaysFromBeginning is negative
-        finalDate =new Date(moment().add( unadjustedForDayUserStarted + differenceInDaysFromBeginning, 'days'))
+  var currentWeek;
+  var currentDayOfTheWeek;
+  /**start at day 1 being monday 7 being sunday*/
+  /**add 7 for each week */
+  for (currentWeek = 0; currentWeek < totalWeeks; currentWeek++) {
+    /**plus the number for the particular day(s) the user selcted to workout wednesday +3 */
+    for (
+      currentDayOfTheWeek = 0;
+      currentDayOfTheWeek < daysOfTheWeek.length;
+      currentDayOfTheWeek++
+    ) {
+      /**if not at the end of the total list of workouts */
+      if (totalIndex < workoutArray.length) {
+        /**create a day starting in reference to date user started not today! */
+        finalDate = new Date(
+          moment(dateStarted).add(
+            currentWeek * 7 +
+              daysOfTheWeek[currentDayOfTheWeek] -
+              daysToAdjustForStartingDay,
+            'days'
+          )
+        );
+        /** and not before the first day user started */
+        if (moment(finalDate) >= moment(dateStarted)) {
+          /**add it to event array to be rendered */
+          eventArr.push({
+            start: finalDate,
+            end: finalDate,
+            allDay: true,
+            title: workoutArray[totalIndex].title,
+            workout: workoutArray[totalIndex].contentwrapper,
+            eventIndex: totalIndex,
+          });
+          totalIndex++;
+        }
+      }
     }
-    else{
-        finalDate = new Date(moment().subtract( -1* (unadjustedForDayUserStarted + differenceInDaysFromBeginning), 'days'))
-    }
-
-    eventArr.push({
-        start: finalDate,
-        end: finalDate,
-        allDay: true,
-        title: workoutArray[index].title,
-        workout: workoutArray[index].contentwrapper,
-        eventIndex: index,
-      });
-  });
+  }
 
   return eventArr;
 };

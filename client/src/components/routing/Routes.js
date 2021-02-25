@@ -25,7 +25,6 @@ import CheckoutPage from '../../components/auth/CheckoutPage';
 import CalendarLandingPage1 from '../../tabs/CalendarLandingPage1';
 import PRtracker from '../../tabs/PRtracker';
 
-
 const Routes = () => {
   return (
     <section className='container'>

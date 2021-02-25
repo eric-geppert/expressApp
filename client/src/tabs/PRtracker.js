@@ -11,8 +11,10 @@ import {
   LineSeries,
 } from 'react-vis';
 import 'react-vis/dist/style.css';
+import { ExploreOffOutlined } from '@material-ui/icons';
 
 export const PRtracker = ({ auth, addWeightElement }) => {
+  console.log('auth in PRTracker: ', auth);
   const [formData, setFormData] = useState({
     weight: '',
     dateRecorded: '',
@@ -53,20 +55,6 @@ export const PRtracker = ({ auth, addWeightElement }) => {
     return arr;
   };
 
-  const renderWeights = () => {
-    var weightArr = [];
-    // todo use better sort algorithm? won't matter until later
-    var inOrderArr = bubbleSort(auth.user.weightTracker);
-    inOrderArr.forEach(function (value, index) {
-      weightArr.push(
-        <p key={index}>
-          weight: {value.weight}, date: {value.dateRecorded}
-        </p>
-      );
-    });
-    return weightArr;
-  };
-
   const renderChart = () => {
     var data = [];
     var inOrderArr = bubbleSort(auth.user.weightTracker);
@@ -98,6 +86,20 @@ export const PRtracker = ({ auth, addWeightElement }) => {
     );
   };
 
+  const checkIfUserHasWeights = () => {
+    console.log('auth.user.weightTracker:', auth.user.weightTracker);
+    if (auth.user.weightTracker.length === 0)
+      return <div>user has no Weights yet</div>;
+    else if (auth.user.weightTracker.length === 1)
+      return (
+        <div>
+          You only have one weight, add another on a different date to start
+          your graph
+        </div>
+      );
+    else return renderChart();
+  };
+
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -126,16 +128,7 @@ export const PRtracker = ({ auth, addWeightElement }) => {
         </div>
         <input type='submit' className='btn btn-primary' value='Submit' />
       </form>
-      {auth.user == undefined ? <p>loading</p> : renderChart()}
-      {/* <div className='displayChart'>
-        <XYPlot height={400} width={400}>
-          <VerticalGridLines />
-          <HorizontalGridLines />
-          <XAxis />
-          <YAxis />
-          <LineSeries data={data} />
-        </XYPlot>
-      </div> */}
+      {auth.user == undefined ? <p>loading</p> : checkIfUserHasWeights()}
     </Fragment>
   );
 };
