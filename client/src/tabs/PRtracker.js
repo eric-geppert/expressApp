@@ -53,19 +53,19 @@ export const PRtracker = ({ auth, addWeightElement }) => {
     return arr;
   };
 
-  const renderWeights = () => {
-    var weightArr = [];
-    // todo use better sort algorithm? won't matter until later
-    var inOrderArr = bubbleSort(auth.user.weightTracker);
-    inOrderArr.forEach(function (value, index) {
-      weightArr.push(
-        <p key={index}>
-          weight: {value.weight}, date: {value.dateRecorded}
-        </p>
-      );
-    });
-    return weightArr;
-  };
+  // const renderWeights = () => {
+  //   var weightArr = [];
+  //   // todo use better sort algorithm? won't matter until later
+  //   var inOrderArr = bubbleSort(auth.user.weightTracker);
+  //   inOrderArr.forEach(function (value, index) {
+  //     weightArr.push(
+  //       <p key={index}>
+  //         weight: {value.weight}, date: {value.dateRecorded}
+  //       </p>
+  //     );
+  //   });
+  //   return weightArr;
+  // };
 
   const renderChart = () => {
     var data = [];
