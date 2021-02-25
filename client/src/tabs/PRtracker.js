@@ -55,20 +55,6 @@ export const PRtracker = ({ auth, addWeightElement }) => {
     return arr;
   };
 
-  // const renderWeights = () => {
-  //   var weightArr = [];
-  //   // todo use better sort algorithm? won't matter until later
-  //   var inOrderArr = bubbleSort(auth.user.weightTracker);
-  //   inOrderArr.forEach(function (value, index) {
-  //     weightArr.push(
-  //       <p key={index}>
-  //         weight: {value.weight}, date: {value.dateRecorded}
-  //       </p>
-  //     );
-  //   });
-  //   return weightArr;
-  // };
-
   const renderChart = () => {
     var data = [];
     var inOrderArr = bubbleSort(auth.user.weightTracker);
@@ -119,42 +105,30 @@ export const PRtracker = ({ auth, addWeightElement }) => {
 
   return (
     <Fragment>
-      <Fragment>
-        <p>Note: can only input 1 weight per day</p>
-        <form className='form' onSubmit={(e) => onSubmit(e)}>
-          <div className='form-group'>
-            <input
-              type='number'
-              placeholder='Current Weight (lbs)'
-              name='weight'
-              value={weight}
-              onChange={(e) => onChange(e)}
-              required
-            />
-          </div>
-          <div className='form-group'>
-            <input
-              type='date'
-              placeholder='date recorded'
-              name='dateRecorded'
-              value={dateRecorded}
-              onChange={(e) => onChange(e)}
-            />
-          </div>
-          <input type='submit' className='btn btn-primary' value='Submit' />
-        </form>
-        {auth.user == undefined ? <p>loading</p> : checkIfUserHasWeights()}
-
-        {/* <div className='displayChart'>
-        <XYPlot height={400} width={400}>
-          <VerticalGridLines />
-          <HorizontalGridLines />
-          <XAxis />
-          <YAxis />
-          <LineSeries data={data} />
-        </XYPlot>
-      </div> */}
-      </Fragment>
+      <p>Note: can only input 1 weight per day</p>
+      <form className='form' onSubmit={(e) => onSubmit(e)}>
+        <div className='form-group'>
+          <input
+            type='number'
+            placeholder='Current Weight (lbs)'
+            name='weight'
+            value={weight}
+            onChange={(e) => onChange(e)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='date'
+            placeholder='date recorded'
+            name='dateRecorded'
+            value={dateRecorded}
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+        <input type='submit' className='btn btn-primary' value='Submit' />
+      </form>
+      {auth.user == undefined ? <p>loading</p> : checkIfUserHasWeights()}
     </Fragment>
   );
 };

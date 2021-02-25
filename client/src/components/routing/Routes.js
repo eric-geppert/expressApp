@@ -24,7 +24,6 @@ import RadioButtonParent from '../../components/gymComponents/RadioButtonParent'
 import CheckoutPage from '../../components/auth/CheckoutPage';
 import CalendarLandingPage1 from '../../tabs/CalendarLandingPage1';
 import PRtracker from '../../tabs/PRtracker';
-import SelectDaysOfWeek from '../../tabs/SelectDaysOfWeek';
 
 const Routes = () => {
   return (

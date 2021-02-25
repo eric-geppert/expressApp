@@ -100,7 +100,6 @@ export default function (state = initialState, action) {
         },
         // plan: payload,
       };
-    //todo need to update days to an array?
     case SET_DAYS:
       return {
         ...state,
