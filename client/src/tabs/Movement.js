@@ -3,16 +3,7 @@ import totalListOfVideos from '../resources/Movement.json';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import './Movement.css';
-import { set } from 'mongoose';
-
-// import { Player } from 'video-react';
-// import Container from 'react-bootstrap/'
-// import Row from 'react-bootstrap/lib/Row'
-// import Col from 'react-bootstrap/lib/Col'
-// import TabContainer from 'react-bootstrap/lib/TabContainer'
-// import { Table } from "material-ui";
-
-/** have to use embed instead of watch */
+/** have to use embed instead of watch on youtube links*/
 
 export const Movement = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -53,11 +44,6 @@ export const Movement = () => {
       </div>
     );
   };
-
-  // const optionsList = []
-  // totalListOfVideos.map((element) =>
-  // optionsList.push(element.label)
-  // );
 
   return (
     <Fragment>
