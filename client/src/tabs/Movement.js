@@ -40,7 +40,7 @@ export const Movement = () => {
 
   const renderVideo = (video) => {
     return (
-      <div key={video.label}>
+      <div id='videoObject' key={video.label}>
         <iframe
           src={video.value}
           frameBorder='0'
@@ -48,7 +48,8 @@ export const Movement = () => {
           allowFullScreen
           title='video'
         />
-        <p>{String(video.label)}</p>
+        <h2>{String(video.label)}</h2>
+        <hr />
       </div>
     );
   };

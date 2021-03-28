@@ -17,8 +17,27 @@ p {
   padding-bottom: 15px;
 }
 
-h1 {
+h2 {
   text-align: 'center';
   font-size: '40px';
   margin-bottom: '50px';
+}
+
+#videoObject {
+  padding-top: 15px;
+  padding-bottom: -10px;
+}
+
+iframe {
+  padding-bottom: 20px;
+}
+
+hr {
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+.MuiAutocomplete-root {
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
