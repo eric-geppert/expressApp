@@ -1,6 +1,10 @@
-import React, { Fragment, Component } from 'react';
-import './Movement.css';
+import React, { useState, Fragment } from 'react';
 import totalListOfVideos from '../resources/Movement.json';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@material-ui/core/TextField';
+import './Movement.css';
+import { set } from 'mongoose';
+
 // import { Player } from 'video-react';
 // import Container from 'react-bootstrap/'
 // import Row from 'react-bootstrap/lib/Row'
@@ -11,19 +15,21 @@ import totalListOfVideos from '../resources/Movement.json';
 /** have to use embed instead of watch */
 
 export const Movement = () => {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
   const renderAllvideos = () => {
     var videoArr = [];
 
     totalListOfVideos.forEach((video) =>
       videoArr.push(
-        <div id={video.label}>
-          <iframe
+        <div key={video.label}>
+          {/* <iframe
             src={video.value}
             frameBorder='0'
             allow='autoplay; encrypted-media'
             allowFullScreen
             title='video'
-          />
+          /> */}
           <p>{String(video.label)}</p>
         </div>
       )
@@ -32,55 +38,45 @@ export const Movement = () => {
     return videoArr;
   };
 
+  const renderVideo = (video) => {
+    return (
+      <div key={video.label}>
+        <iframe
+          src={video.value}
+          frameBorder='0'
+          allow='autoplay; encrypted-media'
+          allowFullScreen
+          title='video'
+        />
+        <p>{String(video.label)}</p>
+      </div>
+    );
+  };
+
+  // const optionsList = []
+  // totalListOfVideos.map((element) =>
+  // optionsList.push(element.label)
+  // );
+
   return (
     <Fragment>
       <h1>Movement Library</h1>
+      <Autocomplete
+        id='combo-box-demo'
+        options={totalListOfVideos}
+        getOptionLabel={(option) => option.label}
+        style={{ width: 300 }}
+        renderInput={(params) => (
+          <TextField {...params} label='Combo box' variant='outlined' />
+        )}
+        onChange={(event, video) => {
+          if (video == null) console.log('null autocomplete');
+          else setSelectedVideo(video);
+        }}
+      />
+      {selectedVideo != null ? renderVideo(selectedVideo) : null}
       <div className='container-of-boxes'>{renderAllvideos()}</div>
     </Fragment>
   );
 };
 export default Movement;
-
-{
-  /* <div id='seated db bench'>
-          <iframe
-            src='https://www.youtube.com/embed/VoA-Hhd5e1U' //have to use embed instead of watch
-            frameBorder='0'
-            allow='autoplay; encrypted-media'
-            allowFullScreen
-            title='video'
-            // name="Seated Dumbell BenchPress"
-          />
-          <p>Seated Dumbell BenchPress</p>
-        </div>
-        <div id='db bench'>
-          <iframe
-            src='https://www.youtube.com/embed/O-zZAKgj0JY'
-            frameBorder='0'
-            allow='autoplay; encrypted-media'
-            allowFullScreen
-            title='video'
-          />
-          <p>Dumbell BenchPress</p>
-        </div>
-        <div id='thruster'>
-          <iframe
-            src='https://www.youtube.com/embed/yP7k8eGvymA'
-            frameBorder='0'
-            allow='autoplay; encrypted-media'
-            allowFullScreen
-            title='video'
-          />
-          <p>Thruster</p>
-        </div>
-        <div>
-          <iframe
-            src='https://www.youtube.com/embed/uRT0BAcMOgg'
-            frameBorder='0'
-            allow='autoplay; encrypted-media'
-            allowFullScreen
-            title='video'
-          />
-          <p>Air Squat</p>
-        </div> */
-}
