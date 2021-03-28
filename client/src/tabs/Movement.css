@@ -1,16 +1,43 @@
-
-
-.boxRow{
-    /* display: flex //try this */
-    flex: 1;
-    flex-direction: row-reverse;
-    flex-flow: row;
+.boxRow {
+  /* display: flex //try this */
+  flex: 1;
+  flex-direction: row-reverse;
+  flex-flow: row;
 }
 
 .container-of-boxes {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
+p {
+  font-weight: 'bold';
+  font-size: '18px';
+  padding-bottom: 15px;
+}
 
+h2 {
+  text-align: 'center';
+  font-size: '40px';
+  margin-bottom: '50px';
+}
+
+#videoObject {
+  padding-top: 15px;
+  padding-bottom: -10px;
+}
+
+iframe {
+  padding-bottom: 20px;
+}
+
+hr {
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+.MuiAutocomplete-root {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}

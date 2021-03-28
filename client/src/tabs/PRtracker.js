@@ -14,11 +14,12 @@ import 'react-vis/dist/style.css';
 import { ExploreOffOutlined } from '@material-ui/icons';
 
 export const PRtracker = ({ auth, addWeightElement }) => {
-  console.log('auth in PRTracker: ', auth);
   const [formData, setFormData] = useState({
     weight: '',
     dateRecorded: '',
     stateChanged: false,
+    // smallestWeight: 500,
+    // biggestWeight: 0,
     /** input format mm/dd/yyyy */
     /** sent to backend as yyyy/dd/mm */
   });
@@ -36,7 +37,13 @@ export const PRtracker = ({ auth, addWeightElement }) => {
     var i;
     var j;
     var temp;
+    var bigTemp = 0;
+    var smallTemp = 500;
+
+    /** need to have 2 for loops for bubble sort, but only need one to find biggest/smallest weights */
     for (i = 0; i < arr.length; i++) {
+      if (arr[i].weight > bigTemp) bigTemp = arr[i].weight;
+      if (arr[i].weight < smallTemp) smallTemp = arr[i].weight;
       for (j = 0; j < arr.length - i - 1; j++) {
         /** casts to a date type compares to see if j is later date then j+1 */
         if (
@@ -52,27 +59,27 @@ export const PRtracker = ({ auth, addWeightElement }) => {
         }
       }
     }
-    return arr;
+    return [arr, smallTemp, bigTemp];
   };
 
   const renderChart = () => {
     var data = [];
-    var inOrderArr = bubbleSort(auth.user.weightTracker);
-    console.log('date:', inOrderArr);
+    var values = bubbleSort(auth.user.weightTracker);
+    var biggestWeight = Number(values[2]) + 10;
+    var smallestWeight = Number(values[1]) - 10;
+    var inOrderArr = values[0];
 
     inOrderArr.forEach(function (value, index) {
       //   data.push({ x: value.dateRecorded, y: value.weight });
       data.push({ x: new Date(value.dateRecorded), y: value.weight });
     });
-    console.log('data[0]:', data[0]);
-    console.log('data[0]:', data[inOrderArr.length - 1].x);
 
     return (
       <Fragment>
         <XYPlot
           xType='time'
           xDomain={[data[0].x, data[inOrderArr.length - 1].x]}
-          yDomain={[170, 200]}
+          yDomain={[smallestWeight, biggestWeight]}
           height={500}
           width={1000}
         >
@@ -87,7 +94,6 @@ export const PRtracker = ({ auth, addWeightElement }) => {
   };
 
   const checkIfUserHasWeights = () => {
-    console.log('auth.user.weightTracker:', auth.user.weightTracker);
     if (auth.user.weightTracker.length === 0)
       return <div>user has no Weights yet</div>;
     else if (auth.user.weightTracker.length === 1)
