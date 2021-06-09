@@ -15,15 +15,10 @@ import { CalculateEventsPerWeek } from '../components/auth/CalculateEventsPerWee
 import { connect } from 'react-redux';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { setSelectedCalendarWorkout } from '../actions/auth';
-// import { renderWorkouts } from './RenderCalendarWorkout';
 
 const localizer = momentLocalizer(moment);
 
-export const MyCalendar = ({
-  auth,
-  setSelectedCalendarWorkout,
-  // renderWorkouts,
-}) => {
+export const MyCalendar = ({ auth, setSelectedCalendarWorkout }) => {
   const renderWorkouts = () => {
     var workoutArr = [];
     var i = 0;
@@ -116,7 +111,7 @@ export const MyCalendar = ({
   ) : (
     <Fragment>
       <h3 style={{ paddingBottom: '30px' }}>
-        Double click on any event to view it.{' '}
+        Double click on any workout to view it.{' '}
       </h3>
       <div>{setEvents()}</div>
     </Fragment>

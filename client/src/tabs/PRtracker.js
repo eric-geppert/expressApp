@@ -95,7 +95,7 @@ export const PRtracker = ({ auth, addWeightElement }) => {
 
   const checkIfUserHasWeights = () => {
     if (auth.user.weightTracker.length === 0)
-      return <div>user has no Weights yet</div>;
+      return <div>You currently haven't added any weight records</div>;
     else if (auth.user.weightTracker.length === 1)
       return (
         <div>
@@ -111,6 +111,11 @@ export const PRtracker = ({ auth, addWeightElement }) => {
 
   return (
     <Fragment>
+      <h3>
+        The PR-tracker is for tracking your weight over time. Input your weight
+        and select the day that you weighed yourself to see your progress over
+        time.
+      </h3>
       <p>Note: can only input 1 weight per day</p>
       <form className='form' onSubmit={(e) => onSubmit(e)}>
         <div className='form-group'>
