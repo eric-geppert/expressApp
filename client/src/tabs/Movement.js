@@ -48,6 +48,7 @@ export const Movement = () => {
   return (
     <Fragment>
       <h1>Movement Library</h1>
+      <p>Search for any of the following movements to watch a short demo.</p>
       <Autocomplete
         id='combo-box-demo'
         options={totalListOfVideos}
