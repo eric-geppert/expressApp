@@ -26,8 +26,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Link to='/Testimonials'>Testimonials</Link>
       </li>
       <li>
-        <Link to='/FindMyProgram'>FindMyProgram</Link>
+        <Link to='/PRtracker'>PR tracker</Link>
       </li>
+      {/* <li>
+        <Link to='/FindMyProgram'>FindMyProgram</Link>
+      </li> */}
       {/*
       <li>
         <Link to='/posts'>Posts</Link>

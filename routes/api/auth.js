@@ -11,6 +11,23 @@ const { check, validationResult } = require('express-validator');
 const stripe = require('stripe')('sk_test_0nG9Ty2vlJMtbg8rfGEmo8Ue00nraHrJ0Q');
 router.use(require('body-parser').text());
 
+/**user adds new weight input to db */
+// todo add check for if date already exists, or just write over and add a message?
+//todo add endpoint for get customer info?
+router.post('/addWeightElement', async (req, res) => {
+  try {
+    const query = {"email": req.body.email}
+    const update = {$push: {"weightTracker": req.body.weightObject}}
+    /** last param don't want to create if email dne */
+    User.findOneAndUpdate(query, update, false)
+    .then(() => res.json({ success: true }))
+    .catch((err) => res.status(500).json({ success: false }));
+  } catch (err) {
+    console.error('errorrrrr: ', err);
+    res.json({ err: 'there is an error' });
+  }
+});
+
 /**has to be post route so we can send information with it(email and password) */
 router.post('/getCustomerDate', async (req, res) => {
   const { email } = req.body;

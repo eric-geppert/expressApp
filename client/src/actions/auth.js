@@ -13,10 +13,11 @@ import {
   BUY_FAIL,
   SET_PLAN,
   SET_DAYS,
-  SET_SELECTED_WORKOUT
+  SET_SELECTED_WORKOUT,
+  UPDATE_WEIGHTTRACKER_ARRAY,
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
-
+import { SdStorageRounded } from '@material-ui/icons';
 
 export const setSelectedCalendarWorkout = (selected) => async (dispatch) => {
   dispatch({
@@ -24,7 +25,6 @@ export const setSelectedCalendarWorkout = (selected) => async (dispatch) => {
     payload: selected,
   });
 };
-
 
 export const setDaysPerWeek = (daysInput, emailInput) => async (dispatch) => {
   try {
@@ -199,6 +199,56 @@ export const register = ({ name, email, password }) => async (dispatch) => {
     dispatch({
       type: REGISTER_FAIL,
     });
+  }
+};
+
+/** loads all of a users weight records */
+const validateWeightEntry = (weightInput, dateRecordedInput) => {
+  console.log('www:', dateRecordedInput);
+  console.log('www type:', typeof dateRecordedInput);
+
+  if (weightInput == 0) return false;
+  if (dateRecordedInput.length === 0) return false;
+  return true;
+};
+
+/**update user weightTracker */
+export const addWeightElement = (email, weightObject) => async (dispatch) => {
+  if (
+    validateWeightEntry(weightObject.weight, weightObject.dateRecorded) ===
+    false
+  ) {
+    dispatch(setAlert('must fill out both weight and date fields', 'danger'));
+    return 'failure';
+  }
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  const body = JSON.stringify({ email, weightObject });
+
+  try {
+    const res = await axios.post('/api/auth/addWeightElement', body, config);
+    if (res.status == 200) {
+      dispatch(setAlert('successfully added weight entry', 'success'));
+      /** to match dates grabbed from db */
+      weightObject.dateRecorded = weightObject.dateRecorded + 'T00:00:00.000Z';
+      dispatch({
+        type: UPDATE_WEIGHTTRACKER_ARRAY,
+        payload: weightObject,
+      });
+    }
+  } catch (err) {
+    console.log('err', err);
+    if (err.response != undefined) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      }
+    }
   }
 };
 
