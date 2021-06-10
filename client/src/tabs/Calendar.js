@@ -23,10 +23,6 @@ export const MyCalendar = ({ auth, setSelectedCalendarWorkout }) => {
     var workoutArr = [];
     var i = 0;
     const workout = auth.user.selectedCalendarWorkout.workout;
-    console.log(
-      'pre eric_workout title:',
-      auth.user.selectedCalendarWorkout.title
-    );
 
     /** NEED TO KEEP LAST LINE OF EVERY WORKOUT AS NULL */
     while (workout[i] != undefined && workout[i].content != null) {

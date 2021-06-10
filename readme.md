@@ -17,9 +17,11 @@ version 1.0.2 new features/fixes:
 
 futrue todos:
 
+- update description on homepage to explain what the site is/can do
+- add check for if date already exists in weight tracker, send alert if so
+- add ability to remove weight PRs
 - clean up labels on dashboard, add in anything else?
 - add the users workout plan to their profile page
-- add ability to remove weight PRs
 - look into auto refresh when user unsubscribes. should be able to send another get req to stripe and change it's state.
 - add the ability to change workout plans
 - add ability to push all workout's back a day
@@ -42,3 +44,7 @@ maybe todos:
   - think of keyword phrases for navbar titles
   - remove dashboard link and change homePage to profile? (should only have 7 links max)
     make logout button seperate somehow (a LOT of style work involved if so)
+
+for sure todo's post launch:
+-ability to push all workouts back a day.
+-add embedded videos directly to a specific days workout!
