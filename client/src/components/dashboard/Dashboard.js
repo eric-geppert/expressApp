@@ -28,9 +28,14 @@ const Dashboard = ({
       {profile.customer.data.length > 0 ? (
         <Fragment>
           <h1 className='large text-primary'>Dashboard</h1>
-          <p className='lead'>
-            <i className='fas fa-user' /> Welcome to your profile page
+          <p className='lead' style={{ marginBottom: '-25px' }}>
+            {/* <i className='fas fa-user' /> */}
+            Welcome to your profile page
             {user && ' ' + user.name}
+          </p>
+          <p className='lead'>
+            Here you can: look through all your profile settings and unsubscribe
+            if you wish
           </p>
 
           <p> email: {profile.customer.data[0].email} </p>
@@ -85,9 +90,12 @@ const Dashboard = ({
               You have successfully logged in would you like to purchase the
               full version of all our workout plans?
             </p> */}
-            <Link to='/CheckoutPage' className='btn btn-primary my-1'>
-              Buy Full Programs
-            </Link>
+            {profile.customer.data[0].subscriptions.data[0].status ==
+            'active' ? null : (
+              <Link to='/CheckoutPage' className='btn btn-primary my-1'>
+                Buy Full Programs
+              </Link>
+            )}
             <button
               className='btn btn-primary my-1'
               onClick={() =>
@@ -97,7 +105,7 @@ const Dashboard = ({
                     console.log('user is undefined or null')
               }
             >
-              unsubscribeMe
+              unsubscribe
             </button>
             {/* {user !== 'undefined' && user !== null ? (
               <Fragment>

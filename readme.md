@@ -1,11 +1,11 @@
 this is version 1.0.1 it contains the following features:
 
-    - user is able to set the days of the week/days per week dynamically, and start any day of the week.
-    - user can go in and out of particular workout views
-    - user can input their weight for tracking their progress, and it's displayed on a chart after they input 2 or more weights. The chart is also able to adjust dynamically, with alerts for success/failure
-    - user can successfully subscribe, and un-subscribe with green and red alerts for success/failure
-    - movement library now has all movements, a dropdown where they can search for any video. The video is rendered as an embedded youtube link and can be played on our site.
-    - movement library now has all movements, a dropdown where they can search for any video. The video is rendered as an embedded youtube link and can be played on our site.
+- user is able to set the days of the week/days per week dynamically, and start any day of the week.
+- user can go in and out of particular workout views
+- user can input their weight for tracking their progress, and it's displayed on a chart after they input 2 or more weights. The chart is also able to adjust dynamically, with alerts for success/failure
+- user can successfully subscribe, and un-subscribe with green and red alerts for success/failure
+- movement library now has all movements, a dropdown where they can search for any video. The video is rendered as an embedded youtube link and can be played on our site.
+- movement library now has all movements, a dropdown where they can search for any video. The video is rendered as an embedded youtube link and can be played on our site.
 
 version 1.0.2 new features/fixes:
 

@@ -28,19 +28,18 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <li>
         <Link to='/PRtracker'>PR tracker</Link>
       </li>
-      {/* <li>
+      <li>
         <Link to='/FindMyProgram'>FindMyProgram</Link>
-      </li> */}
+      </li>
       {/*
       <li>
         <Link to='/posts'>Posts</Link>
       </li> */}
-      <li>
+      {/* <li>
         <Link to='/dashboard'>
-          <i className='fas fa-user' />{' '}
-          <span className='hide-sm'>Dashboard</span>
+          <i className='fas fa-user' /> <span className='hide-sm'>Profile</span>
         </Link>
-      </li>
+      </li> */}
       <li>
         <a onClick={logout} href='#!'>
           <i className='fas fa-sign-out-alt' />{' '}
@@ -90,8 +89,16 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <nav className='navbar bg-dark'>
       <h1>
         <Link to='/'>
+          {isAuthenticated ? (
+            <Fragment>
+              {' '}
+              <i className='fas fa-user' /> Profile
+            </Fragment>
+          ) : (
+            'HomePage'
+          )}
           {/* <i className='fas fa-code' />  */}
-          HomePage
+          {/* HomePage */}
           {/* //DevConnectorz */}
         </Link>
       </h1>
@@ -104,11 +111,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { logout })(Navbar);
