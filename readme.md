@@ -11,12 +11,15 @@ version 1.0.2 new features/fixes:
 
 - fix title issue on calendar page for viewing a specific workout
 - fix read me bullets
+- removed buy Full Programs button if user's subscription is currently active
+- updated version
+- removed dashboard tab, made homepage a dynamic tab to point to and display homepage or profile if logged in
 
 futrue todos:
 
+- clean up labels on dashboard, add in anything else?
 - add the users workout plan to their profile page
 - add ability to remove weight PRs
-- remove link of buy programs on profile page if they are already subscribed
 - look into auto refresh when user unsubscribes. should be able to send another get req to stripe and change it's state.
 - add the ability to change workout plans
 - add ability to push all workout's back a day
@@ -24,6 +27,9 @@ futrue todos:
 - add other PR catagories
 - add ability to put in weights/times for a specific days lifts?
 - find better library for weights/PR tracker chart. (the problem is with the dynamic X axis being dates)
+- allow user to change their email or add backup email
+- create backup email/phone service?
+- seperate readme to change log.
 
 maybe todos:
 
