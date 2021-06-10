@@ -23,6 +23,10 @@ export const MyCalendar = ({ auth, setSelectedCalendarWorkout }) => {
     var workoutArr = [];
     var i = 0;
     const workout = auth.user.selectedCalendarWorkout.workout;
+    console.log(
+      'pre eric_workout title:',
+      auth.user.selectedCalendarWorkout.title
+    );
 
     /** NEED TO KEEP LAST LINE OF EVERY WORKOUT AS NULL */
     while (workout[i] != undefined && workout[i].content != null) {
@@ -99,7 +103,11 @@ export const MyCalendar = ({ auth, setSelectedCalendarWorkout }) => {
         >
           Back to Calendar view
         </button>
-        <h2 style={{ paddingTop: '30px' }}> title</h2>
+        <h2 style={{ paddingTop: '30px' }}>
+          {' '}
+          {auth.user.selectedCalendarWorkout.title}
+        </h2>
+        <hr></hr>
         {renderWorkouts()}
         <p style={{ paddingTop: '30px' }}>
           Note: Choose a weight that is difficult but achievable for the # of
