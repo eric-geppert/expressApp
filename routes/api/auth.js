@@ -16,12 +16,12 @@ router.use(require('body-parser').text());
 //todo add endpoint for get customer info?
 router.post('/addWeightElement', async (req, res) => {
   try {
-    const query = {"email": req.body.email}
-    const update = {$push: {"weightTracker": req.body.weightObject}}
+    const query = { email: req.body.email };
+    const update = { $push: { weightTracker: req.body.weightObject } };
     /** last param don't want to create if email dne */
     User.findOneAndUpdate(query, update, false)
-    .then(() => res.json({ success: true }))
-    .catch((err) => res.status(500).json({ success: false }));
+      .then(() => res.json({ success: true }))
+      .catch((err) => res.status(500).json({ success: false }));
   } catch (err) {
     console.error('errorrrrr: ', err);
     res.json({ err: 'there is an error' });
@@ -103,7 +103,7 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (!user) {
-        //check if user exists
+        /** check if user exists */
         return res
           .status(400)
           .json({ errors: [{ msg: 'Invalid Credentials' }] });
