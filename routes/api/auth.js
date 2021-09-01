@@ -6,9 +6,7 @@ const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
-
-//for payment
-const stripe = require('stripe')('sk_test_0nG9Ty2vlJMtbg8rfGEmo8Ue00nraHrJ0Q');
+const stripe = require('stripe')(process.env.MYTESTAPIKEY);
 router.use(require('body-parser').text());
 
 /**user adds new weight input to db */
@@ -16,12 +14,12 @@ router.use(require('body-parser').text());
 //todo add endpoint for get customer info?
 router.post('/addWeightElement', async (req, res) => {
   try {
-    const query = {"email": req.body.email}
-    const update = {$push: {"weightTracker": req.body.weightObject}}
+    const query = { email: req.body.email };
+    const update = { $push: { weightTracker: req.body.weightObject } };
     /** last param don't want to create if email dne */
     User.findOneAndUpdate(query, update, false)
-    .then(() => res.json({ success: true }))
-    .catch((err) => res.status(500).json({ success: false }));
+      .then(() => res.json({ success: true }))
+      .catch((err) => res.status(500).json({ success: false }));
   } catch (err) {
     console.error('errorrrrr: ', err);
     res.json({ err: 'there is an error' });
