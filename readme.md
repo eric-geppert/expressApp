@@ -15,6 +15,10 @@ version 1.0.2 new features/fixes:
 - updated version
 - removed dashboard tab, made homepage a dynamic tab to point to and display homepage or profile if logged in
 
+version 1.0.3 new features/fixes:
+
+- abstracted env variables
+
 futrue todos:
 
 - update description on homepage to explain what the site is/can do
