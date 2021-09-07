@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('config');
-const db = config.get('mongoURI');
+// const db = config.get('mongoURI');
 
 const connectDB = async () => {
   try {
@@ -10,12 +10,13 @@ const connectDB = async () => {
       /** we have to use "" around variable because of odd character but we need to trim them in windows
        * do we need this for heroku?
        */
+      // todo check if running local and use default.json or cut connection strings else just use secret
       console.log('mongoTestURI existsssssssssssssssss');
       const testdb = process.env.mongoTestURI;
       const noQuotes = testdb.substr(1, testdb.length - 2);
       console.log('mongo testdb string:', testdb.substr(1, testdb.length - 2));
 
-      await mongoose.connect(noQuotes, {
+      await mongoose.connect(testdb, {
         useNewUrlParser: true,
         useCreateIndex: true,
       });
