@@ -66,11 +66,30 @@ export const MyCalendar = ({ auth, setSelectedCalendarWorkout }) => {
     if (auth.paid === true) newWorkouts = findWorkoutOption(auth.user.plan);
     else newWorkouts = findWorkoutOption(auth.user.plan + 'trial');
 
+    //todo get this from user info
+    //todo set this in user info
+    //this will the the indexes we want pushed back
+    //ex:day  44 user takes off so we add in a blank 'rest' day on day 44 and push the entire arr one day back
+    //do this for each day user pushes: [44,60]
+    const daysPushedBackArr = [3, 40];
+    //todo create function for this
+    //todo add custom text here?
+    const restDay = {
+      title: 'Rest Day',
+      contentwrapper: [],
+    };
+
+    for (var i = 0; i < daysPushedBackArr.length; i++) {
+      //add empty day on (index,delete#ofEle,object)
+      newWorkouts.splice(daysPushedBackArr[i], 0, restDay);
+    }
+    console.log('works with rest:', newWorkouts);
     /** CalculateEventsPerWeek(entireWorkout arrary, date user started program, days per week user is working out) */
     var actuallyReturns = CalculateEventsPerWeek(
       newWorkouts,
       auth.user.date,
-      auth.user.days
+      auth.user.days,
+      daysPushedBackArr
     );
 
     return (

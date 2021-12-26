@@ -4,6 +4,10 @@ const path = require('path'); //added for prod
 
 const app = express();
 
+// const uri = process.env.MONGODB_URI;
+// how use this mostely but default if doesn't exist? or how use qa db here and prod other times?
+// have to have 2 servers?
+
 //connect to db
 connectDB();
 

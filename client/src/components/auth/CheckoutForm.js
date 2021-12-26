@@ -43,6 +43,7 @@ class CheckoutForm extends Component {
       //     'there was a problem with creating subscription with that customer'
       //   );
     } catch (err) {
+      console.log('payment err:', err);
       this.props.setAlert('There was a problem with your payment', 'danger');
     }
   }

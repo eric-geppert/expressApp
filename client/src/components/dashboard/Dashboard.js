@@ -25,7 +25,7 @@ const Dashboard = ({
     <Spinner />
   ) : (
     <Fragment>
-      {profile.customer.data.length > 0 ? (
+      {profile.customer && profile.customer.data.length > 0 ? (
         <Fragment>
           <h1 className='large text-primary'>Dashboard</h1>
           <p className='lead' style={{ marginBottom: '-25px' }}>

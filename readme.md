@@ -18,9 +18,13 @@ version 1.0.2 new features/fixes:
 version 1.0.3 new features/fixes:
 
 - abstracted env variables
+- added ability to add rest days(in Calendar.js): need to add button for users to do this
+  need to add field for this to be saved in users info
+  need to get that in req and set daysPushedBackArr dynamically
 
 futrue todos:
 
+- remake app from scratch using all const components no classes, to clean it up. (hire dev if have problem with some pages not getting redux state like they should)
 - update description on homepage to explain what the site is/can do
 - add check for if date already exists in weight tracker, send alert if so
 - add ability to remove weight PRs
